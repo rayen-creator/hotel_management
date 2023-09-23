@@ -2,6 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
 
+Package manager YARN
+## Installation
+1 - install node_modules dependencies with
+```	
+$ yarn install
+```		
+2 - to insall package use :
+```	
+$ yarn add <package_name>
+```	
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
