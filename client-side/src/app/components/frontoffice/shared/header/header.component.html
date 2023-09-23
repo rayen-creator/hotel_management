@@ -3,7 +3,7 @@
     <nav class="navbar navbar-area navbar-border navbar-padding navbar-expand-lg">
         <div class="container custom-container-one nav-container">
             <div class="logo-wrapper">
-                <a href="index.html" class="logo">
+                <a routerLink="/home" class="logo">
                     <img src="assets/img/logo.png" alt>
                 </a>
             </div>
@@ -18,15 +18,10 @@
             </div>
             <div class="collapse navbar-collapse" id="hotel_booking_menu">
                 <ul class="navbar-nav">
-                    <li class="menu-item-has-children current-menu-item">
-                        <a href="javascript:void(0)">Home</a>
-                        <ul class="sub-menu">
-                            <li><a href="index.html">Home One</a></li>
-                            <li><a href="02_index.html"> Home Two </a></li>
-                            <li><a href="03_index.html"> Home Three </a></li>
-                        </ul>
+                    <li>
+                        <a routerLink="/home">Home</a>
                     </li>
-                    <li><a href="about.html"> About </a></li>
+                    <li><a routerLink="/about"> About </a></li>
                     <li><a href="checkout.html"> Checkout </a></li>
                     <li class="menu-item-has-children current-menu-item">
                         <a href="javascript:void(0)">Pages</a>
@@ -60,10 +55,10 @@
                 <div class="single-right-content">
                     <div class="navbar-right-flex">
                         <div class="navbar-right-btn">
-                            <a href="login.html"> Log In </a>
+                            <a routerLink="/signin"> Log In </a>
                         </div>
                         <div class="btn-wrapper">
-                            <a href="signup.html" class="cmn-btn btn-bg-1 radius-10"> Sign Up </a>
+                            <a routerLink="/signup" class="cmn-btn btn-bg-1 radius-10"> Sign Up </a>
                         </div>
                     </div>
                 </div>
