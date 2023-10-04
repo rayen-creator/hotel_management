@@ -1,0 +1,49 @@
+<div class="dashboard-right-contents mt-4 mt-lg-0  ">
+    <div class="dashboard-reservation">
+        <div class="single-reservation bg-white base-padding">
+            <div class="single-reservation-author">
+                <div class="single-reservation-author-flex">
+                    <div class="single-reservation-author-thumb">
+                        <!-- <img src="assets/img/dashboard/author.jpg" alt="img"> -->
+                    </div>
+                    <div class="single-reservation-author-contents px-5">
+                        <div class="custom--from px-5">
+                            <form [formGroup]="formgroup" >
+                                <div class="popup-contents-select">
+                                    <label class="popup-contents-select-label"> What is the issue?
+                                    </label>
+                                    <div class="">
+                                        <select class="form-control p-1" formControlName="serviceType">
+                                            <option selected disabled >--- Select service ---</option>
+                                            <option value="Room room_service">Room service</option>
+                                            <option value="restaurant">Restaurant</option>
+                                            <option value="hospitality">Hospitality</option>
+                                            <option value="hotel_animation">Hotel animation</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="popup-contents-select">
+                                    <div class="single-input">
+                                        <input name="title" formControlName="title" class="form--control form--message py-2" placeholder="Title"/>
+                                    </div>                                   
+                                </div>
+                                <div class="popup-contents-select">
+                                    <div class="single-input">
+                                        <textarea name="description" formControlName="description" class="form--control form--message" cols="30" rows="6"
+                                            placeholder="Write Details..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="btn-wrapper flex-btn mt-3">
+                        
+                                    <button type="submit" (click)="submit()" class="dash-btn btn-bg-1"> 
+                                        <i class="lab la-telegram-plane"></i> Submit Ticket 
+                                        </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

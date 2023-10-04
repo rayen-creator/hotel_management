@@ -1,0 +1,56 @@
+<div class="dashboard-right-contents mt-4 mt-lg-0">
+    <div class="dashboard-reservation">
+        <div class="single-reservation bg-white base-padding">
+            <div class="single-reservation-flex ">
+                <div class="single-reservation-name">
+                    <h5 class="single-reservation-title"> Support Tickets </h5>
+                </div>
+                <div class="btn-wrapper">
+                    <a routerLink="/account/addReview" class="cmn-btn btn-bg-1 btn-small"> Add a
+                        Tickets </a>
+                </div>
+            </div>
+        </div>
+        <ng-container *ngFor="let f of feedbacks">
+            <div class="single-reservation bg-white base-padding">
+                <div class="single-reservation-flex">
+                    <div class="single-reservation-author">
+                        <div class="single-reservation-author-flex">
+                            <div class="single-reservation-author-contents">
+                                <span class="single-reservation-author-contents-subtitle">id #{{f.idFeedback}}
+                                </span>
+                                <h5 class="single-reservation-author-contents-title">{{f.title}}</h5>
+                                <div class="btn-wrapper mt-3">
+                                    <a href="javascript:void(0)" class="btn" [ngClass]="{'btn-warning': f.ticketStatus !== 'closed', 'btn-danger': f.ticketStatus === 'closed','btn-success': f.ticketStatus === 'open'}">{{f.ticketStatus}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="single-reservation-author-active"> <i class="las la-redo-alt"></i> {{f.review_date | date}}
+                    </span>
+                </div>
+                <div class="single-reservation-author-footer">
+                    <p class="single-reservation-author-para"> {{f.description}} </p>
+                    <!-- <p class="single-reservation-author-para">
+                        I am writing this letter to you in order to complain about the loss of luggage I
+                        recently encountered on the above-said date in your hotel. My luggage was checked in
+                        at 11:00 AM on 23 April 2022 and upon arrival at the room my luggage was not seen
+                        which
+                        would be considered as lost. </p> -->
+                    <div class="single-reservation-author-footer-bottom">
+                        <div class="single-reservation-flex">
+                            <div class="single-reservation-tags">
+                                <div class="single-reservation-tags-list">
+                                    <a href="javascript:void(0)"
+                                        class="single-reservation-tags-item luggage"> {{f.serviceType}} </a>
+                                 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+      
+    </div>
+</div>
