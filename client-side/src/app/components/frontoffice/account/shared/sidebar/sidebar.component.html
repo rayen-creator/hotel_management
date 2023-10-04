@@ -3,7 +3,7 @@
         <div class="close-bars"> <i class="las la-times"></i> </div>
         <div class="dashboard-bottom">
             <ul class="dashboard-list list-style-none">
-                <li class="list active" routerLinkActive="active">
+                <li class="list " routerLinkActive="active">
                     <a routerLink="/account/reservations"> <i class="las la-briefcase"></i> Reservation </a>
                 </li>
                 <li class="list" routerLinkActive="active">
@@ -11,22 +11,19 @@
                         & Refund </a>
                 </li>
                 <li class="list" routerLinkActive="active">
-                    <a href="dashboard_report_issue.html"> <i class="las la-exclamation-triangle"></i>
-                        Report an issue <span class="badge-notification"> 12 </span> </a>
+                    <a routerLink="/account/addReview"> <i class="las la-exclamation-triangle"></i>
+                        Report an issue</a>
                 </li>
-                <li class="list has-children">
+                <li class="list" routerLinkActive="active">
+                    <a routerLink="/account/reviews"> <i class="las la-headset"></i>
+                       Support Tickets <span class="badge-notification"> 12 </span> </a>
+                </li>
+                <li class="list has-children" routerLinkActive="active">
                     <a href="javascript:void(0)"> <i class="las la-user-circle"></i> Profile </a>
                     <ul class="submenu list-style-none">
-                        <li class="list"> <a routerLink="/adminpanel/profile"  routerLinkActive="active"> Profile </a> </li>
-                        <li class="list"> <a href="dashboard_edit_profile.html" routerLinkActive="active"> Edit Profile </a> </li>
-                        <li class="list"> <a href="dashboard_pass_change.html" routerLinkActive="active"> Password Change </a> </li>
-                    </ul>
-                </li>
-                <li class="list has-children">
-                    <a href="javascript:void(0)"> <i class="las la-headset"></i> Support </a>
-                    <ul class="submenu list-style-none">
-                        <li class="list"> <a href="dashboard_support.html"  routerLinkActive="active"> Support </a> </li>
-                        <li class="list"> <a href="dashboard_add_tickets.html" routerLinkActive="active"> Add Tickets </a> </li>
+                        <li class="list"> <a  > Profile </a> </li>
+                        <li class="list"> <a href="dashboard_edit_profile.html" > Edit Profile </a> </li>
+                        <li class="list"> <a href="dashboard_pass_change.html" > Password Change </a> </li>
                     </ul>
                 </li>
                 <li class="list">
