@@ -21,7 +21,7 @@ public class FeedbackServiceImp implements IFeedbackService {
     @Override
     public Feedback addFeedback(Feedback feedback) {
 
-        Feedback newfeed=new Feedback();
+        Feedback newfeed = new Feedback();
         newfeed.setTitle(feedback.getTitle());
         newfeed.setServiceType(feedback.getServiceType());
         newfeed.setDescription(feedback.getDescription());
@@ -32,17 +32,30 @@ public class FeedbackServiceImp implements IFeedbackService {
     }
 
     @Override
-    public Feedback updateFeedback(int id, Feedback newfeedback) {
-        if(this._feedbackrepo.findById(id).isPresent()) {
+    public Feedback changeTicketStatus(int id, Feedback newfeedback) {
+        if (this._feedbackrepo.findById(id).isPresent()) {
             Feedback existingFeedback = this._feedbackrepo.findById(id).get();
 
-            existingFeedback.setTitle(newfeedback.getTitle());
-//            existingFeedback.setRating(newfeedback.getRating());
-            existingFeedback.setDescription(newfeedback.getDescription());
-            existingFeedback.setServiceType(newfeedback.getServiceType());
+            existingFeedback.setTicketStatus(TicketStatus.open);
+            existingFeedback.setIs_approved(true);
 
             return this._feedbackrepo.save(existingFeedback);
-        }else{
+        } else {
+            return null;
+        }
+    }
+
+
+    @Override
+    public Feedback RespondTOReview(int id, Feedback newfeedback) {
+        if (this._feedbackrepo.findById(id).isPresent()) {
+            Feedback existingFeedback = this._feedbackrepo.findById(id).get();
+
+            existingFeedback.setResponse_from_management(newfeedback.getResponse_from_management());
+            existingFeedback.setTicketStatus(TicketStatus.closed);
+
+            return this._feedbackrepo.save(existingFeedback);
+        } else {
             return null;
         }
     }
@@ -55,7 +68,7 @@ public class FeedbackServiceImp implements IFeedbackService {
 
     @Override
     public boolean DeleteFeedback(int id) {
-        if(this._feedbackrepo.findById(id).isPresent()){
+        if (this._feedbackrepo.findById(id).isPresent()) {
             this._feedbackrepo.deleteById(id);
             return true;
         }

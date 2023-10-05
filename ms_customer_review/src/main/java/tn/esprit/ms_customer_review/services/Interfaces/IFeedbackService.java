@@ -9,7 +9,9 @@ public interface IFeedbackService {
 
     public Feedback addFeedback(Feedback feedback);
 
-    public Feedback updateFeedback(int id, Feedback newfeedback);
+    public Feedback changeTicketStatus(int id, Feedback newfeedback);
+
+    public Feedback RespondTOReview(int id, Feedback newfeedback);
 
     public List<Feedback> all_feedbacks();
     public boolean DeleteFeedback(int id);
