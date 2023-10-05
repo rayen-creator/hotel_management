@@ -4,12 +4,16 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Package manager YARN
 ## Installation
-Install angular-cli
+Install angular-cli global
 
 ```	
 $  npm install -g @angular/cli@15.1.0
 ```	
+Install angular-cli local
 
+```	
+$  npm install  @angular/cli@15.1.0
+```	
 1 - install node_modules dependencies with
 ```	
 $ yarn install
