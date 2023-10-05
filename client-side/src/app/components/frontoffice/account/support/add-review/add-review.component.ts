@@ -32,6 +32,7 @@ export class AddReviewComponent implements OnInit {
   submit(){
     this.feedbackService.createFeedback(this.formgroup.value).subscribe({
       next:()=>{
+        console.log("d",this.formgroup.value)
         this.router.navigate(['/account/reviews'])
       },
       error:()=>{
