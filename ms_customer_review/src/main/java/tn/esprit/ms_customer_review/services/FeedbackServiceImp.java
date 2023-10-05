@@ -26,6 +26,7 @@ public class FeedbackServiceImp implements IFeedbackService {
         newfeed.setServiceType(feedback.getServiceType());
         newfeed.setDescription(feedback.getDescription());
         newfeed.setTicketStatus(TicketStatus.pending);
+        newfeed.setIs_approved(false);
 
         return this._feedbackrepo.save(newfeed);
     }
