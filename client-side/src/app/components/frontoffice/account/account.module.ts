@@ -6,6 +6,9 @@ import { AccountComponent } from './account.component';
 
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { ReservationListComponent } from './reservation-list/reservation-list.component';
+import { AddReviewComponent } from './support/add-review/add-review.component';
+import { ListReviewComponent } from './support/list-review/list-review.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,11 +16,14 @@ import { ReservationListComponent } from './reservation-list/reservation-list.co
     AccountComponent,
     SidebarComponent,
     ReservationListComponent,
+    AddReviewComponent,
+    ListReviewComponent,
 
   ],
   imports: [
     CommonModule,
-    AccountRoutingModule
+    AccountRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class AccountModule { }
