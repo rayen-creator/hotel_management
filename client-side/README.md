@@ -1,9 +1,15 @@
 # ClientSide
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.0.
 
 Package manager YARN
 ## Installation
+Install angular-cli
+
+```	
+$  npm install -g @angular/cli@15.1.0
+```	
+
 1 - install node_modules dependencies with
 ```	
 $ yarn install
