@@ -3,23 +3,24 @@ import { Feedback } from 'src/app/core/models/feedback.model';
 import { FeedbackService } from 'src/app/core/services/feedback.service';
 
 @Component({
-  selector: 'app-list-review',
-  templateUrl: './list-review.component.html',
-  styleUrls: ['./list-review.component.css']
+  selector: 'app-list-tickets',
+  templateUrl: './list-tickets.component.html',
+  styleUrls: ['./list-tickets.component.css']
 })
-export class ListReviewComponent implements OnInit {
-
-  constructor(private feedbackService: FeedbackService) { }
+export class ListTicketsComponent implements OnInit {
 
   feedbacks: Feedback[]
-  
+  constructor(private feedbackService: FeedbackService) { }
+
   ngOnInit(): void {
-    this.feedbackService.getAll();
-    //for refreshed data
     this.feedbackService.getRefreshedData().subscribe((data: any) => {
       this.feedbacks = data;
-    })
-  }
+      
+      if (this.feedbacks.length == 0) {
+        this.feedbackService.getAll();
+      }
+    });
 
+  }
 
 }

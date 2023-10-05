@@ -1,0 +1,22 @@
+<div class="custom--from mt-4">
+    <form #feedbackForm="ngForm">
+        <div class="single-input">
+            <textarea name="message" class="form--control form--message" cols="30" rows="6"
+                placeholder="Write Details..." [(ngModel)]="feedback.response_from_management"
+                name="response_from_management"
+                #response_from_management="ngModel" required>
+            </textarea>
+
+            <div [hidden]="!response_from_management.invalid || !response_from_management.touched || !response_from_management.hasError('required')"
+                class="text-danger ">
+                field is required
+            </div>
+
+        </div>
+        <div class="btn-wrapper flex-btn mt-3">
+            <button type="submit" class="dash-btn btn-bg-1" (click)="submit()"> 
+                <i class="lab la-telegram-plane"></i> Send Reply
+            </button>
+        </div>
+    </form>
+</div>
