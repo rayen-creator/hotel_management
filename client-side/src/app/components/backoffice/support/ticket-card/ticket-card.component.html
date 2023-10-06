@@ -40,7 +40,7 @@
                     </div>
                     <div class="single-reservation-attachment mt-3" >
                         <div class="single-reservation-attachment-list">
-                            <a href="javascript:void(0)"(click)="toggleComment()"  class="single-reservation-attachment-list-item">
+                            <a href="javascript:void(0)" (click)="toggleComment()" *ngIf="feedback.ticketStatus!='closed' "  class="single-reservation-attachment-list-item">
                                 <span class="single-reservation-attachment-list-item-icon"> <i
                                         class="las la-comments"></i> </span>
                                 <span class="single-reservation-attachment-list-item-title">

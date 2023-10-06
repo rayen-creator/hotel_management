@@ -9,9 +9,7 @@ const routes: Routes = [{
   path: '', component: BackofficeComponent, children: [
     { path: 'dashboard', component: DashboardComponent },
     { path: 'profile', component: ProfileComponent },
-    { path: 'support', component: ListTicketsComponent }
-
-
+    { path: 'support/:ticketStatus', component: ListTicketsComponent },
   ]
 }];
 

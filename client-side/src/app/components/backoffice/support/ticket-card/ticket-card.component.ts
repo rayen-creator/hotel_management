@@ -15,6 +15,6 @@ export class TicketCardComponent implements OnInit{
   }
 
   toggleComment(){
-    this.toggle=!this.toggle
+       this.toggle=!this.toggle
   }
 }

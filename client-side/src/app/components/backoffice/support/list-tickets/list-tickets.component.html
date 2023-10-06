@@ -1,6 +1,13 @@
+<div class="m-5" *ngIf="feedbacks.length==0">
+    <div>
+        <h4 class="text-danger">
+            <i class="las la-exclamation-circle"></i>
+            No feedback found
+        </h4>
+    </div>
+</div>
 <ng-container *ngFor="let f of feedbacks">
     <div class="my-3">
         <app-ticket-card [feedback]="f"></app-ticket-card>
-
     </div>
 </ng-container>

@@ -21,16 +21,17 @@ export class FeedbackService {
   createFeedback(feedback: any) {
     return this.httpClient.post(`${this.url}`, feedback);
   }
+  
   respondeToFeedback(id: any, feedback: any) {
     return this.httpClient.put(`${this.url}/openReview/${id}`, feedback).subscribe((response:any) => {
-      this.dataSubject.next(response);
-      this.getAll();
+      console.log('feedback',response);
+      this.dataSubject.next([response]);
     })
   }
 
   chnageReviewStatus(id: any, feedback: any) {
     return this.httpClient.put(`${this.url}/${id}`, feedback).subscribe((response:any) => {
-      this.dataSubject.next(response);
+      this.dataSubject.next([response]);
     })
   }
 
