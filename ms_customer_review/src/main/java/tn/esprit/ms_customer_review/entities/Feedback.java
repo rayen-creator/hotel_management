@@ -24,8 +24,6 @@ public class Feedback {
 
     private  String title;
 
-    private  Boolean is_approved;
-
     private  String response_from_management;
 
     @Column(insertable = false,updatable = false ,columnDefinition = "DATE DEFAULT CURRENT_DATE")

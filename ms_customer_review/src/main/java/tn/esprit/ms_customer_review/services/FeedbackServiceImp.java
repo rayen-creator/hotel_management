@@ -26,7 +26,6 @@ public class FeedbackServiceImp implements IFeedbackService {
         newfeed.setServiceType(feedback.getServiceType());
         newfeed.setDescription(feedback.getDescription());
         newfeed.setTicketStatus(TicketStatus.pending);
-        newfeed.setIs_approved(false);
 
         return this._feedbackrepo.save(newfeed);
     }
@@ -37,7 +36,6 @@ public class FeedbackServiceImp implements IFeedbackService {
             Feedback existingFeedback = this._feedbackrepo.findById(id).get();
 
             existingFeedback.setTicketStatus(TicketStatus.open);
-            existingFeedback.setIs_approved(true);
 
             return this._feedbackrepo.save(existingFeedback);
         } else {
