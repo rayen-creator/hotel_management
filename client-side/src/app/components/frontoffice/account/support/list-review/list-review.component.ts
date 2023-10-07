@@ -12,7 +12,8 @@ export class ListReviewComponent implements OnInit {
   constructor(private feedbackService: FeedbackService) { }
 
   feedbacks: Feedback[]
-  
+  toggle: boolean = false;
+
   ngOnInit(): void {
     this.feedbackService.getAll();
     //for refreshed data
@@ -20,6 +21,10 @@ export class ListReviewComponent implements OnInit {
       this.feedbacks = data;
     })
   }
-
+  
+  toggleResponse() {
+    this.toggle = !this.toggle
+    console.log('input',this.toggle);
+  }
 
 }
