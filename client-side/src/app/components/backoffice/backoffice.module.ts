@@ -12,6 +12,7 @@ import { ListTicketsComponent } from './support/list-tickets/list-tickets.compon
 import { TicketCardComponent } from './support/ticket-card/ticket-card.component';
 import { CommentSectionComponent } from './support/comment-section/comment-section.component';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     BackofficeRoutingModule,
     FormsModule,
+    SharedModule
   ]
 })
 export class BackofficeModule { }
