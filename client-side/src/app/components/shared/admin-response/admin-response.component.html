@@ -1,0 +1,16 @@
+<div class="single-reservation-attachment mt-3" >
+    <div class="single-reservation-attachment-list">
+        
+        <a href="javascript:void(0)"  class="single-reservation-attachment-list-item" (click)="submit()">
+            <span class="single-reservation-attachment-list-item-icon"> <i
+                    class="las la-bars"></i> </span>
+            <span class="single-reservation-attachment-list-item-title">
+            </span>
+        </a>
+    </div>
+</div>
+<div class="custom--from mt-4" *ngIf="toggle">
+    <div>
+     {{feedback.response_from_management}}
+    </div>
+ </div>
