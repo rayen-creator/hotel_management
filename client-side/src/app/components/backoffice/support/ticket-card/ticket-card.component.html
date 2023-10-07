@@ -9,7 +9,9 @@
                             </span>
                             <h5 class="single-reservation-author-contents-title"> {{feedback.title}} </h5>
                             <div class="btn-wrapper mt-3">
-                                <a href="javascript:void(0)" class="btn" [ngClass]="{'btn-warning': feedback.ticketStatus !== 'closed', 'btn-danger': feedback.ticketStatus === 'closed','btn-success': feedback.ticketStatus === 'open'}"> {{feedback.ticketStatus}}
+                                <a href="javascript:void(0)" class="btn"
+                                    [ngClass]="{'btn-warning': feedback.ticketStatus !== 'closed', 'btn-danger': feedback.ticketStatus === 'closed','btn-success': feedback.ticketStatus === 'open'}">
+                                    {{feedback.ticketStatus}}
                                 </a>
                             </div>
                         </div>
@@ -38,25 +40,25 @@
                         </div>
 
                     </div>
-                    <div class="single-reservation-attachment mt-3" >
+                    <div class="single-reservation-attachment mt-3">
                         <div class="single-reservation-attachment-list">
-                            <a href="javascript:void(0)" (click)="toggleComment()" *ngIf="feedback.ticketStatus!='closed' "  class="single-reservation-attachment-list-item">
+                            <a href="javascript:void(0)" (click)="toggleComment()"
+                                *ngIf="feedback.ticketStatus!='closed' "
+                                class="single-reservation-attachment-list-item">
                                 <span class="single-reservation-attachment-list-item-icon"> <i
                                         class="las la-comments"></i> </span>
                                 <span class="single-reservation-attachment-list-item-title">
                                 </span>
                             </a>
-                            <a href="javascript:void(0)"  class="single-reservation-attachment-list-item">
-                                <span class="single-reservation-attachment-list-item-icon"> <i
-                                        class="las la-bars"></i> </span>
-                                <span class="single-reservation-attachment-list-item-title">
-                                </span>
-                            </a>
                         </div>
                     </div>
+                    <ng-container *ngIf="feedback.ticketStatus=='closed' ">
+                        <app-admin-response [feedback]="feedback"></app-admin-response>
+                    </ng-container>
                     <!-- comment section -->
                     <ng-container *ngIf="toggle">
-                        <app-comment-section [id]="feedback.idFeedback" (submit)="toggleComment()"></app-comment-section>
+                        <app-comment-section [id]="feedback.idFeedback"
+                            (submit)="toggleComment()"></app-comment-section>
                     </ng-container>
                 </div>
             </div>
