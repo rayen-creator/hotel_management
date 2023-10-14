@@ -1,16 +1,21 @@
-<div class="single-reservation-attachment mt-3" >
+<div class="single-reservation-attachment mt-3" *ngIf="feedback.response_from_management">
     <div class="single-reservation-attachment-list">
-        
-        <a href="javascript:void(0)"  class="single-reservation-attachment-list-item" (click)="submit()">
-            <span class="single-reservation-attachment-list-item-icon"> <i
-                    class="las la-bars"></i> </span>
+
+        <a href="javascript:void(0)" class="single-reservation-attachment-list-item" (click)="submit()">
+            <span class="single-reservation-attachment-list-item-icon"> <i class="las la-bars"></i> </span>
             <span class="single-reservation-attachment-list-item-title">
             </span>
         </a>
     </div>
 </div>
+
 <div class="custom--from mt-4" *ngIf="toggle">
-    <div>
-     {{feedback.response_from_management}}
+    <div class="flex">
+        <div class="flex align-items-start pb-2">
+            <img src="/assets/img/admin.png" alt="admin" class="avatar">
+            <span class="fw-bold px-1 ">Support Team </span>
+        </div>
+        <div class="ps-5">{{feedback.response_from_management}}</div>
     </div>
- </div>
+    
+</div>
