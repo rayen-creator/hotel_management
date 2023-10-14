@@ -8,6 +8,7 @@ import tn.esprit.ms_customer_review.entities.enums.TicketStatus;
 import tn.esprit.ms_customer_review.repositories.FeedbackRepository;
 import tn.esprit.ms_customer_review.services.Interfaces.IFeedbackService;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +27,7 @@ public class FeedbackServiceImp implements IFeedbackService {
         newfeed.setServiceType(feedback.getServiceType());
         newfeed.setDescription(feedback.getDescription());
         newfeed.setTicketStatus(TicketStatus.pending);
+        newfeed.setReview_date(new Date());
 
         return this._feedbackrepo.save(newfeed);
     }

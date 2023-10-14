@@ -26,13 +26,14 @@ public class Feedback {
 
     private  String response_from_management;
 
-    @Column(insertable = false,updatable = false ,columnDefinition = "DATE DEFAULT CURRENT_DATE")
+    @Temporal(TemporalType.DATE)
     private Date review_date;
 
     @Enumerated(EnumType.STRING)
     private ServiceType serviceType;
 
     private  String description;
+
 
    /* @ManyToOne
     private User user;*/
