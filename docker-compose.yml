@@ -1,7 +1,7 @@
 version: '3.9'
 
 services:
-
+################### DISCOVERY SERVER ( eureka) ###################
   discovery_service :
     build: /eureka_server
     ports:
@@ -10,7 +10,8 @@ services:
     image: erueka_service
     environment:
       - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
-  
+
+################### MICROSERVICES ###################
   customer_reviewer_service:
     build: /ms_customer_review
     environment:
@@ -27,6 +28,9 @@ services:
       - discovery_service
       - docker-mysql_1
 
+
+################### DATABASES ###################
+
   docker-mysql_1:
     image: "mariadb:latest"
     environment:
@@ -34,3 +38,12 @@ services:
       - MARIADB_DATABASE=hotelManagement
     ports:
       - 3306:3306
+
+  docker-postgres:
+    image: postgres
+    ports:
+      - 5432:5432  
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=ms_auth_DB
