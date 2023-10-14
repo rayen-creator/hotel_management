@@ -28,17 +28,21 @@ services:
       - discovery_service
       - docker-mysql_1
 
-    # ms_auth:
-    #   build:
-    #     context: .
-    #     dockerfile: Dockerfile
-    #   environment:
-    #     - 
-    #   ports:
-    #     - '7000:7000'
-    #   depends_on:
-    #     - discovery_service
-    #     - docker-postgres
+  ms_auth:
+    build:
+      context: ./ms_user_management  # Set the context to the directory containing your Dockerfile
+      dockerfile: Dockerfile
+    environment:
+      - POSTGRES_HOST=docker-postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DATABASE=ms_auth_DB
+    ports:
+      - '7000:7000'
+    depends_on:
+      - discovery_service
+      - docker-postgres
 
 ################### DATABASES ###################
 
@@ -50,11 +54,11 @@ services:
     ports:
       - 3306:3306
 
-  # docker-postgres:
-  #   image: postgres
-  #   ports:
-  #     - 5432:5432  
-  #   environment:
-  #     - POSTGRES_USER=postgres
-  #     - POSTGRES_PASSWORD=admin
-  #     - POSTGRES_DB=ms_auth_DB
+  docker-postgres:
+    image: postgres
+    ports:
+      - 5432:5432  
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=ms_auth_DB
