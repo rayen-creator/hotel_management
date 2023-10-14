@@ -28,6 +28,17 @@ services:
       - discovery_service
       - docker-mysql_1
 
+    # ms_auth:
+    #   build:
+    #     context: .
+    #     dockerfile: Dockerfile
+    #   environment:
+    #     - 
+    #   ports:
+    #     - '7000:7000'
+    #   depends_on:
+    #     - discovery_service
+    #     - docker-postgres
 
 ################### DATABASES ###################
 

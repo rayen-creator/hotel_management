@@ -5,7 +5,7 @@
 
 FROM maven:3.8.2-jdk-8 
 
-WORKDIR /ms_customer_review
+WORKDIR /customer_reviewer_service
 COPY . .
 RUN mvn clean install
 
