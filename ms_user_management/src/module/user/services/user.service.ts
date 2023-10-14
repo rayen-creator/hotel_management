@@ -20,6 +20,7 @@ export class UserService {
             username: createUserDto.username,
             email: createUserDto.email,
             password: hash,
+            userType:createUserDto.userType,
             createdAt: new Date(),
         })
     }

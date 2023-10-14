@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty, IsString } from "class-validator";
+import { Role } from "src/models/role.enum";
 
 
 export class CreateUserDto {
@@ -16,5 +17,7 @@ export class CreateUserDto {
     @IsNotEmpty({ message: 'Please enter password' })
     @IsString({ message: 'Password must be a string' })
     password: string;
+    userType: Role;
+
 
 }
