@@ -5,15 +5,10 @@ export abstract class BaseEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @CreateDateColumn({ type: 'date'})
+    @CreateDateColumn({ type: 'date' })
     createdAt: Date;
 
-    @Column({ type: 'varchar', length: 300 })
-    createdBy: string;
-
-    @CreateDateColumn({ type: 'date'})
+    @CreateDateColumn({ type: 'date' })
     lastChangedAt: Date;
 
-    @Column({ type: 'varchar', length: 300 })
-    lastChangedBy: string;
 }
