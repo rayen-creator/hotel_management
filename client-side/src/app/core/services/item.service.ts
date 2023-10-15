@@ -15,7 +15,7 @@ export class ItemService {
     return this.httpClient.post(`${this.url}`, item);
   }
   updateItem(id: any, item: any) {
-    return this.httpClient.post(`${this.url}/${id}`, item);
+    return this.httpClient.put(`${this.url}/${id}`, item);
   }
   getAll() {
     return this.httpClient.get(`${this.url}/all`);

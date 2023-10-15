@@ -5,6 +5,13 @@ export enum ItemCategory {
   FOOD = 'FOOD',
   OTHER = 'OTHER'
 }
+export enum ItemUnit {
+  PIECE = 'PIECE',
+  GRAM = 'GRAM',
+  LITER = 'LITER',
+  PACK = 'PACK',
+  SET = 'SET'
+}
 
 export interface Item {
   id?: number;
@@ -12,4 +19,5 @@ export interface Item {
   category: ItemCategory;
   quantity: number;
   image: string;
+  unit:ItemUnit;
 }

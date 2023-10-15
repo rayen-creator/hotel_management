@@ -18,6 +18,8 @@ public class Item {
     private String image;
     @Enumerated(EnumType.STRING)
     private ItemCategory category;
+    @Enumerated(EnumType.STRING)
+    private ItemUnit unit;
 
     private int quantity;
 

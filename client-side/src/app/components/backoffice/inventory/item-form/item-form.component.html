@@ -1,0 +1,112 @@
+<div class="dashboard-right-contents mt-4 mt-lg-0">
+  <div class="dashboard-reservation">
+    <div class="single-reservation bg-white base-padding">
+      <div class="single-reservation-author">
+        <div class="single-reservation-author-flex">
+          <div class="single-reservation-author-contents">
+            <h2 *ngIf="editMode == false">Add Product</h2>
+            <h2 *ngIf="editMode == true">Edit {{ item?.name }}</h2>
+            <div class="custom--from">
+              <form *ngIf="itemForm" [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+                <!-- Name -->
+                <div class="popup-contents-select">
+                  <label class="popup-contents-select-label"> Name :</label>
+                  <div class="single-input">
+                    <textarea type="text" name="name" class="form-control" formControlName="name" id="name" cols="30" rows="1" placeholder="Enter Name..."></textarea>
+                  </div>
+                </div>
+                <span
+                  class="text-danger error-msg error-msg"
+                  *ngIf="itemForm.controls['name'].invalid  && itemForm.controls['name'].touched">
+                        <span *ngIf="itemForm.controls['name'].hasError('required')" class="error">This field is required!</span>
+                <br>
+                        <span *ngIf="itemForm.controls['name'].hasError('minlength')" class="error">Minimum length is 3!</span>
+                <br>
+                        <span *ngIf="itemForm.controls['name'].hasError('pattern')"class="error">Symbols are not allowed!</span>
+              </span>
+                <!-- Category -->
+                <div class="popup-contents-select">
+                  <label class="popup-contents-select-label"> Category : </label>
+                  <div class="nice-select js-select" tabindex="0">
+                    <span class="current">{{ itemForm.get('category').value }}</span>
+                    <div class="nice-select-search-box">
+                      <input type="text" class="nice-select-search" formControlName="category" id="category" name="category" placeholder="Search...">
+                    </div>
+                    <ul class="list">
+                      <li *ngFor="let category of ['LINENS', 'TOILETRIES', 'CLEANING_SUPPLIES', 'FOOD', 'OTHER']"
+                          [attr.data-value]="category"
+                          [class.option]="true"
+                          [class.selected]="itemForm.get('category').value === category"
+                          (click)="itemForm.get('category').setValue(category)">
+                        {{ category }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <span
+                  class="text-danger error-msg error-msg"
+                  *ngIf="itemForm.controls['category'].invalid  && itemForm.controls['category'].touched">
+                        <span *ngIf="itemForm.controls['category'].hasError('required')" class="error">This field is required!</span>
+              </span>
+                <!-- Quantity -->
+                <div class="popup-contents-select">
+                  <label class="popup-contents-select-label"> Quantity :</label>
+                  <div class="single-input">
+                    <input type="number" name="quantity" class="form-control" formControlName="quantity" id="quantity" cols="30" rows="1" placeholder="Enter quantity...">
+                  </div>
+                </div>
+                <span
+                  class="text-danger error-msg error-msg"
+                  *ngIf="itemForm.controls['quantity'].invalid  && itemForm.controls['quantity'].touched">
+                        <span *ngIf="itemForm.controls['quantity'].hasError('required')" class="error">This field is required!</span>
+                  <br>
+                        <span *ngIf="itemForm.controls['quantity'].hasError('invalidPositiveNumber')" class="error">quantity should be positive!</span>
+              </span>
+                <!-- Unit -->
+                <div class="popup-contents-select">
+                  <label class="popup-contents-select-label"> Unit :  </label>
+                  <div class="nice-select js-select" tabindex="0">
+                    <span class="current">{{ itemForm.get('unit').value }}</span>
+                    <div class="nice-select-search-box">
+                      <input type="text" class="nice-select-search" formControlName="unit" id="unit" name="unit" placeholder="Search...">
+                    </div>
+                    <ul class="list">
+                      <li *ngFor="let unit of ['PIECE', 'GRAM', 'LITER', 'PACK', 'SET']"
+                          [attr.data-value]="unit"
+                          [class.option]="true"
+                          [class.selected]="itemForm.get('unit').value === unit"
+                          (click)="itemForm.get('unit').setValue(unit)">
+                        {{ unit }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <span
+                  class="text-danger error-msg error-msg"
+                  *ngIf="itemForm.controls['unit'].invalid  && itemForm.controls['unit'].touched">
+                        <span *ngIf="itemForm.controls['unit'].hasError('required')" class="error">This field is required!</span>
+              </span>
+                <!-- Image URL -->
+                <div class="popup-contents-select">
+                  <label class="popup-contents-select-label"> Image URL :</label>
+                  <div class="single-input">
+                    <input type="text" name="image" class="form-control" formControlName="image" id="image" cols="30" rows="1" placeholder="Enter image URL...">
+                  </div>
+                </div>
+                <span
+                  class="text-danger error-msg error-msg"
+                  *ngIf="itemForm.controls['image'].invalid  && itemForm.controls['image'].touched">
+                        <span *ngIf="itemForm.controls['image'].hasError('required')" class="error">This field is required!</span>
+              </span>
+                <!-- Save Button -->
+                <div class="btn-wrapper flex-btn mt-3">
+                  <button type="submit" [disabled]="itemForm.invalid" class="dash-btn btn-bg-1" >Save Changes</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

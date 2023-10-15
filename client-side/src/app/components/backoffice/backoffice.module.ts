@@ -9,6 +9,9 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { ItemsComponent } from './inventory/items/items.component';
+import { ItemFormComponent } from './inventory/item-form/item-form.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -19,11 +22,14 @@ import { ItemsComponent } from './inventory/items/items.component';
     FooterComponent,
     ProfileComponent,
     SidebarComponent,
-    ItemsComponent
+    ItemsComponent,
+    ItemFormComponent
   ],
   imports: [
     CommonModule,
-    BackofficeRoutingModule
+    BackofficeRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class BackofficeModule { }
