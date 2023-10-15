@@ -8,6 +8,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { ItemsComponent } from './inventory/items/items.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     HeaderComponent,
     FooterComponent,
     ProfileComponent,
-    SidebarComponent
+    SidebarComponent,
+    ItemsComponent
   ],
   imports: [
     CommonModule,
