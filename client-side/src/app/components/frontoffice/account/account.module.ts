@@ -9,6 +9,7 @@ import { ReservationListComponent } from './reservation-list/reservation-list.co
 import { AddReviewComponent } from './support/add-review/add-review.component';
 import { ListReviewComponent } from './support/list-review/list-review.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AccountRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class AccountModule { }

@@ -1,0 +1,64 @@
+version: '3.9'
+
+services:
+################### DISCOVERY SERVER ( eureka) ###################
+  discovery_service :
+    build: /eureka_server
+    ports:
+     - "8761:8761"
+    hostname: serviceregistry
+    image: erueka_service
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
+
+################### MICROSERVICES ###################
+  customer_reviewer_service:
+    build: /ms_customer_review
+    environment:
+      - spring.datasource.url=jdbc:mysql://docker-mysql_1:3306/hotelManagement?autoReconnect=true&useSSL=false
+      - spring.datasource.username=root
+      - spring.datasource.password=root
+      - spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+      - spring.jpa.hibernate.ddl-auto=update
+      - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
+    ports:
+     - "8082:8082"
+    image: customer_review
+    depends_on:
+      - discovery_service
+      - docker-mysql_1
+
+  ms_auth:
+    build:
+      context: ./ms_user_management  # Set the context to the directory containing your Dockerfile
+      dockerfile: Dockerfile
+    environment:
+      - POSTGRES_HOST=docker-postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DATABASE=ms_auth_DB
+    ports:
+      - '7000:7000'
+    depends_on:
+      - discovery_service
+      - docker-postgres
+
+################### DATABASES ###################
+
+  docker-mysql_1:
+    image: "mariadb:latest"
+    environment:
+      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_DATABASE=hotelManagement
+    ports:
+      - 3306:3306
+
+  docker-postgres:
+    image: postgres
+    ports:
+      - 5432:5432  
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=ms_auth_DB

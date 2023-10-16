@@ -22,10 +22,13 @@ public class FeedbackController {
     public ResponseEntity<Feedback> add(@RequestBody() Feedback feedback){
         return new ResponseEntity<>(_feedbackServiceImp.addFeedback(feedback), HttpStatus.OK);
     }
-
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Feedback> update(@PathVariable("id") int id,@RequestBody() Feedback feedback){
-        return new ResponseEntity<>(_feedbackServiceImp.updateFeedback(id,feedback),HttpStatus.OK);
+    public ResponseEntity<Feedback> changeTicketStatus(@PathVariable("id") int id,@RequestBody() Feedback feedback){
+        return new ResponseEntity<>(_feedbackServiceImp.changeTicketStatus(id,feedback),HttpStatus.OK);
+    }
+    @PutMapping(value = "/openReview/{id}")
+    public ResponseEntity<Feedback> RespondTOReview(@PathVariable("id") int id,@RequestBody() Feedback feedback){
+        return new ResponseEntity<>(_feedbackServiceImp.RespondTOReview(id,feedback),HttpStatus.OK);
     }
 
     @GetMapping (value = "/all")
