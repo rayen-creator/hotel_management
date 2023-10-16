@@ -7,14 +7,13 @@ import { EurekaModule } from 'nestjs-eureka';
             disable: false,
             disableDiscovery: false,
             eureka: {
-                host: "localhost",
-                port: 8761,
-                servicePath: '/eureka/apps/',
+                host: process.env.EUREKA_HOST,
+                port: process.env.EUREKA_PORT,
+                servicePath: process.env.EUREKA_SEVERPATH,
                 maxRetries: 10,
                 requestRetryDelay: 10000,
             },
             service: {
-                host: "localhost",
                 name: 'ms_user_management',
                 port: 7000,
             },
