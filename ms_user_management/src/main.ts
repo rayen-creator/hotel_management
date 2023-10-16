@@ -5,18 +5,21 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  
+
   //swagger implimentation
   const config = new DocumentBuilder()
     .setTitle('ms user managament')
     .setDescription('Microservice API Documentation')
     .setVersion('1.0')
     .build();
-  const document = SwaggerModule.createDocument(app, config);
+  const document = SwaggerModule.createDocument(app, config)
+  ;
   SwaggerModule.setup('/', app, document);
+
   //dto implimentation
   app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(7000);
+
 }
 bootstrap();
