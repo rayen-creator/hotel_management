@@ -7,22 +7,22 @@ import { AuthLoginDto } from '../auth-login.dto';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post()
-  async login(@Body() AuthLoginDto: AuthLoginDto) {
-    return this.authService.login(AuthLoginDto);
-  }
+  // @Post()
+  // async login(@Body() AuthLoginDto: AuthLoginDto) {
+  //   return this.authService.login(AuthLoginDto);
+  // }
 
-  @UseGuards(JwtAuthGuard)
-  @Get('profile')
-  async getProfile(@Req() req) {
-    const user = req.user;
-    const userProfile = await this.authService.getProfile(user.id);
-    return userProfile;
-  }
+  // @UseGuards(JwtAuthGuard)
+  // @Get('profile')
+  // async getProfile(@Req() req) {
+  //   const user = req.user;
+  //   const userProfile = await this.authService.getProfile(user.id);
+  //   return userProfile;
+  // }
 
-  @UseGuards(JwtAuthGuard)
-  @Get()
-  async test() {
-    return 'Success Login';
-  }
+  // @UseGuards(JwtAuthGuard)
+  // @Get()
+  // async test() {
+  //   return 'Success Login';
+  // }
 }
