@@ -9,6 +9,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './shared/home/home.component';
 import { AboutComponent } from './shared/about/about.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -19,11 +20,12 @@ import { AboutComponent } from './shared/about/about.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    
   ],
   imports: [
     CommonModule,
-    FrontofficeRoutingModule
+    FrontofficeRoutingModule,
   ]
 })
 export class FrontofficeModule { }
