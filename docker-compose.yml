@@ -3,6 +3,7 @@ version: '3.9'
 services:
 ################### DISCOVERY SERVER ( eureka) ###################
   discovery_service :
+    container_name: serviceregistry
     build: /eureka_server
     ports:
      - "8761:8761"
@@ -13,13 +14,12 @@ services:
 
 ################### MICROSERVICES ###################
   customer_reviewer_service:
+    container_name: customer_reviewer_container
     build: /ms_customer_review
     environment:
       - spring.datasource.url=jdbc:mysql://docker-mysql_1:3306/hotelManagement?autoReconnect=true&useSSL=false
       - spring.datasource.username=root
       - spring.datasource.password=root
-      - spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
-      - spring.jpa.hibernate.ddl-auto=update
       - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
     ports:
      - "8082:8082"
@@ -29,6 +29,7 @@ services:
       - docker-mysql_1
 
   ms_auth:
+    container_name: ms_auth_container
     build:
       context: ./ms_user_management  # Set the context to the directory containing your Dockerfile
       dockerfile: Dockerfile
@@ -38,8 +39,12 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=admin
       - POSTGRES_DATABASE=ms_auth_DB
+      - EUREKA_HOST=serviceregistry
+      - EUREKA_PORT=8761
+      - EUREKA_SEVERPATH=/eureka/apps
     ports:
       - '7000:7000'
+    image: ms_auth
     depends_on:
       - discovery_service
       - docker-postgres
@@ -47,6 +52,7 @@ services:
 ################### DATABASES ###################
 
   docker-mysql_1:
+    container_name: mariadb_mysql_database
     image: "mariadb:latest"
     environment:
       - MARIADB_ROOT_PASSWORD=root
@@ -55,6 +61,7 @@ services:
       - 3306:3306
 
   docker-postgres:
+    container_name: postgres_database
     image: postgres
     ports:
       - 5432:5432  
