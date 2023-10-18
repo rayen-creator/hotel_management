@@ -1,0 +1,77 @@
+<div class="container">
+  <h2>Parking Reservation Management</h2>
+
+  <!-- Search bar -->
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search..."
+      [(ngModel)]="searchTerm"
+    />
+    <div class="input-group-append">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="searchReservations()"
+      >
+        Search
+      </button>
+    </div>
+  </div>
+
+  <!-- Filter by status -->
+  <div class="form-group">
+    <label for="statusFilter">Filter by Status:</label>
+    <select
+      class="form-control"
+      id="statusFilter"
+      [(ngModel)]="selectedStatus"
+      (change)="filterReservations()"
+    >
+      <option value="">All</option>
+      <option value="accepted">Accepted</option>
+      <option value="pending">Pending</option>
+      <option value="declined">Declined</option>
+    </select>
+  </div>
+
+  <!-- Table -->
+  <table class="table table-striped mt-4">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Guest Name</th>
+        <th scope="col">Vehicle Immatricule</th>
+        <th scope="col">Arrival Date</th>
+        <th scope="col">Departure Date</th>
+        <th scope="col">Status</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reservation of filteredReservations">
+        <th scope="row">{{ reservation.id }}</th>
+        <td>{{ reservation.guestName }}</td>
+        <td>{{ reservation.vehicleImmatricule }}</td>
+        <td>{{ reservation.arrivalDate }}</td>
+        <td>{{ reservation.departureDate }}</td>
+        <td>{{ reservation.status }}</td>
+        <td>
+          <button
+            class="btn btn-sm btn-success"
+            (click)="confirmReservation(reservation)"
+          >
+            Confirm
+          </button>
+          <button
+            class="btn btn-sm btn-danger"
+            (click)="declineReservation(reservation)"
+          >
+            Decline
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

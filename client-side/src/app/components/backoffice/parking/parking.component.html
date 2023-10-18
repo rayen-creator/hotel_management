@@ -1,0 +1,59 @@
+<div class="container">
+  <h2>Parking Space Management</h2>
+
+  <!-- Search bar -->
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search..."
+      [(ngModel)]="searchTerm"
+    />
+
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button">Search</button>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <table class="table table-striped mt-4">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Numero</th>
+        <th scope="col">Type</th>
+        <th scope="col">Location</th>
+        <th scope="col">State</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let space of parkingSpaces">
+        <th scope="row">{{ space.numero }}</th>
+        <td>{{ space.numero }}</td>
+        <td>{{ space.type }}</td>
+        <td>{{ space.location }}</td>
+        <td>{{ space.state }}</td>
+        <td>
+          <button
+            class="btn btn-sm btn-warning"
+            (click)="editParkingSpace(space)"
+          >
+            Edit
+          </button>
+          <button
+            class="btn btn-sm btn-danger"
+            (click)="deleteParkingSpace(space)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Add button -->
+  <button class="btn btn-primary" (click)="addParkingSpace()">
+    Add Parking Space
+  </button>
+</div>
