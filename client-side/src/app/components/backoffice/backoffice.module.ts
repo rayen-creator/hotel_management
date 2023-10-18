@@ -13,7 +13,6 @@ import { TicketCardComponent } from './support/ticket-card/ticket-card.component
 import { CommentSectionComponent } from './support/comment-section/comment-section.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
-import { OrderByTimePipe } from 'src/app/core/utils/order-by-time.pipe';
 
 
 @NgModule({
