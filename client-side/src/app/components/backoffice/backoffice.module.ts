@@ -8,6 +8,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { OrderByTimePipe } from 'src/app/core/utils/order-by-time.pipe';
 
 
 @NgModule({

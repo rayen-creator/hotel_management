@@ -15,6 +15,7 @@ public class StaffServiceImp implements IStaffService {
     private  StaffRepository staffRepository;
     @Override
     public Staff addStaff(Staff staff) {
+
         return this.staffRepository.save(staff);
     }
 
@@ -22,6 +23,7 @@ public class StaffServiceImp implements IStaffService {
     public Staff GetStaff(int id) {
         if (staffRepository.findById(id).isPresent()) {
             Staff staff = staffRepository.findById(id).get();
+
             return staff;
         }else {
             return null;
@@ -35,7 +37,6 @@ public class StaffServiceImp implements IStaffService {
             Staff existingStaff = staffRepository.findById(id).get();
             existingStaff.setFirstName(newStaff.getFirstName());
             existingStaff.setLastName(newStaff.getLastName());
-            existingStaff.setAddress(newStaff.getAddress());
             existingStaff.setEmail(newStaff.getEmail());
             existingStaff.setRole(newStaff.getRole());
             existingStaff.setPhone(newStaff.getPhone());

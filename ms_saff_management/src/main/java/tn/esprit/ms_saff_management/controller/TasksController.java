@@ -15,31 +15,31 @@ public class TasksController {
     private TaskServiceImp taskService;
 
     // Endpoint to create a new task for a staff member
-    @PostMapping("/{staffId}")
+    @PostMapping("/add/{staffId}")
     public Tasks addTaskToStaff(@PathVariable int staffId, @RequestBody Tasks task) {
         return taskService.addTasktostaff(staffId, task);
     }
 
     // Endpoint to retrieve a task by ID
-    @GetMapping("/{idTask}")
+    @GetMapping("/gettask/{idTask}")
     public Tasks getTask(@PathVariable int idTask) {
         return taskService.GetTask(idTask);
     }
 
     // Endpoint to update a task by ID
-    @PutMapping("/{idTask}")
+    @PutMapping("/edit/{idTask}")
     public Tasks updateTask(@PathVariable int idTask, @RequestBody Tasks newTask) {
         return taskService.update(idTask, newTask);
     }
 
     // Endpoint to list all tasks of a specific staff member
-    @GetMapping("/staff/{staffId}")
+    @GetMapping("/all/{staffId}")
     public List<Tasks> getAllTasksOfStaff(@PathVariable int staffId) {
         return taskService.all_tasks_ofstaff(staffId);
     }
 
     // Endpoint to delete a task by ID
-    @DeleteMapping("/{idTask}")
+    @DeleteMapping("/delete/{idTask}")
     public boolean deleteTask(@PathVariable int idTask) {
         return taskService.DeleteTask(idTask);
     }

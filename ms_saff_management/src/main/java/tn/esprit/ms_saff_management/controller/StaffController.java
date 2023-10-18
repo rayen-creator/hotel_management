@@ -15,30 +15,30 @@ public class StaffController {
     @Autowired
     private StaffServiceImp staffService;
 
-    @PostMapping
+    @PostMapping("add")
     public Staff createStaff(@RequestBody Staff staff) {
         return staffService.addStaff(staff);
     }
 
     // Endpoint to retrieve a staff member by ID
-    @GetMapping("/{id}")
+    @GetMapping("getstaff/{id}")
     public Staff getStaff(@PathVariable int id) {
         return staffService.GetStaff(id);
     }
 
 
-    @PutMapping("/{id}")
+    @PutMapping("edit/{id}")
     public Staff updateStaff(@PathVariable int id, @RequestBody Staff newStaff) {
         return staffService.update(id, newStaff);
     }
 
-    @GetMapping
+    @GetMapping("all")
     public List<Staff> getAllStaff() {
         return staffService.all_staff();
     }
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public boolean deleteStaff(@PathVariable int id) {
         return staffService.DeleteStaff(id);
     }

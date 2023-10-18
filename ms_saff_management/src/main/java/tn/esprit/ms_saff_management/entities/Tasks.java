@@ -21,12 +21,10 @@ public class Tasks {
     private String ToDo;
     @Temporal(TemporalType.DATE)
     private Date date;
-    @Temporal(TemporalType.TIME)
-    @DateTimeFormat(pattern = "HH:mm")
-    private Date startTime;
-    @Temporal(TemporalType.TIME)
-    @DateTimeFormat(pattern = "HH:mm")
-    private Date endTime;
+
+    private String startTime;
+
+    private String endTime;
 
     @JsonIgnore
     @ManyToOne

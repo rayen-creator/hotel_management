@@ -5,11 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './components/shared/error/error.component';
 import { HttpClientModule } from '@angular/common/http';
+import { OrderByTimePipe } from './core/utils/order-by-time.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorComponent,
+    ErrorComponent
    
   ],
   imports: [

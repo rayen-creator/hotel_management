@@ -1,0 +1,112 @@
+<div class="dashboard-right-contents mt-4 mt-lg-0">
+    <div class="dashboard-reservation">
+      <div class="single-reservation bg-white base-padding">
+        <div class="single-reservation-author">
+          <div class="single-reservation-author-flex">
+            <div class="single-reservation-author-contents">
+              <h2 >Add Staff</h2>
+              <div class="custom--from">
+                <form *ngIf="staffForm" [formGroup]="staffForm" (ngSubmit)="onSubmit()">
+                  <!-- Name -->
+                  <div class="popup-contents-select">
+                    <label class="popup-contents-select-label">First Name :</label>
+                    <div class="single-input">
+                      <textarea type="text" name="firstName" class="form-control" formControlName="firstName" id="firstName" cols="30" rows="1" placeholder="Enter First Name..."></textarea>
+                    </div>
+                  </div>
+                  <span
+                  class="text-danger error-msg error-msg"
+                  *ngIf="staffForm.controls['firstName'].invalid  && staffForm.controls['firstName'].touched">
+                        <span *ngIf="staffForm.controls['firstName'].hasError('required')" class="error">This field is required!</span>
+                <br>
+                        <span *ngIf="staffForm.controls['firstName'].hasError('minlength')" class="error">Minimum length is 3!</span>
+                <br>
+                        <span *ngIf="staffForm.controls['firstName'].hasError('pattern')"class="error">Symbols are not allowed!</span>
+              </span>
+                  <div class="popup-contents-select">
+                    <label class="popup-contents-select-label">Last Name :</label>
+                    <div class="single-input">
+                      <textarea type="text" name="lastName" class="form-control" formControlName="lastName" id="lastName" cols="30" rows="1" placeholder="Enter Last Name..."></textarea>
+                    </div>
+                  </div>
+                  <span
+                        class="text-danger error-msg error-msg"
+                        *ngIf="staffForm.controls['lastName'].invalid  && staffForm.controls['lastName'].touched">
+                                <span *ngIf="staffForm.controls['lastName'].hasError('required')" class="error">This field is required!</span>
+                        <br>
+                                <span *ngIf="staffForm.controls['lastName'].hasError('minlength')" class="error">Minimum length is 3!</span>
+                        <br>
+                                <span *ngIf="staffForm.controls['lastName'].hasError('pattern')"class="error">Symbols are not allowed!</span>
+                    
+                    </span>
+                  <div class="popup-contents-select">
+                    <label class="popup-contents-select-label"> Email :</label>
+                    <div class="single-input">
+                      <textarea type="email" name="email" class="form-control" formControlName="email" id="email" cols="30" rows="1" placeholder="john@example.com"></textarea>
+                    </div>
+                  </div>
+                  <span
+                        class="text-danger error-msg error-msg"
+                        *ngIf="staffForm.controls['email'].invalid  && staffForm.controls['email'].touched">
+                                <span *ngIf="staffForm.controls['email'].hasError('required')" class="error">This field is required!</span>
+                               <br>
+                                <span *ngIf="staffForm.get('email').hasError('email')" class="error">Invalid email format!</span>
+                    </span>
+                  <div class="popup-contents-select">
+                    <label class="popup-contents-select-label"> Phone :</label>
+                    <div class="single-input">
+                      <textarea type="number" name="phone" class="form-control" formControlName="phone" id="phone" cols="30" rows="1" placeholder="Enter phone number ..."></textarea>
+                    </div>
+                  </div>
+                  <span
+                  class="text-danger error-msg error-msg"
+                  *ngIf="staffForm.controls['phone'].invalid  && staffForm.controls['phone'].touched">
+                          <span *ngIf="staffForm.controls['phone'].hasError('required')" class="error">This field is required!</span>
+                  <br>
+                  
+                          <span *ngIf="staffForm.controls['phone'].hasError('pattern')"class="error">Invalid phone number format!</span>
+              
+              </span>
+                  <!-- Category -->
+                  <div class="popup-contents-select">
+                    <label class="popup-contents-select-label"> Role : </label>
+                    <div class="nice-select js-select" tabindex="0">
+                     
+                      <div class="nice-select-search-box">
+                        <input type="text" class="nice-select-search" formControlName="role" id="role" name="role" placeholder="Search...">
+                      </div>
+                      <ul class="list">
+                
+                        <li *ngFor="let role of [' Housekeeping', 'Concierge', 'Maintenance', 'Security']"
+                            [attr.data-value]="role"
+                            [class.option]="true"
+                            [class.selected]="staffForm.get('role').value === role"
+                          (click)="staffForm.get('role').setValue(role)">     
+                           >
+                          {{ role }}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <span
+                  class="text-danger error-msg error-msg"
+                  *ngIf="staffForm.controls['role'].invalid  && staffForm.controls['role'].touched">
+                        <span *ngIf="staffForm.controls['role'].hasError('required')" class="error">This field is required!</span>
+              </span>
+                  
+                 
+                 
+                 
+                  
+                  <!-- Save Button -->
+                  <div class="btn-wrapper flex-btn mt-3">
+                    <button type="submit"    class="dash-btn btn-bg-1" >Save</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -21,8 +21,8 @@ public class Staff {
     private String firstName;
     private String lastName;
     private String email;
-    private String address;
-    private int phone;
+    private String phone;
+    @Column(insertable = false,updatable = false ,columnDefinition = "DATE DEFAULT CURRENT_DATE")
     private Date hireDate;
 
     @Enumerated(EnumType.STRING)
@@ -41,7 +41,6 @@ public class Staff {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
                 ", phone=" + phone +
                 ", hireDate=" + hireDate +
                 ", role=" + role +
