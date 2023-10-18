@@ -1,24 +1,44 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FeedbackService {
+  private dataSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
   url: string
   constructor(private httpClient: HttpClient) {
-    this.url = "http://localhost:8082/customer_review/api/feedback";
+    this.url = environment.ms_customer_review_API;
+  }
+
+  getRefreshedData(){
+    return this.dataSubject.asObservable();
   }
 
   createFeedback(feedback: any) {
     return this.httpClient.post(`${this.url}`, feedback);
   }
-  updateFeedback(id: any, feedback: any) {
-    return this.httpClient.post(`${this.url}/${id}`, feedback);
+  
+  respondeToFeedback(id: any, feedback: any) {
+    return this.httpClient.put(`${this.url}/openReview/${id}`, feedback).subscribe((response:any) => {
+      console.log('feedback',response);
+      this.dataSubject.next([response]);
+    })
   }
+
+  chnageReviewStatus(id: any, feedback: any) {
+    return this.httpClient.put(`${this.url}/${id}`, feedback).subscribe((response:any) => {
+      this.dataSubject.next([response]);
+    })
+  }
+
   getAll() {
-    return this.httpClient.get(`${this.url}/all`);
+    return this.httpClient.get(`${this.url}/all`).subscribe((response:any) => {
+      this.dataSubject.next(response);
+    })
   }
 
   deleteFeedback(id: number) {

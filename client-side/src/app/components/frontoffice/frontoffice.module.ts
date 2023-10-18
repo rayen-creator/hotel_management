@@ -12,6 +12,7 @@ import { AboutComponent } from './shared/about/about.component';
 import { MyParkingResComponent } from './parking/MyParkingReservations/my-parking-res/my-parking-res.component';
 import { AddParkingResComponent } from './parking/AddParkingReservations/add-parking-res/add-parking-res.component';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
