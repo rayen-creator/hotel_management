@@ -1,18 +1,28 @@
 version: '3.9'
 
 services:
-################### DISCOVERY SERVER ( eureka) ###################
-  discovery_service :
+  ################### DISCOVERY SERVER ( eureka) ###################
+  discovery_service:
     container_name: serviceregistry
     build: /eureka_server
     ports:
-     - "8761:8761"
+      - "8761:8761"
     hostname: serviceregistry
     image: erueka_service
     environment:
       - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
 
-################### MICROSERVICES ###################
+  ################### GATEWAY SERVER  ###################
+  gateway_service:
+    container_name: gateway_server
+    build: /gateway-service
+    ports:
+      - "8089:8089"
+    image: gateway_service
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
+
+  ################### MICROSERVICES ###################
   customer_reviewer_service:
     container_name: customer_reviewer_container
     build: /ms_customer_review
@@ -22,7 +32,7 @@ services:
       - spring.datasource.password=root
       - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
     ports:
-     - "8082:8082"
+      - "8082:8082"
     image: customer_review
     depends_on:
       - discovery_service
@@ -31,7 +41,7 @@ services:
   ms_auth:
     container_name: ms_auth_container
     build:
-      context: ./ms_user_management  # Set the context to the directory containing your Dockerfile
+      context: ./ms_user_management # Set the context to the directory containing your Dockerfile
       dockerfile: Dockerfile
     environment:
       - POSTGRES_HOST=docker-postgres
@@ -58,14 +68,13 @@ services:
       - spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
       - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
     ports:
-     - "8086:8086"
+      - "8086:8086"
     image: saff_management
     depends_on:
       - discovery_service
       - docker-mysql_2
-  
 
-################### DATABASES ###################
+  ################### DATABASES ###################
 
   docker-mysql_1:
     container_name: mariadb_mysql_database
@@ -82,13 +91,13 @@ services:
       - MARIADB_ROOT_PASSWORD=root
       - MARIADB_DATABASE=hotelManagement
     ports:
-      - 3307:3307   
+      - 3307:3307
 
   docker-postgres:
     container_name: postgres_database
     image: postgres
     ports:
-      - 5432:5432  
+      - 5432:5432
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=admin
