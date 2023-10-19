@@ -12,6 +12,16 @@ services:
     environment:
       - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
 
+ ################### GATEWAY SERVER  ###################
+  gateway_service :
+    container_name: gateway_server
+    build: /gateway-service
+    ports:
+     - "8089:8089"
+    image: gateway_service
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/     
+
 ################### MICROSERVICES ###################
   customer_reviewer_service:
     container_name: customer_reviewer_container
