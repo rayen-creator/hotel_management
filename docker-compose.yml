@@ -109,16 +109,10 @@ services:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://serviceregistry:8761/eureka/
       - EUREKA_INSTANCE_LEASERENEWALINTERVALINSECONDS=10
       - EUREKA_INSTANCE_LEASEEXPIRATIONDURATIONINSECONDS=30
-
-      - SPRING_CLOUD_GATEWAY_ROUTES_0_ID=ms_customer_review
-      - SPRING_CLOUD_GATEWAY_ROUTES_0_URI=http://ms_customer_review:8082
-      - SPRING_CLOUD_GATEWAY_ROUTES_0_PREDICATES_0=Path=/api/feedback**
-      # - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
-
-      # - spring.cloud.gateway.routes[0].id=ms_customer_review
-      # - spring.cloud.gateway.routes[0].uri=http://ms_customer_review:8082
-      # - spring.cloud.gateway.routes[0].predicates[0]=Path=/customer_review/**
-
+    
+      - spring.cloud.gateway.routes[0].id=ms_customer_review
+      - spring.cloud.gateway.routes[0].uri=http://ms_customer_review:8082
+      - spring.cloud.gateway.routes[0].predicates[0]=Path=/api/feedback**
     depends_on:
       - discovery_service
       - docker-mysql_1
