@@ -12,12 +12,19 @@ export class ListReviewComponent implements OnInit {
   constructor(private feedbackService: FeedbackService) { }
 
   feedbacks: Feedback[]
-  
+  toggle: boolean = false;
+
   ngOnInit(): void {
-    this.feedbackService.getAll().subscribe((data: any) => {
+    this.feedbackService.getAll();
+    //for refreshed data
+    this.feedbackService.getRefreshedData().subscribe((data: any) => {
       this.feedbacks = data;
     })
   }
-
+  
+  toggleResponse() {
+    this.toggle = !this.toggle
+    console.log('input',this.toggle);
+  }
 
 }

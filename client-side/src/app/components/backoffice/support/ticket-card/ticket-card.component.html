@@ -1,0 +1,67 @@
+<div class="dashboard-right-contents mt-4 mt-lg-0">
+    <div class="dashboard-reservation">
+        <div class="single-reservation bg-white base-padding">
+            <div class="single-reservation-flex">
+                <div class="single-reservation-author">
+                    <div class="single-reservation-author-flex">
+                        <div class="single-reservation-author-contents">
+                            <span class="single-reservation-author-contents-subtitle"> id #{{feedback.idFeedback}}
+                            </span>
+                            <h5 class="single-reservation-author-contents-title"> {{feedback.title}} </h5>
+                            <div class="btn-wrapper mt-3">
+                                <a href="javascript:void(0)" class="btn"
+                                    [ngClass]="{'btn-warning': feedback.ticketStatus !== 'closed', 'btn-danger': feedback.ticketStatus === 'closed','btn-success': feedback.ticketStatus === 'open'}">
+                                    {{feedback.ticketStatus}}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span class="single-reservation-author-active"> <i class="las la-redo-alt"></i> {{feedback.review_date |
+                    date}}
+                </span>
+            </div>
+            <div class="single-reservation-author-footer">
+                <p class="single-reservation-author-para">
+                    {{feedback.description}}
+                </p>
+                <div class="single-reservation-author-footer-bottom">
+
+                    <div class="single-reservation-flex">
+                        <div class="single-reservation-tags">
+                            <div class="single-reservation-tags-list">
+                                <a href="javascript:void(0)" class="single-reservation-tags-item luggage">
+                                    {{feedback.serviceType}} </a>
+                                <!-- <a href="javascript:void(0)" class="single-reservation-tags-item lost">
+                                    Lost </a>
+                                <a href="javascript:void(0)" class="single-reservation-tags-item hotel">
+                                    Hotel </a> -->
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="single-reservation-attachment mt-3">
+                        <div class="single-reservation-attachment-list">
+                            <a href="javascript:void(0)" (click)="toggleComment()"
+                                *ngIf="feedback.ticketStatus!='closed' "
+                                class="single-reservation-attachment-list-item">
+                                <span class="single-reservation-attachment-list-item-icon"> <i
+                                        class="las la-comments"></i> </span>
+                                <span class="single-reservation-attachment-list-item-title">
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="feedback.ticketStatus=='closed' ">
+                        <app-admin-response [feedback]="feedback"></app-admin-response>
+                    </ng-container>
+                    <!-- comment section -->
+                    <ng-container *ngIf="toggle">
+                        <app-comment-section [id]="feedback.idFeedback"
+                            (submit)="toggleComment()"></app-comment-section>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

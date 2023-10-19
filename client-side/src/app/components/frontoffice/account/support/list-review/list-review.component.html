@@ -21,12 +21,14 @@
                                 </span>
                                 <h5 class="single-reservation-author-contents-title">{{f.title}}</h5>
                                 <div class="btn-wrapper mt-3">
-                                    <a href="javascript:void(0)" class="btn" [ngClass]="{'btn-warning': f.ticketStatus !== 'closed', 'btn-danger': f.ticketStatus === 'closed','btn-success': f.ticketStatus === 'open'}">{{f.ticketStatus}}</a>
+                                    <a href="javascript:void(0)" class="btn"
+                                        [ngClass]="{'btn-warning': f.ticketStatus !== 'closed', 'btn-danger': f.ticketStatus === 'closed','btn-success': f.ticketStatus === 'open'}">{{f.ticketStatus}}</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <span class="single-reservation-author-active"> <i class="las la-redo-alt"></i> {{f.review_date | date}}
+                    <span class="single-reservation-author-active"> <i class="las la-redo-alt"></i> {{f.review_date |
+                        date}}
                     </span>
                 </div>
                 <div class="single-reservation-author-footer">
@@ -41,16 +43,18 @@
                         <div class="single-reservation-flex">
                             <div class="single-reservation-tags">
                                 <div class="single-reservation-tags-list">
-                                    <a href="javascript:void(0)"
-                                        class="single-reservation-tags-item luggage"> {{f.serviceType}} </a>
-                                 
+                                    <a href="javascript:void(0)" class="single-reservation-tags-item luggage">
+                                        {{f.serviceType}} </a>
+
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <app-admin-response [feedback]="f" ></app-admin-response>
+
                 </div>
             </div>
         </ng-container>
-      
+
     </div>
 </div>
