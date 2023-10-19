@@ -14,7 +14,7 @@ import { EurekaModule } from 'nestjs-eureka';
                 requestRetryDelay: 10000,
             },
             service: {
-                name: 'ms_user_management',
+                name: 'Msusermanagement',
                 port: 7000,
             },
         }),
