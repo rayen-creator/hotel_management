@@ -1,0 +1,5 @@
+/* styles.css or your component's CSS file */
+.custom-card-image img {
+  height: 200px; /* Set the desired height for the images */
+  object-fit: cover; /* Maintain aspect ratio and cover the area */
+}
