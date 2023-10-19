@@ -1,16 +1,16 @@
 package tn.esprit.ms_reservation.services.interfaces;
-import tn.esprit.ms_reservation.entities.hotel;
+import tn.esprit.ms_reservation.entities.Hotel;
 
 import java.util.List;
 
 public interface hotelService {
-    public hotel addHotel(hotel hotel);
+    public Hotel addHotel(Hotel hotel);
 
-    public hotel getHotel (int id);
+    public Hotel getHotel (int id);
 
-    public hotel update(int id, hotel newhotel);
+    public Hotel update(int id, Hotel newhotel);
 
-    public List<hotel> all_hotels();
+    public List<Hotel> all_hotels();
 
     public boolean DeleteHotel(int id);
 }

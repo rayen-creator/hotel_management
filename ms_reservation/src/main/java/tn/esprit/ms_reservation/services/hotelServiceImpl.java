@@ -1,6 +1,6 @@
 package tn.esprit.ms_reservation.services;
 import org.springframework.beans.factory.annotation.Autowired;
-import tn.esprit.ms_reservation.entities.hotel;
+import tn.esprit.ms_reservation.entities.Hotel;
 import tn.esprit.ms_reservation.services.interfaces.hotelService;
 
 
@@ -14,24 +14,24 @@ public class hotelServiceImpl implements hotelService {
     hotelRepository hotelrepo;
 
     @Override
-    public hotel addHotel(hotel hotel) {
+    public Hotel addHotel(Hotel hotel) {
         return this.hotelrepo.save(hotel);
 
     }
 
     @Override
-    public hotel getHotel(int id) {
+    public Hotel getHotel(int id) {
         if (hotelrepo.findById(id).isPresent()) {
-            hotel hotell = hotelrepo.findById(id).get();
+            Hotel hotell = hotelrepo.findById(id).get();
             return hotell;
         }else {
             return null;
         }    }
 
     @Override
-    public hotel update(int id, hotel newhotel) {
+    public Hotel update(int id, Hotel newhotel) {
         if (hotelrepo.findById(id).isPresent()) {
-            hotel hotel = hotelrepo.findById(id).get();
+            Hotel hotel = hotelrepo.findById(id).get();
             hotel.setAdress(newhotel.getAdress());
             hotel.setCity(newhotel.getCity());
             hotel.setDescription(newhotel.getDescription());
@@ -44,7 +44,8 @@ public class hotelServiceImpl implements hotelService {
         }    }
 
     @Override
-    public List<hotel> all_hotels() {
+    public List<Hotel> all_hotels() {
+
         return hotelrepo.findAll();
     }
 

@@ -1,4 +1,5 @@
 package tn.esprit.ms_reservation.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 
@@ -7,12 +8,13 @@ import java.util.List;
 
 
 @Entity
+@Table(name = "hotel")
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class hotel {
+public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idHotel;
@@ -25,7 +27,9 @@ public class hotel {
     private String country;
     private String description;
 
+
+    @JsonIgnore
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<room> rooms;
+    List<Room> rooms;
 
 }
