@@ -1,5 +1,6 @@
 version: '3.9'
 
+
 services:
   ################### DISCOVERY SERVER ( eureka) ###################
   discovery_service:
@@ -21,11 +22,26 @@ services:
     image: gateway_service
     environment:
       - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
+      # ms customer review 
+      - spring.cloud.gateway.routes[0].id=customer_review_service
+      - spring.cloud.gateway.routes[0].uri=http://localhost:8082
+      - spring.cloud.gateway.routes[0].predicates[0]=Path=/customer_review/**
+
+       # ms user management service
+      # - spring.cloud.gateway.routes[1].id=ms_user_management
+      # - spring.cloud.gateway.routes[1].uri=http://ms_auth:7000
+      # - spring.cloud.gateway.routes[1].predicates[0]=Path=/**
+    depends_on:
+      - discovery_service
+      - customer_review_service
+      - ms_auth
+
 
   ################### MICROSERVICES ###################
-  customer_reviewer_service:
-    container_name: customer_reviewer_container
+  customer_review_service:
+    container_name: customer_review
     build: /ms_customer_review
+    hostname: customer_review
     environment:
       - spring.datasource.url=jdbc:mysql://docker-mysql_1:3306/hotelManagement?autoReconnect=true&useSSL=false
       - spring.datasource.username=root
@@ -39,10 +55,11 @@ services:
       - docker-mysql_1
 
   ms_auth:
-    container_name: ms_auth_container
+    container_name: ms_auth
     build:
       context: ./ms_user_management # Set the context to the directory containing your Dockerfile
       dockerfile: Dockerfile
+    hostname: ms_auth
     environment:
       - POSTGRES_HOST=docker-postgres
       - POSTGRES_PORT=5432
@@ -59,20 +76,20 @@ services:
       - discovery_service
       - docker-postgres
 
-  saff_management_service:
-    build: /ms_saff_management
-    environment:
-      - spring.datasource.url=jdbc:mysql://docker-mysql_2:3307/hotelManagement?autoReconnect=true&useSSL=false
-      - spring.datasource.username=root
-      - spring.datasource.password=root
-      - spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
-      - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
-    ports:
-      - "8086:8086"
-    image: saff_management
-    depends_on:
-      - discovery_service
-      - docker-mysql_2
+  # saff_management_service:
+  #   build: /ms_saff_management
+  #   environment:
+  #     - spring.datasource.url=jdbc:mysql://docker-mysql_2:3307/hotelManagement?autoReconnect=true&useSSL=false
+  #     - spring.datasource.username=root
+  #     - spring.datasource.password=root
+  #     - spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+  #     - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
+  #   ports:
+  #     - "8086:8086"
+  #   image: saff_management
+  #   depends_on:
+  #     - discovery_service
+  #     - docker-mysql_2
 
   ################### DATABASES ###################
 
@@ -85,13 +102,13 @@ services:
     ports:
       - 3306:3306
 
-  docker-mysql_2:
-    image: "mariadb:latest"
-    environment:
-      - MARIADB_ROOT_PASSWORD=root
-      - MARIADB_DATABASE=hotelManagement
-    ports:
-      - 3307:3307
+  # docker-mysql_2:
+  #   image: "mariadb:latest"
+  #   environment:
+  #     - MARIADB_ROOT_PASSWORD=root
+  #     - MARIADB_DATABASE=hotelManagement
+  #   ports:
+  #     - 3307:3307
 
   docker-postgres:
     container_name: postgres_database
