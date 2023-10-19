@@ -12,7 +12,6 @@ services:
       - 3306:3306
     restart: unless-stopped  
 
-
   # docker-mysql_2:
   #   image: "mariadb:latest"
   #   environment:
@@ -21,15 +20,15 @@ services:
   #   ports:
   #     - 3307:3307
 
-  # docker-postgres:
-  #   container_name: postgres_database
-  #   image: postgres
-  #   ports:
-  #     - 5432:5432
-  #   environment:
-  #     - POSTGRES_USER=postgres
-  #     - POSTGRES_PASSWORD=admin
-  #     - POSTGRES_DB=ms_auth_DB
+  docker-postgres:
+    container_name: postgres_database
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=ms_auth_DB
 
   ################### DISCOVERY SERVER ( eureka) ###################
   discovery_service:
@@ -42,10 +41,11 @@ services:
     environment:
       - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
 
-      ################### MICROSERVICES ###################
-  ms_customer_review:
+  ################### MICROSERVICES ###################
+  mscustomerreview:
+    container_name: ms_customer_review
     build:
-      context: ./ms_customer_review # Set the context to the directory containing your Dockerfile
+      context: ./ms_customer_review 
       dockerfile: Dockerfile
     restart: unless-stopped
     environment:
@@ -60,27 +60,27 @@ services:
       - discovery_service
       - docker-mysql_1
 
-  # ms_auth:
-  #   container_name: ms_auth
-  #   build:
-  #     context: ./ms_user_management # Set the context to the directory containing your Dockerfile
-  #     dockerfile: Dockerfile
-  #   hostname: ms_auth
-  #   environment:
-  #     - POSTGRES_HOST=docker-postgres
-  #     - POSTGRES_PORT=5432
-  #     - POSTGRES_USER=postgres
-  #     - POSTGRES_PASSWORD=admin
-  #     - POSTGRES_DATABASE=ms_auth_DB
-  #     - EUREKA_HOST=serviceregistry
-  #     - EUREKA_PORT=8761
-  #     - EUREKA_SEVERPATH=/eureka/apps
-  #   ports:
-  #     - '7000:7000'
-  #   image: ms_auth
-  #   depends_on:
-  #     - discovery_service
-  #     - docker-postgres
+  msusermanagement:
+    container_name: ms_user_management
+    build:
+      context: ./ms_user_management 
+      dockerfile: Dockerfile
+    hostname: ms_user_management
+    environment:
+      - POSTGRES_HOST=docker-postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DATABASE=ms_auth_DB
+      - EUREKA_HOST=serviceregistry
+      - EUREKA_PORT=8761
+      - EUREKA_SEVERPATH=/eureka/apps
+    ports:
+      - '7000:7000'
+    image: ms_auth
+    depends_on:
+      - discovery_service
+      - docker-postgres
 
   # saff_management_service:
   #   build: /ms_saff_management
@@ -101,18 +101,22 @@ services:
   gateway_service:
     container_name: gateway_server
     build: ./gateway-service
+    image: gateway_service
+    depends_on:
+     - discovery_service
+     - docker-mysql_1
+     - docker-postgres
     ports:
       - "8089:8089"
-    image: gateway_service
-    restart: always
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://serviceregistry:8761/eureka/
       - EUREKA_INSTANCE_LEASERENEWALINTERVALINSECONDS=10
       - EUREKA_INSTANCE_LEASEEXPIRATIONDURATIONINSECONDS=30
-    
-      - spring.cloud.gateway.routes[0].id=ms_customer_review
-      - spring.cloud.gateway.routes[0].uri=http://ms_customer_review:8082
-      - spring.cloud.gateway.routes[0].predicates[0]=Path=/api/feedback**
-    depends_on:
-      - discovery_service
-      - docker-mysql_1
+
+      - SPRING_CLOUD_GATEWAY_ROUTES_0_ID=Mscustomerreview
+      - SPRING_CLOUD_GATEWAY_ROUTES_0_URI=http://Mscustomerreview:8082
+      - SPRING_CLOUD_GATEWAY_ROUTES_0_PREDICATES_0=Path=/api/feedback/**
+
+      - SPRING_CLOUD_GATEWAY_ROUTES_1_ID=Msusermanagement
+      - SPRING_CLOUD_GATEWAY_ROUTES_1_URI=http://Msusermanagement:7000
+      - SPRING_CLOUD_GATEWAY_ROUTES_1_PREDICATES_0=Path=/**
