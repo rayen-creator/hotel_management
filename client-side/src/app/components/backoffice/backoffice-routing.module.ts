@@ -10,6 +10,7 @@ import { ItemFormComponent } from './inventory/item-form/item-form.component';
 import { ParkingComponent } from './parking/parking.component';
 import { ParkingFormComponent } from './parking-form/parking-form.component';
 import { ParkingReservationComponent } from './parking-reservation/parking-reservation.component';
+import {ProfileFormComponent} from "./profile-form/profile-form.component";
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
     component: BackofficeComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'profile', component: ProfileComponent },
+      { path: 'profile/:id', component: ProfileComponent },
+      { path: 'profile/update/:id', component: ProfileFormComponent },
       { path: 'staff',loadChildren: () =>import('./staff-management/staff-management.module').then((m) => m.StaffManagementModule),},
       { path: 'support/:ticketStatus', component: ListTicketsComponent },
       { path: 'inventory', component: ItemsComponent },

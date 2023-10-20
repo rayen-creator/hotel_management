@@ -8,7 +8,9 @@ import { ListStaffComponent } from './list-staff/list-staff.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { ListTaskComponent } from './list-task/list-task.component';
-import { OrderByTimePipe } from 'src/app/core/utils/order-by-time.pipe';
+import {SharedModule} from "../../shared/shared.module";
+
+
 
 
 @NgModule({
@@ -18,12 +20,13 @@ import { OrderByTimePipe } from 'src/app/core/utils/order-by-time.pipe';
     ListStaffComponent,
     AddTaskComponent,
     ListTaskComponent,
-    OrderByTimePipe
+
   ],
   imports: [
     CommonModule,
     StaffManagementRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class StaffManagementModule { }
