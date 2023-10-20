@@ -11,8 +11,11 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { ListTicketsComponent } from './support/list-tickets/list-tickets.component';
 import { TicketCardComponent } from './support/ticket-card/ticket-card.component';
 import { CommentSectionComponent } from './support/comment-section/comment-section.component';
-import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { ItemsComponent } from './inventory/items/items.component';
+import { ItemFormComponent } from './inventory/item-form/item-form.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -25,13 +28,16 @@ import { SharedModule } from '../shared/shared.module';
     SidebarComponent,
     ListTicketsComponent,
     TicketCardComponent,
-    CommentSectionComponent
+    CommentSectionComponent,
+    ItemsComponent,
+    ItemFormComponent
   ],
   imports: [
     CommonModule,
     BackofficeRoutingModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
   ]
 })
 export class BackofficeModule { }
