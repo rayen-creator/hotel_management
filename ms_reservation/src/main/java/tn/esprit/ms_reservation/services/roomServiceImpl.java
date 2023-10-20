@@ -5,7 +5,7 @@ import tn.esprit.ms_reservation.entities.Hotel;
 import tn.esprit.ms_reservation.entities.Room;
 import tn.esprit.ms_reservation.services.interfaces.roomService;
 import tn.esprit.ms_reservation.repositories.*;
-
+import tn.esprit.ms_reservation.entities.enums.roomType;
 import java.util.List;
 @Service
 public class roomServiceImpl implements roomService{
@@ -53,6 +53,16 @@ public class roomServiceImpl implements roomService{
         }else {
             return null;
         }       }
+
+    @Override
+    public List<Room> findByHotel_idHotel(int hotel) {
+        return roomRepo.findByHotel_IdHotel(hotel);
+    }
+
+    @Override
+    public List<Room> findByHotel_idHotelAndAndType(int hotel, roomType type) {
+        return roomRepo.findByHotel_idHotelAndAndType(hotel,type);
+    }
 
     @Override
     public List<Room> all_Rooms() {

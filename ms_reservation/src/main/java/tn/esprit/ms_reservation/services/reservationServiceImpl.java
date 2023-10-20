@@ -22,7 +22,9 @@ public class reservationServiceImpl implements reservationService{
     public Reservation addReservation(int idRoom,Reservation reservation) {
         if (roomRepo.findById(idRoom).isPresent()) {
             Room room= roomRepo.findById(idRoom).get();
+            reservation.setUserId(2);
             reservation.setRoom(room);
+            reservation.setNbrPersonne((Integer)reservation.getNbrPersonne());
             int nbJour=reservation.getNbrJour();
             int nbPersonne= reservation.getNbrPersonne();
             float prixTot=room.getPrixNuitee() * (float)nbPersonne * (float) nbJour;

@@ -16,28 +16,33 @@ public class hotelController {
     @Autowired
     private hotelServiceImpl hotelService;
 
-    @PostMapping("add")
+    @PostMapping("/add")
     public Hotel addHotel(@RequestBody Hotel hotel) {
         return hotelService.addHotel(hotel);
     }
 
-    @GetMapping("getById/{id}")
+    @GetMapping("/getById/{id}")
     public Hotel getHotel(@PathVariable int id) {
         return hotelService.getHotel(id);
     }
 
-    @PutMapping("update/{id}")
+    @PutMapping("/update/{id}")
     public Hotel update(@PathVariable int id, @RequestBody Hotel newhotel) {
         return hotelService.update(id, newhotel);
     }
 
-    @GetMapping("getAll")
+    @GetMapping("/getAll")
     public List<Hotel> all_hotels() {
         return hotelService.all_hotels();
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public boolean DeleteHotel(@PathVariable int id) {
         return hotelService.DeleteHotel(id);
+    }
+
+    @GetMapping("/getByCountry/{country}")
+    public List<Hotel> getHotelsByCountry(@PathVariable String country) {
+        return hotelService.getHotelsByCountry(country);
     }
 }

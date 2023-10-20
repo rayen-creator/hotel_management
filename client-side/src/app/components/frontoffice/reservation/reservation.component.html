@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>Hotel Room Reservation</h1>
+    <form  (ngSubmit)="submitReservation()">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="check-in">Check-in Date:</label>
+            <input  [(ngModel)]="reservation.dateArrivee" type="date" id="check-in" name="reservation.dateArrivee" required>
+        </div>
+        <div class="form-group">
+            <label for="nbJour">Duration/Days</label>
+            <input [(ngModel)]="reservation.nbrJour" type="text" id="nbJour" name="nbrJour" required>
+        </div>
+
+        
+        <div class="form-group">
+            <label for="room-type">Number of Persons</label>
+            <select id="room-type" name="nbrPersonne" required [(ngModel)]="reservation.nbrPersonne">
+              <option *ngIf="room.type === 'SINGLE'" [value]="1">1</option>
+              <ng-container *ngIf="room.type === 'DOUBLE'">
+                <option [value]="1">1</option>
+                <option [value]="2">2</option>
+              </ng-container>
+            </select>
+          </div>
+          
+       
+        <button type="submit" >Submit Reservation</button>
+    </form>
+</div>

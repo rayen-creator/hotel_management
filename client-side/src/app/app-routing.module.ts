@@ -17,9 +17,7 @@ const routes: Routes = [
         (m) => m.BackofficeModule
       ),
   },
-  {
-    path:'**',component:ErrorComponent
-  }
+  
 ];
 
 @NgModule({

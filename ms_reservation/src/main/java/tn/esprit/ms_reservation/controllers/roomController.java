@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.ms_reservation.entities.Room;
 import tn.esprit.ms_reservation.services.roomServiceImpl;
-
+import tn.esprit.ms_reservation.entities.enums.roomType;
 import java.util.List;
 
 @RestController
@@ -18,6 +18,14 @@ public class roomController {
     @PostMapping("/add/{idHotel}")
     public Room addRoom(@PathVariable int idHotel,@RequestBody Room room) {
         return roomService.addRoom(idHotel,room);
+    }
+    @GetMapping("/getByHotel/{hotel}")
+    public List<Room> findByHotel(@PathVariable int hotel) {
+        return roomService.findByHotel_idHotel(hotel);
+    }
+    @GetMapping("fingByType/{hotel}/{type}")
+    public List<Room> findByHotel_idHotelAndAndType(@PathVariable int hotel,@PathVariable roomType type) {
+        return roomService.findByHotel_idHotelAndAndType(hotel, type);
     }
 
     @GetMapping("/getById/{id}")

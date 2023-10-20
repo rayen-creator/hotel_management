@@ -50,6 +50,12 @@ public class hotelServiceImpl implements hotelService {
     }
 
     @Override
+    public List<Hotel> getHotelsByCountry(String country) {
+        return hotelrepo.findByCountry(country);
+
+    }
+
+    @Override
     public boolean DeleteHotel(int id) {
         if (hotelrepo.findById(id).isPresent()) {
             hotelrepo.deleteById(id);

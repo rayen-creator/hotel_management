@@ -9,6 +9,9 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './shared/home/home.component';
 import { AboutComponent } from './shared/about/about.component';
+import { FormsModule } from '@angular/forms';
+import { RoomsComponent } from './rooms/rooms.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 
 @NgModule({
@@ -19,11 +22,15 @@ import { AboutComponent } from './shared/about/about.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    RoomsComponent,
+    ReservationComponent
   ],
   imports: [
     CommonModule,
-    FrontofficeRoutingModule
+    FrontofficeRoutingModule,
+    FormsModule
+
   ]
 })
 export class FrontofficeModule { }

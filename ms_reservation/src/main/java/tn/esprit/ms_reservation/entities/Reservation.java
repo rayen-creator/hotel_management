@@ -27,6 +27,8 @@ public class Reservation {
     private int nbrJour;
     private int nbrPersonne;
 
+    @JsonIgnore
+    private int userId;
 
     @Enumerated(EnumType.STRING)
     private reservationStatus status;

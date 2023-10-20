@@ -15,7 +15,7 @@ public class reservationController {
     private reservationServiceImpl serviceReservation;
 
     @PostMapping("/add/{idRoom}")
-    public Reservation addReservation(@PathVariable int idRoom,Reservation reservation) {
+    public Reservation addReservation(@PathVariable int idRoom,@RequestBody Reservation reservation) {
         return serviceReservation.addReservation(idRoom,reservation);
     }
 

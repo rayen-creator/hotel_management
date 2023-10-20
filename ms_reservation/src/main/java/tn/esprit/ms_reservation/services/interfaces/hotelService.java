@@ -7,6 +7,7 @@ public interface hotelService {
     public Hotel addHotel(Hotel hotel);
 
     public Hotel getHotel (int id);
+    List<Hotel> getHotelsByCountry(String country);
 
     public Hotel update(int id, Hotel newhotel);
 
