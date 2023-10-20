@@ -18,6 +18,7 @@ const routes: Routes = [
       { path: 'signup', component: SignupComponent },
       { path: 'signin', component: SigninComponent },
       { path: 'about', component: AboutComponent },
+      { path: 'staffs', loadChildren: () => import('./staffs/staffs.module').then(m => m.StaffsModule) },
       { path: 'account', loadChildren: () => import('./account/account.module').then((m) => m.AccountModule), },
       { path: 'parkingRes', component: MyParkingResComponent },
       { path: 'parkingRes/add', component: AddParkingResComponent },
