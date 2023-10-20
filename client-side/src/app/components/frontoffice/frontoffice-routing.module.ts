@@ -18,11 +18,7 @@ const routes: Routes = [
       { path: 'signup', component: SignupComponent },
       { path: 'signin', component: SigninComponent },
       { path: 'about', component: AboutComponent },
-      {
-        path: 'account',
-        loadChildren: () =>
-          import('./account/account.module').then((m) => m.AccountModule),
-      },
+      { path: 'account', loadChildren: () => import('./account/account.module').then((m) => m.AccountModule), },
       { path: 'parkingRes', component: MyParkingResComponent },
       { path: 'parkingRes/add', component: AddParkingResComponent },
       { path: 'parkingRes/update/:id', component: AddParkingResComponent },
@@ -34,4 +30,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class FrontofficeRoutingModule {}
+export class FrontofficeRoutingModule { }

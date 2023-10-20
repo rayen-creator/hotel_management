@@ -18,14 +18,8 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'profile', component: ProfileComponent },
-      {
-        path: 'staff',
-        loadChildren: () =>
-          import('./staff-management/staff-management.module').then(
-            (m) => m.StaffManagementModule
-          ),
-      },
-      ,
+      { path: 'staff',loadChildren: () =>import('./staff-management/staff-management.module').then((m) => m.StaffManagementModule),},
+      { path: 'support/:ticketStatus', component: ListTicketsComponent },
       { path: 'inventory', component: ItemsComponent },
       { path: 'inventory/add', component: ItemFormComponent },
       { path: 'inventory/update/:id', component: ItemFormComponent },
