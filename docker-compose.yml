@@ -10,7 +10,7 @@ services:
       - MARIADB_DATABASE=hotelManagement
     ports:
       - 3306:3306
-    restart: unless-stopped  
+    restart: unless-stopped
 
   docker-mysql_2:
     image: "mariadb:latest"
@@ -39,6 +39,17 @@ services:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_DB=ms_auth_DB
 
+  docker-mongodb:
+    container_name: mongodb_database
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      - MONGODB_URL: mongodb://mongodb:27017/hotelManagement
+    depends_on:
+      - mongodb
+
   ################### DISCOVERY SERVER ( eureka) ###################
   discovery_service:
     container_name: serviceregistry
@@ -54,7 +65,7 @@ services:
   mscustomerreview:
     container_name: ms_customer_review
     build:
-      context: ./ms_customer_review 
+      context: ./ms_customer_review
       dockerfile: Dockerfile
     restart: unless-stopped
     environment:
@@ -72,7 +83,7 @@ services:
   msusermanagement:
     container_name: ms_user_management
     build:
-      context: ./ms_user_management 
+      context: ./ms_user_management
       dockerfile: Dockerfile
     hostname: ms_user_management
     environment:
@@ -85,7 +96,7 @@ services:
       - EUREKA_PORT=8761
       - EUREKA_SEVERPATH=/eureka/apps
     ports:
-      - '7000:7000'
+      - "7000:7000"
     image: ms_auth
     depends_on:
       - discovery_service
@@ -126,17 +137,35 @@ services:
       - discovery_service
       - docker-mysql_3
 
+  msparkingmanagement:
+  container_name: ms_parking_management
+  build:
+    context: ./ms_parking_management
+    dockerfile: Dockerfile
+  restart: unless-stopped
+  environment:
+    - spring.data.mongodb.port=27017
+    - spring.data.mongodb.database=hotelManagement
+    - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
+  ports:
+    - "8084:8084"
+  image: parking_management
+  depends_on:
+    - discovery_service
+    - mongodb_database
+
   ################### GATEWAY SERVER  ###################
   gateway_service:
     container_name: gateway_server
     build: ./gateway-service
     image: gateway_service
     depends_on:
-     - discovery_service
-     - docker-mysql_1
-     - docker-mysql_2
-     - docker-mysql_3
-     - docker-postgres
+      - discovery_service
+      - docker-mysql_1
+      - docker-mysql_2
+      - docker-mysql_3
+      - docker-postgres
+      - mongodb_database
     ports:
       - "8089:8089"
     environment:
@@ -160,4 +189,6 @@ services:
       - SPRING_CLOUD_GATEWAY_ROUTES_3_URI=http://msstaffmanagement:8086
       - SPRING_CLOUD_GATEWAY_ROUTES_3_PREDICATES_0=Path=/api/staff_management/**
 
-    
+      - SPRING_CLOUD_GATEWAY_ROUTES_4_ID=msparkingmanagement
+      - SPRING_CLOUD_GATEWAY_ROUTES_4_URI=http://msparkingmanagement:8084
+      - SPRING_CLOUD_GATEWAY_ROUTES_4_PREDICATES_0=Path=/api/parking/**
