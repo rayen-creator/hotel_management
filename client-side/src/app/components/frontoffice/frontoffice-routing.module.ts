@@ -14,6 +14,8 @@ const routes: Routes = [{
     { path: 'signin', component: SigninComponent },
     { path: 'about', component: AboutComponent },
     { path: 'account', loadChildren: () => import('./account/account.module').then(m => m.AccountModule) },
+    { path: 'Services', loadChildren: () => import('./services/services.module').then(m => m.ServicesModule) },
+
 
   ]
 }];

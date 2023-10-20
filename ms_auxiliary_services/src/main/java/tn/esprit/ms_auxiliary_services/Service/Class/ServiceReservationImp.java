@@ -40,7 +40,6 @@ public class ServiceReservationImp implements IServiceReservaionService {
      public ServiceReservation updateServiceReservation(int id, ServiceReservation updatedServiceReservation) {
           return serviceReservationRepository.findById(id)
                   .map(reservation -> {
-                       reservation.setServiceType(updatedServiceReservation.getServiceType());
                        reservation.setLabel(updatedServiceReservation.getLabel());
                        reservation.setServiceDate(updatedServiceReservation.getServiceDate());
                        reservation.setSpecialPreferences(updatedServiceReservation.getSpecialPreferences());
@@ -53,4 +52,9 @@ public class ServiceReservationImp implements IServiceReservaionService {
      public void deleteServiceReservation(int id) {
           serviceReservationRepository.deleteById(id);
      }
+
+     public List<ServiceReservation> getServiceReservationsByAuxiliaryServiceId(int auxiliaryServiceId) {
+          return serviceReservationRepository.findByAuxiliaryServiceId(auxiliaryServiceId);
+     }
 }
+

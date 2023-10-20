@@ -18,13 +18,13 @@ import tn.esprit.ms_auxiliary_services.Service.Interface.IAuxiliaryServiceServic
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200", allowedHeaders = "*")
 @RequestMapping("/controllerAuxiliaryService")
+@CrossOrigin(origins="http://localhost:4200", allowedHeaders = "*")
 public class AuxiliaryServiceController {
     @Autowired
-    IAuxiliaryServiceService ass;
+   private IAuxiliaryServiceService ass;
 
-    @GetMapping("/getAuxiliaryServices")
+    @GetMapping("/all")
     public List<AuxiliaryService> getAuxiliaryServices()
     {
         return ass.all_auxiliaryServices();
@@ -34,8 +34,6 @@ public class AuxiliaryServiceController {
 
         return ass.getAuxiliaryService(id);
     }
-
-    @CrossOrigin
     @PostMapping("/AddAuxiliaryService")
     public AuxiliaryService addAuxiliaryService(@RequestBody AuxiliaryService e) {
         return ass.addAuxiliaryService(e);
@@ -58,7 +56,15 @@ public class AuxiliaryServiceController {
         ass.deleteAuxiliaryService(id);
         return true;
     }
-
+    @PutMapping("/toggleAvailability/{idAuxiliaryService}")
+    public ResponseEntity<AuxiliaryService> toggleAvailability(@PathVariable("idAuxiliaryService") int id) {
+        AuxiliaryService toggledService = ass.toggleAvailability(id);
+        if (toggledService != null) {
+            return new ResponseEntity<>(toggledService, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 
 }

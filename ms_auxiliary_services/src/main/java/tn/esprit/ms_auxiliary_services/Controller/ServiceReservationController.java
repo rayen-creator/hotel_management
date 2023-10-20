@@ -58,5 +58,9 @@ public class ServiceReservationController {
         serviceReservationService.deleteServiceReservation(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
+    @GetMapping("/byAuxiliaryServiceId/{auxiliaryServiceId}")
+    public List<ServiceReservation> getServiceReservationsByAuxiliaryServiceId(@PathVariable int auxiliaryServiceId) {
+        return serviceReservationService.getServiceReservationsByAuxiliaryServiceId(auxiliaryServiceId);
+    }
 }
+

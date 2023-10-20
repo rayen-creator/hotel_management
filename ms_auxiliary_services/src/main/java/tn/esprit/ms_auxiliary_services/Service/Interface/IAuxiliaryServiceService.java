@@ -14,6 +14,7 @@ public interface IAuxiliaryServiceService {
     public boolean deleteAuxiliaryService(int id);
 
     public AuxiliaryService getAuxiliaryService(int id);
+    public AuxiliaryService toggleAvailability(int id);
 
 
 
