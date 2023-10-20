@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.ms_parking_management.entities.ParkingReservation;
+import com.example.ms_parking_management.entities.ParkingSpace;
 
 public interface ParkingReservationService {
 	ParkingReservation addParkingReservation(ParkingReservation parkingReservation);
@@ -17,5 +18,7 @@ public interface ParkingReservationService {
     void confirmParkingReservation(String id);
     
     void declineParkingReservation(String id);
+    
+  
 
 }

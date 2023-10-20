@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.ms_parking_management.entities.ParkingReservation;
+import com.example.ms_parking_management.entities.ParkingReservation.Status;
+import com.example.ms_parking_management.entities.ParkingSpace;
+import com.example.ms_parking_management.entities.ParkingSpace.Type;
 import com.example.ms_parking_management.repositories.ParkingReservationRepository;
 import com.example.ms_parking_management.services.interfaces.ParkingReservationService;
 
@@ -17,6 +20,7 @@ public class ParkingReservationServiceImp implements ParkingReservationService {
 	
 	@Override
 	public ParkingReservation addParkingReservation(ParkingReservation parkingReservation) {
+		parkingReservation.setStatus(Status.pending);
 		 return parkingReservationRepository.save(parkingReservation);
 	}
 
@@ -63,4 +67,5 @@ public class ParkingReservationServiceImp implements ParkingReservationService {
 	    }
 	}
 
+	
 }

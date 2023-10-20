@@ -6,8 +6,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { ParkingComponent } from './parking/parking.component';
 import { ParkingFormComponent } from './parking-form/parking-form.component';
 import { ParkingReservationComponent } from './parking-reservation/parking-reservation.component';
-import { ListStaffComponent } from './staff-management/list-staff/list-staff.component';
-import { ListTicketsComponent } from './support/list-tickets/list-tickets.component';
 
 const routes: Routes = [
   {
@@ -16,13 +14,7 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'profile', component: ProfileComponent },
-      {
-        path: 'staff',
-        loadChildren: () =>
-          import('./staff-management/staff-management.module').then(
-            (m) => m.StaffManagementModule
-          ),
-      },
+
       { path: 'parking', component: ParkingComponent },
       { path: 'parking/add', component: ParkingFormComponent },
       { path: 'parking/update/:id', component: ParkingFormComponent },

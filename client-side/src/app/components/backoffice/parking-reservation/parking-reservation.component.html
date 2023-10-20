@@ -1,25 +1,6 @@
 <div class="container">
   <h2>Parking Reservation Management</h2>
 
-  <!-- Search bar -->
-  <div class="input-group mb-3">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Search..."
-      [(ngModel)]="searchTerm"
-    />
-    <div class="input-group-append">
-      <button
-        class="btn btn-outline-secondary"
-        type="button"
-        (click)="searchReservations()"
-      >
-        Search
-      </button>
-    </div>
-  </div>
-
   <!-- Filter by status -->
   <div class="form-group">
     <label for="statusFilter">Filter by Status:</label>
@@ -46,7 +27,7 @@
         <th scope="col">Arrival Date</th>
         <th scope="col">Departure Date</th>
         <th scope="col">Status</th>
-        <th scope="col">Actions</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -58,18 +39,20 @@
         <td>{{ reservation.departureDate }}</td>
         <td>{{ reservation.status }}</td>
         <td>
-          <button
-            class="btn btn-sm btn-success"
-            (click)="confirmReservation(reservation)"
-          >
-            Confirm
-          </button>
-          <button
-            class="btn btn-sm btn-danger"
-            (click)="declineReservation(reservation)"
-          >
-            Decline
-          </button>
+          <div class="button-group">
+            <button
+              class="btn btn-sm btn-success"
+              (click)="confirmReservation(reservation)"
+            >
+              Confirm
+            </button>
+            <button
+              class="btn btn-sm btn-danger"
+              (click)="declineReservation(reservation)"
+            >
+              Decline
+            </button>
+          </div>
         </td>
       </tr>
     </tbody>

@@ -1,18 +1,18 @@
-version: '3.9'
+version: "3.9"
 
 services:
-################### DISCOVERY SERVER ( eureka) ###################
-  discovery_service :
+  ################### DISCOVERY SERVER ( eureka) ###################
+  discovery_service:
     container_name: serviceregistry
     build: /eureka_server
     ports:
-     - "8761:8761"
+      - "8761:8761"
     hostname: serviceregistry
     image: erueka_service
     environment:
       - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
 
-################### MICROSERVICES ###################
+  ################### MICROSERVICES ###################
   customer_reviewer_service:
     container_name: customer_reviewer_container
     build: /ms_customer_review
@@ -22,7 +22,7 @@ services:
       - spring.datasource.password=root
       - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
     ports:
-     - "8082:8082"
+      - "8082:8082"
     image: customer_review
     depends_on:
       - discovery_service
@@ -31,7 +31,7 @@ services:
   ms_auth:
     container_name: ms_auth_container
     build:
-      context: ./ms_user_management  # Set the context to the directory containing your Dockerfile
+      context: ./ms_user_management # Set the context to the directory containing your Dockerfile
       dockerfile: Dockerfile
     environment:
       - POSTGRES_HOST=docker-postgres
@@ -43,13 +43,32 @@ services:
       - EUREKA_PORT=8761
       - EUREKA_SEVERPATH=/eureka/apps
     ports:
-      - '7000:7000'
+      - "7000:7000"
     image: ms_auth
     depends_on:
       - discovery_service
       - docker-postgres
 
-################### DATABASES ###################
+msparkingmanagement:
+  container_name: ms_parking_management
+  build:
+    context: ./ms_parking_management
+    dockerfile: Dockerfile
+  restart: unless-stopped
+  environment:
+    - spring.data.mongodb.host=mongodb
+    - spring.data.mongodb.port=27017
+    - spring.data.mongodb.database=hotelManagement
+    - spring.data.mongodb.username=root
+    - spring.data.mongodb.password=root
+    - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
+  ports:
+    - "8084:8084"
+  image: parking_management
+  depends_on:
+    - discovery_service
+
+  ################### DATABASES ###################
 
   docker-mysql_1:
     container_name: mariadb_mysql_database
@@ -64,7 +83,7 @@ services:
     container_name: postgres_database
     image: postgres
     ports:
-      - 5432:5432  
+      - 5432:5432
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=admin

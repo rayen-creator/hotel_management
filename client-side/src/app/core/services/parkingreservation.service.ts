@@ -36,14 +36,14 @@ export class ParkingReservationService {
 
   confirmParkingReservation(id: string) {
     return this.httpClient.put(
-      `${this.url}/parking-reservation/confirm/${id}`,
+      `${this.url}/parking-reservation/${id}/confirm`,
       {}
     );
   }
 
   declineParkingReservation(id: string) {
     return this.httpClient.put(
-      `${this.url}/parking-reservation/decline/${id}`,
+      `${this.url}/parking-reservation/${id}/decline`,
       {}
     );
   }

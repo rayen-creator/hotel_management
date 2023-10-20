@@ -13,4 +13,6 @@ public interface ParkingSpaceService {
     List<ParkingSpace> getAllParkingSpaces();
 
     boolean deleteParkingSpace(String id);
+    
+    List<ParkingSpace> findAvailableParkingSpaceByType(ParkingSpace.Type type);
 }

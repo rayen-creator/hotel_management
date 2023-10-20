@@ -11,6 +11,7 @@ import { ParkingSpace } from '../../../core/models/parking.model';
 export class ParkingComponent implements OnInit {
   searchTerm: string = '';
   parkingSpaces: any[] = [];
+  filteredParkingSpaces: ParkingSpace[] = [];
 
   constructor(private parkingService: ParkingService, private router: Router) {}
 
@@ -33,7 +34,20 @@ export class ParkingComponent implements OnInit {
     this.router.navigate(['adminpanel/parking/add']);
   }
 
-  editParkingSpace(space: ParkingSpace) {}
+  editParkingSpace(space: ParkingSpace) {
+    this.router.navigate(['adminpanel/parking/update', space.id]);
+  }
+
+  searchParkingSpaces() {
+    if (this.searchTerm) {
+      this.filteredParkingSpaces = this.parkingSpaces.filter((space) =>
+        space.spaceNumber.includes(this.searchTerm)
+      );
+    } else {
+      // If searchTerm is empty, show all parking spaces.
+      this.filteredParkingSpaces = this.parkingSpaces;
+    }
+  }
 
   deleteParkingSpace(space: ParkingSpace) {
     Swal.fire({

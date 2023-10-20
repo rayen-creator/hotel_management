@@ -5,8 +5,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import com.example.ms_parking_management.entities.ParkingReservation;
+import com.example.ms_parking_management.entities.ParkingSpace;
 import com.example.ms_parking_management.services.interfaces.ParkingReservationService;
+import com.example.ms_parking_management.services.interfaces.ParkingSpaceService;
+
+import exceptions.NoAvailableParkingSpaceException;
+import exceptions.ParkingSpaceRequiredException;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -21,10 +27,17 @@ public class ParkingReservationController {
 	@Autowired
     private ParkingReservationService parkingReservationService;
 
-    @PostMapping()
-    public ResponseEntity<ParkingReservation> add(@RequestBody ParkingReservation parkingReservation) {
-        return new ResponseEntity<>(parkingReservationService.addParkingReservation(parkingReservation), HttpStatus.OK);
-    }
+	@Autowired
+    private ParkingSpaceService parkingSpaceService;
+
+	
+	 @PostMapping()
+	    public ResponseEntity<ParkingReservation> add(@RequestBody ParkingReservation parkingReservation) {
+	        return new ResponseEntity<>(parkingReservationService.addParkingReservation(parkingReservation), HttpStatus.OK);
+	    }
+
+
+
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<ParkingReservation> update(@Valid @RequestBody ParkingReservation parkingReservation, @PathVariable String id) {

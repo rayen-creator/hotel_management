@@ -41,4 +41,9 @@ public class ParkingSpaceServiceImp implements ParkingSpaceService {
         }
         return false;
     }
+    
+    public List<ParkingSpace> findAvailableParkingSpaceByType(ParkingSpace.Type type) {
+        return parkingSpaceRepository.findByTypeAndStatus(type, ParkingSpace.Status.Available);
+    }
+
 }

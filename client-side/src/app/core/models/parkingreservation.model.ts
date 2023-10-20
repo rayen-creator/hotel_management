@@ -13,4 +13,5 @@ export interface ParkingReservation {
   departureDate: Date;
   status: ReservationStatus;
   parkingSpace?: ParkingSpace;
+  owner: any;
 }

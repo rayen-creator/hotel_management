@@ -4,6 +4,7 @@ import {
   ParkingReservation,
 } from '../../../core/models/parkingreservation.model';
 import { Router } from '@angular/router';
+import { ChangeDetectorRef } from '@angular/core';
 import { ParkingReservationService } from '../../../core/services/parkingreservation.service';
 @Component({
   selector: 'app-parking-reservation',
@@ -15,7 +16,7 @@ export class ParkingReservationComponent implements OnInit {
   filteredReservations: ParkingReservation[] = [];
   searchTerm: string = '';
   selectedStatus: string = 'all';
-
+  private cd: ChangeDetectorRef;
   constructor(
     private reservationService: ParkingReservationService,
     private router: Router
@@ -56,11 +57,12 @@ export class ParkingReservationComponent implements OnInit {
   }
 
   confirmReservation(reservation: ParkingReservation) {
+    reservation.status = ReservationStatus.accepted;
+    this.cd.detectChanges(); // Manually trigger change detection
+
     this.reservationService.confirmParkingReservation(reservation.id).subscribe(
       () => {
-        reservation.status = ReservationStatus.accepted;
-
-        this.getAllReservations();
+        // No need to update the status again, as it's already updated
       },
       (error) => {
         console.error('Error confirming reservation:', error);
@@ -69,11 +71,12 @@ export class ParkingReservationComponent implements OnInit {
   }
 
   declineReservation(reservation: ParkingReservation) {
+    reservation.status = ReservationStatus.declined;
+    this.cd.detectChanges(); // Manually trigger change detection
+
     this.reservationService.declineParkingReservation(reservation.id).subscribe(
       () => {
-        reservation.status = ReservationStatus.declined;
-
-        this.getAllReservations();
+        // No need to update the status again, as it's already updated
       },
       (error) => {
         console.error('Error declining reservation:', error);

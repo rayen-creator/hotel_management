@@ -27,7 +27,9 @@ public class ParkingReservation {
     private Date arrivalDate;
     private Date departureDate;
     private Status status;
-   // private String parkingSpaceId;
+   
+     
+    private Object owner;
     
     @DBRef
     private ParkingSpace parkingSpace;

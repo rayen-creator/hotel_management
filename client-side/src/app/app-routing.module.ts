@@ -17,10 +17,11 @@ const routes: Routes = [
         (m) => m.BackofficeModule
       ),
   },
-  { path: 'staff', loadChildren: () => import('./components/backoffice/staff-management/staff-management.module').then(m => m.StaffManagementModule) },
+
   {
-    path:'**',component:ErrorComponent
-  }
+    path: '**',
+    component: ErrorComponent,
+  },
 ];
 
 @NgModule({
