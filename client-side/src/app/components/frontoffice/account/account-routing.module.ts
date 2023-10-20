@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from './account.component';
 import { ReservationListComponent } from './reservation-list/reservation-list.component';
@@ -9,8 +9,7 @@ const routes: Routes = [{
   path: '', component: AccountComponent, children: [
     { path: 'reservations', component: ReservationListComponent },
     { path: 'addReview', component: AddReviewComponent },
-    { path: 'reviews', component: ListReviewComponent }
-
+    { path: 'reviews', component: ListReviewComponent },
   ]
 }];
 

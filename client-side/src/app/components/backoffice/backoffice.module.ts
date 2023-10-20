@@ -17,7 +17,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     HeaderComponent,
     FooterComponent,
     ProfileComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   imports: [
     CommonModule,

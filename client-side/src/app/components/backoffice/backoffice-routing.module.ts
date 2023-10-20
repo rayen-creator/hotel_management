@@ -7,7 +7,10 @@ import { ProfileComponent } from './profile/profile.component';
 const routes: Routes = [{
   path: '', component: BackofficeComponent, children: [
     { path: 'dashboard', component: DashboardComponent },
-    { path: 'profile', component: ProfileComponent }
+    { path: 'profile', component: ProfileComponent },
+
+{path:'auxiliaryServices', loadChildren:() => import('./auxiliary-services/auxiliary-services.module').then(m=>m.AuxiliaryServicesModule)}
+
 
   ]
 }];
