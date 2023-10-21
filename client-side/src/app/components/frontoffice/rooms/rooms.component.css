@@ -1,6 +1,9 @@
-.hotels{
+.rooms{
+    margin-bottom: 200px;
     margin-left: 35px;
-margin-right: 35px;}
+    margin-right: 35px;
+
+}
 .button-rooms{
     display: flow-root;
 }
@@ -10,4 +13,3 @@ margin-right: 35px;}
     font-weight: bold; /* Make the text bold if desired */
   
   }
-  

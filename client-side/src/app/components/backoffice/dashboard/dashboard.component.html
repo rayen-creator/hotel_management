@@ -1,56 +1,136 @@
 <div class="dashboard-right-contents mt-4 mt-lg-0">
     <div class="dashboard-promo">
-        <div class="row gy-4 justify-content-center">
+        <div class="row gy-4 justify-content-center" >
             <div class="col-xxl-3 col-xl-4 col-sm-6 orders-child">
                 <div class="single-order">
                     <div class="single-order-flex">
                         <div class="single-order-contents">
                             <span class="single-order-contents-subtitle"> Pending Reservation </span>
-                            <h2 class="single-order-contents-title"> 02 </h2>
+                            <h2 class="single-order-contents-title"> </h2>
                         </div>
                         <div class="single-order-icon">
                             <i class="las la-history"></i>
                         </div>
                     </div>
+                   
+                </div>
+                <div *ngFor="let reservationItem of reservations">
+                     <div class="attente" *ngIf="reservationItem.status === 'EN_ATTENTE' ">
+                    <div class="single-order-flex">
+                        <div class="single-order-contents">
+                            <span class="text"><i class="las la-user-tag"></i>   user-name </span>
+    <br>
+                               <span class="text"> <i class="las la-calendar-day"></i>{{reservationItem.dateArrivee}} Days: {{reservationItem.nbrJour}} </span>
+                               <h6 class="text"> <i class="las la-users"></i> {{reservationItem.nbrJour}} </h6>
+                               <i class="las la-wallet">{{reservationItem.prixTotal}}$</i>
+                               <div class="icon"><a (click)="deleteReservation(reservationItem.idReservation)"><i class="las la-trash"></i></a><a href=""><i class="lar la-edit"></i></a></div>
+
+                           </div>
+                        <div class="single-order-icon">
+                            <i class="las la-history"></i>
+                        </div>
+                    </div>
+                   
+                </div>
                 </div>
             </div>
-            <div class="col-xxl-3 col-xl-4 col-sm-6 orders-child">
+            <div class="col-xxl-3 col-xl-4 col-sm-6 orders-child" >
                 <div class="single-order">
                     <div class="single-order-flex">
                         <div class="single-order-contents">
                             <span class="single-order-contents-subtitle"> Accepted Reservation </span>
-                            <h2 class="single-order-contents-title"> 32 </h2>
+                            <h2 class="single-order-contents-title">  </h2>
                         </div>
                         <div class="single-order-icon">
                             <i class="las la-check-circle"></i>
                         </div>
                     </div>
                 </div>
+                <div *ngFor="let reservationItem of reservations">
+                    <div class="confirmee" *ngIf="reservationItem.status === 'CONFIRMEE' ">
+                   <div class="single-order-flex">
+                    <div class="single-order-contents">
+                        <span class="text"><i class="las la-user-tag"></i>   user-name </span>
+<br>
+                           <span class="text"> <i class="las la-calendar-day"></i>{{reservationItem.dateArrivee}} Days: {{reservationItem.nbrJour}} </span>
+                           <h6 class="text"> <i class="las la-users"></i> {{reservationItem.nbrJour}} </h6>
+                           <i class="las la-wallet">{{reservationItem.prixTotal}}$</i>
+                           <div class="icon"><a (click)="deleteReservation(reservationItem.idReservation)"><i class="las la-trash"></i></a><a href=""><i class="lar la-edit"></i></a></div>
+
+                       </div>
+                       <div class="single-order-icon">
+                           <i class="las la-history"></i>
+                       </div>
+                   </div>
+            </div>
+                 </div>
+
             </div>
             <div class="col-xxl-3 col-xl-4 col-sm-6 orders-child">
                 <div class="single-order">
                     <div class="single-order-flex">
                         <div class="single-order-contents">
                             <span class="single-order-contents-subtitle"> Cancelled Reservation </span>
-                            <h2 class="single-order-contents-title"> 08 </h2>
+                            <h2 class="single-order-contents-title">  </h2>
                         </div>
                         <div class="single-order-icon">
                             <i class="las la-times-circle"></i>
                         </div>
                     </div>
                 </div>
+                <div *ngFor="let reservationItem of reservations">
+                    <div class="annulee"  *ngIf="reservationItem.status === 'ANNULEE' ">
+                   <div class="single-order-flex">
+                       <div class="single-order-contents">
+                        <span class="text"><i class="las la-user-tag"></i>   user-name </span>
+<br>
+                           <span class="text"> <i class="las la-calendar-day"></i>{{reservationItem.dateArrivee}} Days: {{reservationItem.nbrJour}} </span>
+                           <h6 class="text"> <i class="las la-users"></i> {{reservationItem.nbrJour}} </h6>
+                           <i class="las la-wallet">{{reservationItem.prixTotal}}$</i>
+                           <div class="icon"><a (click)="deleteReservation(reservationItem.idReservation)"><i class="las la-trash"></i></a><a href=""><i class="lar la-edit"></i></a></div>
+
+                       </div>
+                       <div class="single-order-icon">
+                           <i class="las la-history"></i>
+                       </div>
+
+                   </div>
+            </div>
+                 </div>
             </div>
             <div class="col-xxl-3 col-xl-4 col-sm-6 orders-child">
                 <div class="single-order">
-                    <div class="single-order-contents">
-                        <span class="single-order-contents-subtitle"> Completed Reservation </span>
-                        <h2 class="single-order-contents-title">38 </h2>
-                    </div>
-                    <div class="single-order-icon">
-                        <i class="las la-clipboard-check"></i>
+                    <div class="single-order-flex">
+                        <div class="single-order-contents">
+                            <span class="single-order-contents-subtitle"> Completed Reservation </span>
+                            <h2 class="single-order-contents-title"> </h2>
+                        </div>
+                        <div class="single-order-icon">
+                            <i class="las la-times-circle"></i>
+                        </div>
                     </div>
                 </div>
+                <div *ngFor="let reservationItem of reservations">
+                    <div class="terminee" *ngIf="reservationItem.status === 'TERMINEE' ">
+                   <div class="single-order-flex">
+                    <div class="single-order-contents">
+                        <span class="text"><i class="las la-user-tag"></i>   user-name </span>
+<br>
+                           <span class="text"> <i class="las la-calendar-day"></i>{{reservationItem.dateArrivee}} Days: {{reservationItem.nbrJour}} </span>
+                           <h6 class="text"> <i class="las la-users"></i> {{reservationItem.nbrJour}} </h6>
+                           <i class="las la-wallet">{{reservationItem.prixTotal}}$</i>
+                           <div class="icon"><a (click)="deleteReservation(reservationItem.idReservation)"><i class="las la-trash"></i></a><a href=""><i class="lar la-edit"></i></a></div>
+
+                       </div>
+                       <div class="single-order-icon">
+                           <i class="las la-history"></i>
+                       </div>
+                       
+
+                   </div>
             </div>
+            </div>
+         
         </div>
     </div>
 </div>
