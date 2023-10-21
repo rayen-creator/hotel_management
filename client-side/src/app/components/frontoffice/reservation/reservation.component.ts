@@ -17,9 +17,13 @@ export class ReservationComponent implements OnInit{
   nbrJour:any;
   dateArrivee:any;
   reservation :reservation = {
+    idReservation:0,
     dateArrivee:'',
     nbrJour: 3,
     nbrPersonne:0,
+    status:"EN_ATTENTE",
+    prixTotal:1,
+    userId:2
   }; 
    ngOnInit(): void {
     this.reservation.nbrPersonne = parseInt(this.selectedNubrP);

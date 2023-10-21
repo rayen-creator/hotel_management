@@ -3,6 +3,7 @@ package tn.esprit.ms_reservation.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.ms_reservation.entities.Reservation;
+import tn.esprit.ms_reservation.entities.enums.reservationStatus;
 import tn.esprit.ms_reservation.services.reservationServiceImpl;
 
 import java.util.List;
@@ -17,6 +18,10 @@ public class reservationController {
     @PostMapping("/add/{idRoom}")
     public Reservation addReservation(@PathVariable int idRoom,@RequestBody Reservation reservation) {
         return serviceReservation.addReservation(idRoom,reservation);
+    }
+    @GetMapping("getByStatus/{status}")
+    public List<Reservation> findByStatus(reservationStatus status) {
+        return serviceReservation.findByStatus(status);
     }
 
     @GetMapping("/get/{id}")

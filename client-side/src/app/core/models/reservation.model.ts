@@ -7,9 +7,13 @@ export enum status {
     TERMINEE
       }
 export class reservation{
+    idReservation:number
     dateArrivee:string;
     nbrJour:number;
     nbrPersonne:number;
+    status: string;
+    prixTotal:number;
+    userId:number;
     
 
 }

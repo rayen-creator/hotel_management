@@ -19,6 +19,11 @@ public class reservationServiceImpl implements reservationService{
     private roomRespository roomRepo;
 
     @Override
+    public List<Reservation> findByStatus(reservationStatus status) {
+        return reservationRepo.findByStatus(status);
+    }
+
+    @Override
     public Reservation addReservation(int idRoom,Reservation reservation) {
         if (roomRepo.findById(idRoom).isPresent()) {
             Room room= roomRepo.findById(idRoom).get();
