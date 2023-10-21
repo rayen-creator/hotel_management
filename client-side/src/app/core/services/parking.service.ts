@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {environment} from "../../../environments/environment.development";
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,7 @@ export class ParkingService {
   url: string;
 
   constructor(private httpClient: HttpClient) {
-    this.url = 'http://localhost:8084/parking/api';
+    this.url =  `${environment.gateway_API}/parking/api`;
   }
 
   addParkingSpace(parkingSpace: any) {

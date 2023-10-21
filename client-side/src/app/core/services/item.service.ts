@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {environment} from "../../../environments/environment.development";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class ItemService {
 
   url: string
   constructor(private httpClient: HttpClient) {
-    this.url = "http://localhost:8087/api/item";
+    this.url = `${environment.gateway_API}/api/item`;
   }
 
   createItem(item: any) {

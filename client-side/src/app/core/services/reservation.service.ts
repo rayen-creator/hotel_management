@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { reservation } from '../models/reservation.model';
+import {environment} from "../../../environments/environment.development";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class ReservationService {
 
   url: string
   constructor(private httpClient: HttpClient) {
-    this.url = "http://localhost:8086/reservation/api/reservation";
+    this.url =   `${environment.gateway_API}/reservation/api/reservation`;
   }
 
   createReservation(idRoom:number,reservation: reservation) {
@@ -21,7 +22,7 @@ export class ReservationService {
   getAll() {
     return this.httpClient.get(`${this.url}/getAll`);
   }
-  
+
   getById(id:number){
     return this.httpClient.get(`${this.url}/getById/${id}`);
   }

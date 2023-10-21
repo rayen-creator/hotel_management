@@ -11,7 +11,7 @@ export class FeedbackService {
 
   url: string
   constructor(private httpClient: HttpClient) {
-    this.url = environment.ms_customer_review_API;
+    this.url = `${environment.gateway_API}/api/feedback`;
   }
 
   getRefreshedData(){
@@ -21,7 +21,7 @@ export class FeedbackService {
   createFeedback(feedback: any) {
     return this.httpClient.post(`${this.url}`, feedback);
   }
-  
+
   respondeToFeedback(id: any, feedback: any) {
     return this.httpClient.put(`${this.url}/openReview/${id}`, feedback).subscribe((response:any) => {
       console.log('feedback',response);

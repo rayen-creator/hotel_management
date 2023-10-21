@@ -13,30 +13,44 @@ services:
     restart: unless-stopped
 
   docker-mysql_2:
+    container_name: mariadb_2
     image: "mariadb:latest"
     environment:
       - MARIADB_ROOT_PASSWORD=root
       - MARIADB_DATABASE=hotelManagement
     ports:
       - 3307:3306
+    restart: unless-stopped
 
   docker-mysql_3:
-    container_name: mariadb_2
+    container_name: mariadb_3
     image: "mariadb:latest"
     environment:
       - MARIADB_ROOT_PASSWORD=root
       - MARIADB_DATABASE=hotelManagement
     ports:
       - 3308:3306
+    restart: unless-stopped
 
   docker-mysql_4:
-    container_name: mariadb_2
+    container_name: mariadb_4
     image: "mariadb:latest"
     environment:
       - MARIADB_ROOT_PASSWORD=root
       - MARIADB_DATABASE=hotelManagement
     ports:
       - 3309:3306
+    restart: unless-stopped
+
+  docker-mysql_5:
+    container_name: mariadb_5
+    image: "mariadb:latest"
+    environment:
+      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_DATABASE=hotelManagement
+    ports:
+      - 3310:3306
+    restart: unless-stopped
 
   docker-postgres:
     container_name: postgres_database
@@ -47,17 +61,17 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=admin
       - POSTGRES_DB=ms_auth_DB
+    restart: unless-stopped
 
   docker-mongodb:
     container_name: mongodb_database
     image: mongo
-    restart: always
+    #restart: always
     ports:
       - 27017:27017
     environment:
       - MONGODB_URL=mongodb://mongodb:27017/hotelManagement
-    depends_on:
-      - mongodb
+    restart: unless-stopped
 
   ################### DISCOVERY SERVER ( eureka) ###################
   discovery_service:
@@ -73,10 +87,11 @@ services:
   ################### MICROSERVICES ###################
   mscustomerreview:
     container_name: ms_customer_review
+    restart: unless-stopped
     build:
       context: ./ms_customer_review
       dockerfile: Dockerfile
-    restart: unless-stopped
+    #restart: unless-stopped
     environment:
       - spring.datasource.url=jdbc:mysql://docker-mysql_1:3306/hotelManagement?autoReconnect=true&useSSL=false
       - spring.datasource.username=root
@@ -91,6 +106,7 @@ services:
 
   msusermanagement:
     container_name: ms_user_management
+    restart: unless-stopped
     build:
       context: ./ms_user_management
       dockerfile: Dockerfile
@@ -118,7 +134,7 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     environment:
-      - spring.datasource.url=jdbc:mysql:// docker-mysql_2:3306/hotelManagement?autoReconnect=true&useSSL=false
+      - spring.datasource.url=jdbc:mysql://docker-mysql_2:3306/hotelManagement?autoReconnect=true&useSSL=false
       - spring.datasource.username=root
       - spring.datasource.password=root
       - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
@@ -134,13 +150,14 @@ services:
     build:
       context: ./ms_saff_management
       dockerfile: Dockerfile
+    restart: unless-stopped
     environment:
       - spring.datasource.url=jdbc:mysql://docker-mysql_3:3306/hotelManagement?autoReconnect=true&useSSL=false
       - spring.datasource.username=root
       - spring.datasource.password=root
       - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
     ports:
-      - "8087:8087"
+      - "8086:8086"
     image: saff_management
     depends_on:
       - discovery_service
@@ -148,10 +165,11 @@ services:
 
   msparkingmanagement:
     container_name: ms_parking_management
+    restart: unless-stopped
     build:
       context: ./ms_parking_management
       dockerfile: Dockerfile
-    restart: unless-stopped
+    #restart: unless-stopped
     environment:
       - spring.data.mongodb.port=27017
       - spring.data.mongodb.database=hotelManagement
@@ -170,7 +188,7 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     environment:
-      - spring.datasource.url=jdbc:mysql:// docker-mysql_4:3306/hotelManagement?autoReconnect=true&useSSL=false
+      - spring.datasource.url=jdbc:mysql://docker-mysql_4:3306/hotelManagement?autoReconnect=true&useSSL=false
       - spring.datasource.username=root
       - spring.datasource.password=root
       - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
@@ -180,6 +198,26 @@ services:
     depends_on:
       - discovery_service
       - docker-mysql_4
+
+
+  msreservation:
+    container_name: ms_reservation
+    build:
+      context: ./ms_reservation
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - spring.datasource.url=jdbc:mysql://docker-mysql_5:3306/hotelManagement?autoReconnect=true&useSSL=false
+      - spring.datasource.username=root
+      - spring.datasource.password=root
+      - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
+    ports:
+      - "8085:8085"
+    image: reservation
+    depends_on:
+      - discovery_service
+      - docker-mysql_5
+
 
   
 
@@ -194,6 +232,7 @@ services:
       - docker-mysql_2
       - docker-mysql_3
       - docker-mysql_4
+      - docker-mysql_5
       - docker-postgres
       - docker-mongodb
     ports:
@@ -221,9 +260,12 @@ services:
 
       - SPRING_CLOUD_GATEWAY_ROUTES_4_ID=msparkingmanagement
       - SPRING_CLOUD_GATEWAY_ROUTES_4_URI=http://msparkingmanagement:8084
-      - SPRING_CLOUD_GATEWAY_ROUTES_4_PREDICATES_0=Path=/api/parking/**
+      - SPRING_CLOUD_GATEWAY_ROUTES_4_PREDICATES_0=Path=/parking/**
 
       - SPRING_CLOUD_GATEWAY_ROUTES_5_ID=msauxiliaryservices
       - SPRING_CLOUD_GATEWAY_ROUTES_5_URI=http://msauxiliaryservices:8083
-      - SPRING_CLOUD_GATEWAY_ROUTES_5_PREDICATES_0=Path=/api/auxiliaryservices/**
+      - SPRING_CLOUD_GATEWAY_ROUTES_5_PREDICATES_0=Path=/msauxiliaryservices/**
 
+      - SPRING_CLOUD_GATEWAY_ROUTES_6_ID=msreservation
+      - SPRING_CLOUD_GATEWAY_ROUTES_6_URI=http://msreservation:8085
+      - SPRING_CLOUD_GATEWAY_ROUTES_6_PREDICATES_0=Path=/reservation/**

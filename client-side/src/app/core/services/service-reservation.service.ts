@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ServiceReservation } from './../models/serviceReservation.model';
+import {environment} from "../../../environments/environment.development";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceReservationService {
 
-    private baseUrl = 'http://localhost:8083/msauxiliaryservices'; // Replace with your Spring Boot backend URL
+    private baseUrl = `${environment.gateway_API}/msauxiliaryservices`; // Replace with your Spring Boot backend URL
 
     constructor(private http: HttpClient) {}
 

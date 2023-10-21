@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {environment} from "../../../environments/environment.development";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,8 @@ export class TaskService {
 
   url: string
   constructor(private httpClient: HttpClient) {
-    this.url = "http://localhost:8086/staff_management/api/tasks";
+
+    this.url =`${environment.gateway_API}/staffmanagement/api/tasks`;
   }
 
   addTaskToStaff(task: any,idstaff: any) {
