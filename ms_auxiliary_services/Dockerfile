@@ -1,7 +1,7 @@
 FROM openjdk:8
-EXPOSE 8087
-ADD target/ms_inventory_management-0.0.1-SNAPSHOT.jar ms_inventory_management-0.0.1.jar
-ENTRYPOINT ["java", "-jar","ms_inventory_management-0.0.1.jar"]
+EXPOSE 8083
+ADD target/ms_auxiliary_services-0.0.1-SNAPSHOT.jar ms_auxiliary_services-0.0.1.jar
+ENTRYPOINT ["java", "-jar","ms_auxiliary_services-0.0.1.jar"]
 
 # FROM maven:3.8.2-jdk-8
 
