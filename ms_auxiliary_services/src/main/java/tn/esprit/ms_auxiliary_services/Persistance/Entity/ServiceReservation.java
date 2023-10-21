@@ -1,5 +1,6 @@
 package tn.esprit.ms_auxiliary_services.Persistance.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import tn.esprit.ms_auxiliary_services.Persistance.Enum.ServiceType;
 
@@ -17,12 +18,11 @@ public class ServiceReservation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idService_Reservation;
-    @Enumerated(EnumType.STRING)
-    private ServiceType serviceType;
     private  String label;
     @Temporal(TemporalType.DATE)
     private Date serviceDate;
     private String specialPreferences;
+
     @ManyToOne
     AuxiliaryService auxiliaryService;
 
@@ -32,7 +32,6 @@ public class ServiceReservation implements Serializable {
     public String toString() {
         return "Service_Reservation{" +
                 "idService_Reservation=" + idService_Reservation +
-                ", serviceType=" + serviceType +
                 ", label='" + label + '\'' +
                 ", serviceDate=" + serviceDate +
                 ", specialPreferences='" + specialPreferences + '\'' +

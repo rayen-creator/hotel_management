@@ -1,0 +1,86 @@
+/* Style for the entire table */
+.service-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Style for table headers and data cells */
+.service-table th,
+.service-table td {
+  padding: 10px;
+  text-align: left;
+}
+
+/* Style for service type based on availability */
+.service-type-available {
+  color: green;
+}
+
+.service-type-unavailable {
+  color: red;
+}
+
+/* Style for labels indicating availability */
+.label-available {
+  background-color: green;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.label-unavailable {
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Style for the delete icon */
+.las.la-trash {
+  font-size: 24px;
+  color: red;
+  cursor: pointer;
+}
+
+/* Style for the edit icon */
+.las.la-user-edit {
+  font-size: 24px;
+  color: #007bff;
+  cursor: pointer;
+}
+
+/* Style for the "Add a Service" button */
+.cmn-btn.btn-bg-1.btn-small {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Hover effect for the "Add a Service" button */
+.cmn-btn.btn-bg-1.btn-small:hover {
+  background-color: #0056b3;
+}
+.pagination-center {
+  display: flex;
+  justify-content: center;
+}
+
+/* Define CSS classes for serviceType colors */
+.service-type-room-service {
+  color: green; /* Change this to your desired color */
+}
+
+.service-type-restaurant {
+  color: blue; /* Change this to your desired color */
+}
+
+.service-type-hospitality {
+  color: red; /* Change this to your desired color */
+}
+
+.service-type-hotel-animation {
+  color: orange; /* Change this to your desired color */
+}

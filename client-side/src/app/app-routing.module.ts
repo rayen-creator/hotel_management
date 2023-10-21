@@ -17,6 +17,9 @@ const routes: Routes = [
         (m) => m.BackofficeModule
       ),
   },
+  { path: 'users', loadChildren: () => import('./components/backoffice/users/users.module').then(m => m.UsersModule) },
+  { path: 'auxiliaryServices', loadChildren: () => import('./components/backoffice/auxiliary-services/auxiliary-services.module').then(m => m.AuxiliaryServicesModule) },
+
 
   {
     path: '**',

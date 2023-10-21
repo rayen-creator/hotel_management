@@ -1,8 +1,8 @@
 package tn.esprit.ms_auxiliary_services.Persistance.Entity;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
-import tn.esprit.ms_auxiliary_services.Persistance.Enum.ServiceType;
 
+import tn.esprit.ms_auxiliary_services.Persistance.Enum.ServiceType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -23,8 +23,9 @@ public class AuxiliaryService implements Serializable {
     private  String label;
     private  float price;
     private  String description;
-    private boolean is_available;
+    private boolean available;
     private String reason;
+
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy="auxiliaryService")
     private Set<ServiceReservation> serviceReservations;
@@ -37,7 +38,7 @@ public class AuxiliaryService implements Serializable {
                 ", label='" + label + '\'' +
                 ", price=" + price +
                 ", description='" + description + '\'' +
-                ", is_available=" + is_available +
+                ", available=" + available +
                 ", reason='" + reason + '\'' +
                 '}';
     }

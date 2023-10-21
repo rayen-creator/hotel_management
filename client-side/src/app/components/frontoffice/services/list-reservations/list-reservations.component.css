@@ -1,0 +1,34 @@
+
+
+.service-type-label-room-service {
+  background-color: #0d6efd;
+  color: white;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 10px; /* Adjust the radius as needed */
+  font-weight: bold;
+}
+
+.service-type-label-restaurant {
+  background-color: #00C897;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px; /* Adjust the radius as needed */
+  font-weight: bold;
+}
+
+.service-type-label-hospitality {
+  background-color: #ffc107;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 10px; /* Adjust the radius as needed */
+  font-weight: bold;
+}
+
+.service-type-label-hotel-animation {
+  background-color: #dc3545;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px; /* Adjust the radius as needed */
+  font-weight: bold;
+}
