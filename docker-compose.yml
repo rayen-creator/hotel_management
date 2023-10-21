@@ -29,6 +29,15 @@ services:
     ports:
       - 3308:3306
 
+  docker-mysql_4:
+    container_name: mariadb_2
+    image: "mariadb:latest"
+    environment:
+      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_DATABASE=hotelManagement
+    ports:
+      - 3309:3306
+
   docker-postgres:
     container_name: postgres_database
     image: postgres
@@ -154,6 +163,26 @@ services:
     - discovery_service
     - mongodb_database
 
+  msauxiliaryservices:
+    container_name: ms_auxiliary_services
+    build:
+      context: ./ms_auxiliary_services
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - spring.datasource.url=jdbc:mysql:// docker-mysql_4:3306/hotelManagement?autoReconnect=true&useSSL=false
+      - spring.datasource.username=root
+      - spring.datasource.password=root
+      - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
+    ports:
+      - "8083:8083"
+    image: ms_auxiliary_services
+    depends_on:
+      - discovery_service
+      - docker-mysql_4
+
+  
+
   ################### GATEWAY SERVER  ###################
   gateway_service:
     container_name: gateway_server
@@ -164,6 +193,8 @@ services:
       - docker-mysql_1
       - docker-mysql_2
       - docker-mysql_3
+      - docker-mysql_4
+
       - docker-postgres
       - mongodb_database
     ports:
@@ -192,3 +223,9 @@ services:
       - SPRING_CLOUD_GATEWAY_ROUTES_4_ID=msparkingmanagement
       - SPRING_CLOUD_GATEWAY_ROUTES_4_URI=http://msparkingmanagement:8084
       - SPRING_CLOUD_GATEWAY_ROUTES_4_PREDICATES_0=Path=/api/parking/**
+
+
+      - SPRING_CLOUD_GATEWAY_ROUTES_4_ID=msauxiliaryservices
+      - SPRING_CLOUD_GATEWAY_ROUTES_4_URI=http://msauxiliaryservices:8083
+      - SPRING_CLOUD_GATEWAY_ROUTES_4_PREDICATES_0=Path=/api/auxiliaryservices/**
+
