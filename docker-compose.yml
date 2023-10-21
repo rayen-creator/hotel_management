@@ -246,26 +246,26 @@ services:
       - SPRING_CLOUD_GATEWAY_ROUTES_0_URI=http://Mscustomerreview:8082
       - SPRING_CLOUD_GATEWAY_ROUTES_0_PREDICATES_0=Path=/api/feedback/**
 
-      - SPRING_CLOUD_GATEWAY_ROUTES_1_ID=Msusermanagement
-      - SPRING_CLOUD_GATEWAY_ROUTES_1_URI=http://Msusermanagement:7000
-      - SPRING_CLOUD_GATEWAY_ROUTES_1_PREDICATES_0=Path=/**
+      - SPRING_CLOUD_GATEWAY_ROUTES_1_ID=msinventorymanagement
+      - SPRING_CLOUD_GATEWAY_ROUTES_1_URI=http://msinventorymanagement:8087
+      - SPRING_CLOUD_GATEWAY_ROUTES_1_PREDICATES_0=Path=/api/item/**
 
-      - SPRING_CLOUD_GATEWAY_ROUTES_2_ID=msinventorymanagement
-      - SPRING_CLOUD_GATEWAY_ROUTES_2_URI=http://msinventorymanagement:8087
-      - SPRING_CLOUD_GATEWAY_ROUTES_2_PREDICATES_0=Path=/api/item/**
+      - SPRING_CLOUD_GATEWAY_ROUTES_2_ID=msstaffmanagement
+      - SPRING_CLOUD_GATEWAY_ROUTES_2_URI=http://msstaffmanagement:8086
+      - SPRING_CLOUD_GATEWAY_ROUTES_2_PREDICATES_0=Path=/staffmanagement/**
 
-      - SPRING_CLOUD_GATEWAY_ROUTES_3_ID=msstaffmanagement
-      - SPRING_CLOUD_GATEWAY_ROUTES_3_URI=http://msstaffmanagement:8086
-      - SPRING_CLOUD_GATEWAY_ROUTES_3_PREDICATES_0=Path=/staffmanagement/**
+      - SPRING_CLOUD_GATEWAY_ROUTES_3_ID=msparkingmanagement
+      - SPRING_CLOUD_GATEWAY_ROUTES_3_URI=http://msparkingmanagement:8084
+      - SPRING_CLOUD_GATEWAY_ROUTES_3_PREDICATES_0=Path=/parking/**
 
-      - SPRING_CLOUD_GATEWAY_ROUTES_4_ID=msparkingmanagement
-      - SPRING_CLOUD_GATEWAY_ROUTES_4_URI=http://msparkingmanagement:8084
-      - SPRING_CLOUD_GATEWAY_ROUTES_4_PREDICATES_0=Path=/parking/**
+      - SPRING_CLOUD_GATEWAY_ROUTES_4_ID=msauxiliaryservices
+      - SPRING_CLOUD_GATEWAY_ROUTES_4_URI=http://msauxiliaryservices:8083
+      - SPRING_CLOUD_GATEWAY_ROUTES_4_PREDICATES_0=Path=/msauxiliaryservices/**
 
-      - SPRING_CLOUD_GATEWAY_ROUTES_5_ID=msauxiliaryservices
-      - SPRING_CLOUD_GATEWAY_ROUTES_5_URI=http://msauxiliaryservices:8083
-      - SPRING_CLOUD_GATEWAY_ROUTES_5_PREDICATES_0=Path=/msauxiliaryservices/**
+      - SPRING_CLOUD_GATEWAY_ROUTES_5_ID=msreservation
+      - SPRING_CLOUD_GATEWAY_ROUTES_5_URI=http://msreservation:8085
+      - SPRING_CLOUD_GATEWAY_ROUTES_5_PREDICATES_0=Path=/reservation/**
 
-      - SPRING_CLOUD_GATEWAY_ROUTES_6_ID=msreservation
-      - SPRING_CLOUD_GATEWAY_ROUTES_6_URI=http://msreservation:8085
-      - SPRING_CLOUD_GATEWAY_ROUTES_6_PREDICATES_0=Path=/reservation/**
+      - SPRING_CLOUD_GATEWAY_ROUTES_6_ID=Msusermanagement
+      - SPRING_CLOUD_GATEWAY_ROUTES_6_URI=http://Msusermanagement:7000
+      - SPRING_CLOUD_GATEWAY_ROUTES_6_PREDICATES_0=Path=/**
