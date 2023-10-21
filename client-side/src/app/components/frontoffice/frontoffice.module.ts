@@ -11,7 +11,6 @@ import { HomeComponent } from './shared/home/home.component';
 import { AboutComponent } from './shared/about/about.component';
 import { MyParkingResComponent } from './parking/MyParkingReservations/my-parking-res/my-parking-res.component';
 import { AddParkingResComponent } from './parking/AddParkingReservations/add-parking-res/add-parking-res.component';
-import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { RoomsComponent } from './rooms/rooms.component';
@@ -29,7 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     AboutComponent,
     MyParkingResComponent,
-    AddParkingResComponent,,
+    AddParkingResComponent,
     RoomsComponent,
     ReservationComponent
   ],
@@ -37,8 +36,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FrontofficeRoutingModule,
     FormsModule,
-    ReactiveFormsModule,,
-    FormsModule
+    ReactiveFormsModule,
+    SharedModule
 
   ],
 })
