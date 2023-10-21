@@ -8,7 +8,7 @@ export class ItemService {
 
   url: string
   constructor(private httpClient: HttpClient) {
-    this.url = "http://localhost:8087/inventory/api/item";
+    this.url = "http://localhost:8087/api/item";
   }
 
   createItem(item: any) {
