@@ -1,0 +1,53 @@
+<div class="dashboard-right-contents mt-4 mt-lg-0">
+  <div class="dashboard-reservation">
+    <div class="row">
+      <div class="col-md-12" style="margin-bottom: 20px;">
+        <a routerLink="/adminpanel/auxiliaryServices/addService" class="cmn-btn btn-bg-1 btn-small">Add a Service</a>
+      </div>
+      <div class="col-md-12">
+        <div class="bg-white base-padding">
+          <table class="table service-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Service Type</th>
+                <th>Label</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Available</th>
+                <th>Reason</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let service of auxiliaryServices| paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+                <td>{{ service.idAux_Service }}</td>
+                <td>{{ service.serviceType }}</td>
+
+                <td>{{ service.label }}</td>
+                <td>{{ service.price }}</td>
+                <td>{{ service.description }}</td>
+                <td>
+                  <span [ngClass]="{'label-available': service.available, 'label-unavailable': !service.available}">
+                    {{ service.available ? 'Available' : 'Not Available' }}
+                  </span>
+                </td>
+                <td>{{ service.reason }}</td>
+                <td>
+
+                  <i class="las la-trash" (click)="deleteAuxiliaryService(service.idAux_Service)" style="font-size: 24px; color: red; cursor: pointer;"></i>
+                  <i class="las la-edit" (click)="toggleAvailability(service.idAux_Service)" [ngClass]="{'service-not-available': !service.available, 'service-available': service.available}" style="font-size: 24px; cursor: pointer;"></i>
+
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+          <div class="pagination-center">
+            <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

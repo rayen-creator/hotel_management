@@ -18,7 +18,6 @@ import { SharedModule } from '../shared/shared.module';
 import { ItemsComponent } from './inventory/items/items.component';
 import { ItemFormComponent } from './inventory/item-form/item-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
 
 @NgModule({

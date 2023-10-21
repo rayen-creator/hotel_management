@@ -1,0 +1,46 @@
+<div class="add-service-container">
+  <div class="add-service-form">
+    <h2>Add a Service</h2>
+    <form [formGroup]="serviceForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="serviceType">Service Type:</label>
+        <select id="serviceType" formControlName="serviceType" class="form-control" required>
+          <option *ngFor="let type of serviceTypes" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="number" id="price" formControlName="price" class="form-control" min="0">
+        <span class="text-danger error-msg" *ngIf="serviceForm.controls['price'].invalid && serviceForm.controls['price'].touched">
+          <span *ngIf="serviceForm.controls['price'].hasError('min')" class="error">Price must be greater than or equal to 0!</span>
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="label">Label:</label>
+        <input type="text" id="label" formControlName="label" class="form-control" required>
+        <span class="text-danger error-msg" *ngIf="serviceForm.controls['label'].invalid && serviceForm.controls['label'].touched">
+          <span *ngIf="serviceForm.controls['label'].hasError('required')" class="error">Label is required!</span>
+          <span *ngIf="serviceForm.controls['label'].hasError('pattern')" class="error">Only letters are allowed in the label!</span>
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" formControlName="description" class="form-control"></textarea>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" id="is_available" formControlName="is_available" class="form-check-input" checked>
+        <label for="is_available" class="form-check-label">Available</label>
+      </div>
+
+      <div class="form-group">
+        <label for="reason">Reason:</label>
+        <textarea id="reason" formControlName="reason" class="form-control"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
