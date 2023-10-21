@@ -8,7 +8,7 @@ import { ServiceReservation } from './../models/serviceReservation.model';
 })
 export class ServiceReservationService {
 
-    private baseUrl = 'http://localhost:8083/auxiliaryservices'; // Replace with your Spring Boot backend URL
+    private baseUrl = 'http://localhost:8083/msauxiliaryservices'; // Replace with your Spring Boot backend URL
 
     constructor(private http: HttpClient) {}
 

@@ -7,7 +7,7 @@ import { AuxiliaryService } from './../models/auxiliaryService.model';
   providedIn: 'root',
 })
 export class AuxiliaryServiceService {
-  private baseUrl = 'http://localhost:8083/auxiliaryservices/controllerAuxiliaryService'; // Corrected URL
+  private baseUrl = 'http://localhost:8083/msauxiliaryservices/controllerAuxiliaryService'; // Corrected URL
   constructor(private http: HttpClient) {}
 
   getAuxiliaryServices(): Observable<AuxiliaryService[]> {
