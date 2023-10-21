@@ -7,6 +7,8 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { AboutComponent } from './shared/about/about.component';
 import { MyParkingResComponent } from './parking/MyParkingReservations/my-parking-res/my-parking-res.component';
 import { AddParkingResComponent } from './parking/AddParkingReservations/add-parking-res/add-parking-res.component';
+import { RoomsComponent } from './rooms/rooms.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 const routes: Routes = [
   {
@@ -24,6 +26,9 @@ const routes: Routes = [
       { path: 'parkingRes/add', component: AddParkingResComponent },
       { path: 'parkingRes/update/:id', component: AddParkingResComponent },
       { path: 'services', loadChildren: () => import('./services/services.module').then(m => m.ServicesModule) },
+      { path: 'rooms/:idHotel', component: RoomsComponent },
+      { path: 'reservation/:idRoom', component: ReservationComponent },
+
 
     ],
   },

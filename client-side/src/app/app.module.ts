@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-right', // Position of the toast
       timeOut: 3000, // Display duration (milliseconds)

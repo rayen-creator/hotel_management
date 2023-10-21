@@ -1,0 +1,49 @@
+<div class="banner-location-single-contents">
+    <span class="banner-location-single-contents-subtitle"> Room Type </span>
+    <div class="banner-location-single-contents-dropdown">
+        <select id="country" [(ngModel)]="selectedType" name="selectedCountry" class="form-control">
+            <option value="SINGLE">Single</option>
+            <option value="DOUBLE">Double</option>
+            <option value="SUITE">Suite</option>
+            <option value="DELUXE">De Luxe</option>
+            <option value="PRESIDENTIAL">Presidential</option>
+            
+        </select>
+    </div>
+    
+</div>
+
+<div class="banner-location-single-search">
+    <div class="search-suggestions-wrapper">
+        <div class="search-click-icon" >
+            <button (click)="getByType()">
+            <i class="las la-search"></i></button>
+
+        </div>
+       
+    </div>
+</div> 
+     
+
+<div class="rooms row gy-4 mt-4" >
+    <div class="col-xxl-4 col-lg-4 col-md-6" *ngFor="let roomItem of rooms">
+        <div class="single-blog">
+            <div class="single-blog-thumbs">
+                <a href="blog_details.html"> <img class="lazyloads" src="assets/img/rooms.jpg" alt>
+                </a>
+            </div>
+            <div class="single-blog-contents mt-3">
+                <div class="single-blog-contents-tags mt-3">
+                    <span class="single-blog-contents-tags-item">
+                        <a href="javascript:void(0)"> <i class="las la-bed"></i>Room </a>
+                    </span>
+                    <span class="single-blog-contents-tags-item"> Floor {{roomItem.etage}} 
+                         </span>
+                </div>
+                <h5 class="name card-title">Type : {{roomItem.type}}</h5>
+                <a class="button-rooms btn btn-primary" href="/reservation/{{roomItem.idRoom}}" >reserver</a>
+
+            </div>
+        </div>
+    </div>
+</div>

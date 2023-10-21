@@ -1,0 +1,15 @@
+.rooms{
+    margin-bottom: 200px;
+    margin-left: 35px;
+    margin-right: 35px;
+
+}
+.button-rooms{
+    display: flow-root;
+}
+.name {
+    font-size: 1.5rem; /* Adjust the font size as needed */
+    color: #5b5b70;      /* Change the text color to your preference */
+    font-weight: bold; /* Make the text bold if desired */
+  
+  }
