@@ -13,7 +13,7 @@ export class ListServiceComponent implements OnInit {
     itemsPerPage: number = 10;
     currentPage: number = 1;
 
-  constructor(private auxiliaryServiceService: AuxiliaryServiceService) {}
+  constructor(private auxiliaryServiceService:AuxiliaryServiceService) {}
 
   ngOnInit(): void {
     this.loadAuxiliaryServices();

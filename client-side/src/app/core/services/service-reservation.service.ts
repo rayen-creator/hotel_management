@@ -2,19 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ServiceReservation } from './../models/serviceReservation.model';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceReservationService {
 
-
-    private baseUrl = 'http://localhost:8080'; // Replace with your Spring Boot backend URL
+    private baseUrl = 'http://localhost:8083/auxiliary_services'; // Replace with your Spring Boot backend URL
 
     constructor(private http: HttpClient) {}
-
-    getAllServiceReservations(): Observable<ServiceReservation[]> {
-      return this.http.get<ServiceReservation[]>(`${this.baseUrl}/controllerServiceReservation`);
-    }
 
     getServiceReservationById(id: number): Observable<ServiceReservation> {
       return this.http.get<ServiceReservation>(`${this.baseUrl}/controllerServiceReservation/${id}`);
@@ -27,7 +23,6 @@ export class ServiceReservationService {
     updateServiceReservation(id: number, updatedServiceReservation: ServiceReservation): Observable<ServiceReservation> {
       return this.http.put<ServiceReservation>(`${this.baseUrl}/controllerServiceReservation/${id}`, updatedServiceReservation);
     }
-
     deleteServiceReservation(id: number): Observable<void> {
       return this.http.delete<void>(`${this.baseUrl}/controllerServiceReservation/${id}`);
     }
@@ -35,5 +30,7 @@ export class ServiceReservationService {
     getServiceReservationsByAuxiliaryServiceId(auxiliaryServiceId: number): Observable<ServiceReservation[]> {
       return this.http.get<ServiceReservation[]>(`${this.baseUrl}/controllerServiceReservation/byAuxiliaryServiceId/${auxiliaryServiceId}`);
     }
-  }
-
+    getAllServiceReservations(): Observable<ServiceReservation[]> {
+      return this.http.get<ServiceReservation[]>(`${this.baseUrl}/controllerServiceReservation/all`);
+    }
+}

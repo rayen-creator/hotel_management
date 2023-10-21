@@ -4,20 +4,17 @@ import { CommonModule } from '@angular/common';
 import { AuxiliaryServicesRoutingModule } from './auxiliary-services-routing.module';
 import { AuxiliaryServicesComponent } from './auxiliary-services.component';
 import { AddServiceComponent } from './add-service/add-service.component';
-import { ListServiceComponent } from './list-service/list-service.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-import { UpdateServiceComponent } from './update-service/update-service.component';
+import { ListServiceComponent } from './list-service/list-service.component';
 
 
 @NgModule({
   declarations: [
     AuxiliaryServicesComponent,
     AddServiceComponent,
-    ListServiceComponent,
-    UpdateServiceComponent
-
+    ListServiceComponent
   ],
   imports: [
     CommonModule,

@@ -22,7 +22,7 @@ public class ServiceReservation implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date serviceDate;
     private String specialPreferences;
-    @JsonIgnore
+
     @ManyToOne
     AuxiliaryService auxiliaryService;
 
