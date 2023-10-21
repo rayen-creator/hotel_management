@@ -1,0 +1,27 @@
+<div class="dashboard-right-contents mt-4 mt-lg-0">
+  <div class="dashboard-reservation">
+    <div class="single-reservation bg-white base-padding">
+      <h3 class="single-reservation-title">Edit Profile</h3>
+      <div class="custom--form dashboard-form">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" *ngIf="userForm">
+          <div class="dashboard-flex-input">
+            <div class="dashboard-input mt-4">
+              <label class="label-title">Username</label>
+              <input type="text" class="form--control" placeholder="Username" formControlName="username">
+            </div>
+          </div>
+          <div class="dashboard-flex-input">
+            <div class="dashboard-input mt-4">
+              <label class="label-title">Email Address</label>
+              <input type="email" class="form--control" placeholder="Email Address" formControlName="email">
+            </div>
+          </div>
+          <div class="btn-wrapper mt-4">
+            <button type="submit" class="cmn-btn btn-bg-1">Save Changes</button> &nbsp;
+            <a [routerLink]="['/adminpanel/profile', id]" class="cmn-btn btn-border">Go Back</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

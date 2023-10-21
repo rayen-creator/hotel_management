@@ -1,56 +1,54 @@
 <div class="dashboard-right-contents mt-4 mt-lg-0">
-    <div class="dashboard-reservation">
-        <div class="single-reservation bg-white base-padding">
-            <div class="single-reservation-flex mb-4">
-                <div class="single-reservation-author">
-                    <div class="single-reservation-author-flex">
-                        <div class="single-reservation-author-thumb">
-                            <img src="assets/img/dashboard/author.jpg" alt="img">
-                        </div>
-                        <div class="single-reservation-author-contents">
-                            <h5 class="single-reservation-author-contents-title"> Cameron Williamson </h5>
-                            <p class="single-reservation-author-contents-para"> Member since 2019 </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="btn-wrapper">
-                    <a href="dashboard_edit_profile.html" class="cmn-btn btn-border"> Edit Profile </a>
-                </div>
+  <div class="dashboard-reservation">
+    <div class="single-reservation bg-white base-padding">
+      <div class="single-reservation-flex mb-4">
+        <div class="single-reservation-author">
+          <div class="single-reservation-author-flex">
+            <div class="single-reservation-author-thumb">
+              <img src="assets/img/dashboard/author.jpg" alt="img">
             </div>
-            <div class="single-reservation-item">
-                <div class="single-reservation-contact">
-                    <div class="single-reservation-contact-item">
-                        <span class="single-reservation-contact-list"> <span> <i class="las la-map-marker-alt"></i>
-                            </span> 8502 Preston Rd. Inglewood, Maine 98380 </span>
-                    </div>
-                    <div class="single-reservation-contact-item">
-                        <a href="https://bytesed.com/cdn-cgi/l/email-protection#91fff4fde2febffffee3fcf0ffd1f4e9f0fce1fdf4bff2fefc"
-                            class="single-reservation-contact-list"> <span> <i class="las la-envelope"></i> </span>
-                            <span class="__cf_email__"
-                                data-cfemail="a3cdc6cfd0cc8dcdccd1cec2cde3c6dbc2ced3cfc68dc0ccce">[email&#160;protected]</span>
-                        </a>
-                    </div>
-                    <div class="single-reservation-contact-item">
-                        <a href="tel:(208)5550112" class="single-reservation-contact-list"> <span> <i
-                                    class="las la-phone-alt"></i> </span> (208) 555-0112 </a>
-                    </div>
-                </div>
+            <div class="single-reservation-author-contents">
+              <h5 class="single-reservation-author-contents-title">{{ user?.username }}</h5>
+              <p class="single-reservation-author-contents-para">Member since {{ user?.createdAt | date: 'yyyy' }}</p>
             </div>
+          </div>
         </div>
-        <div class="single-reservation bg-white base-padding">
-            <div class="single-reservation-flex">
-                <div class="single-reservation-author">
-                    <div class="single-reservation-author-flex">
-                        <div class="single-reservation-author-contents">
-                            <h5 class="single-reservation-author-contents-title"> Password </h5>
-                            <p class="single-reservation-author-contents-para"> Last change 4 month ago </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="btn-wrapper">
-                    <a href="dashboard_pass_change.html" class="cmn-btn btn-border"> Change Password </a>
-                </div>
-            </div>
+        <div class="btn-wrapper">
+          <a [routerLink]="'/adminpanel/profile/update/' + user?.id" class="cmn-btn btn-border">Edit Profile</a>
         </div>
+      </div>
+      <div class="single-reservation-item">
+        <div class="single-reservation-contact">
+
+          <div class="single-reservation-contact-item">
+            <a href="mailto:{{ user?.email }}" class="single-reservation-contact-list">
+                            <span>
+                                <i class="las la-envelope"></i>
+                            </span>
+              {{ user?.email }}
+            </a>
+          </div>
+
+        </div>
+      </div>
     </div>
+    <div class="single-reservation bg-white base-padding">
+      <div class="single-reservation-flex">
+        <div class="single-reservation-author">
+          <div class="single-reservation-author-flex">
+            <div class="single-reservation-author-contents">
+              <h5 class="single-reservation-author-contents-title">Password</h5>
+              <p class="single-reservation-author-contents-para">
+                Last change {{ user?.lastChangedAt | date: 'MMMM d, y' }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="btn-wrapper">
+          <a [routerLink]="'/dashboard_pass_change/' + user?.id" class="cmn-btn btn-border">Change Password</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+

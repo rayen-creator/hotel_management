@@ -8,6 +8,7 @@ import tn.esprit.ms_customer_review.entities.enums.TicketStatus;
 import tn.esprit.ms_customer_review.repositories.FeedbackRepository;
 import tn.esprit.ms_customer_review.services.Interfaces.IFeedbackService;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,27 +22,40 @@ public class FeedbackServiceImp implements IFeedbackService {
     @Override
     public Feedback addFeedback(Feedback feedback) {
 
-        Feedback newfeed=new Feedback();
+        Feedback newfeed = new Feedback();
         newfeed.setTitle(feedback.getTitle());
         newfeed.setServiceType(feedback.getServiceType());
         newfeed.setDescription(feedback.getDescription());
         newfeed.setTicketStatus(TicketStatus.pending);
+        newfeed.setReview_date(new Date());
 
         return this._feedbackrepo.save(newfeed);
     }
 
     @Override
-    public Feedback updateFeedback(int id, Feedback newfeedback) {
-        if(this._feedbackrepo.findById(id).isPresent()) {
+    public Feedback changeTicketStatus(int id, Feedback newfeedback) {
+        if (this._feedbackrepo.findById(id).isPresent()) {
             Feedback existingFeedback = this._feedbackrepo.findById(id).get();
 
-            existingFeedback.setTitle(newfeedback.getTitle());
-//            existingFeedback.setRating(newfeedback.getRating());
-            existingFeedback.setDescription(newfeedback.getDescription());
-            existingFeedback.setServiceType(newfeedback.getServiceType());
+            existingFeedback.setTicketStatus(TicketStatus.open);
 
             return this._feedbackrepo.save(existingFeedback);
-        }else{
+        } else {
+            return null;
+        }
+    }
+
+
+    @Override
+    public Feedback RespondTOReview(int id, Feedback newfeedback) {
+        if (this._feedbackrepo.findById(id).isPresent()) {
+            Feedback existingFeedback = this._feedbackrepo.findById(id).get();
+
+            existingFeedback.setResponse_from_management(newfeedback.getResponse_from_management());
+            existingFeedback.setTicketStatus(TicketStatus.closed);
+
+            return this._feedbackrepo.save(existingFeedback);
+        } else {
             return null;
         }
     }
@@ -54,7 +68,7 @@ public class FeedbackServiceImp implements IFeedbackService {
 
     @Override
     public boolean DeleteFeedback(int id) {
-        if(this._feedbackrepo.findById(id).isPresent()){
+        if (this._feedbackrepo.findById(id).isPresent()) {
             this._feedbackrepo.deleteById(id);
             return true;
         }

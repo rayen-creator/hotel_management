@@ -1,26 +1,93 @@
 <div class="dashboard-left-content">
-    <div class="dashboard-close-main">
-        <div class="close-bars"> <i class="las la-times"></i> </div>
-        <div class="dashboard-bottom">
-            <ul class="dashboard-list list-style-none">
-                <li class="list active" routerLinkActive="active">
-                    <a routerLink="/adminpanel/dashboard"> <i class="las la-briefcase"></i> Dashboard </a>
-                </li>
-                <li class="list has-children">
-                    <a href="javascript:void(0)"> <i class="las la-user-circle"></i> Profile </a>
-                    <ul class="submenu list-style-none">
-                        <li class="list"> <a routerLink="/adminpanel/profile"  routerLinkActive="active"> Profile </a> </li>
-                        <li class="list"> <a href="dashboard_edit_profile.html" routerLinkActive="active"> Edit Profile </a> </li>
-                        <li class="list"> <a href="dashboard_pass_change.html" routerLinkActive="active"> Password Change </a> </li>
-                    </ul>
-                </li>
-                <li class="list" routerLinkActive="active">
-                    <a href="javascript:void(0)"> <i class="las la-headset"></i> Support </a>
-                </li>
-                <li class="list">
-                    <a href="javascript:void(0)"> <i class="las la-sign-out-alt"></i> Log Out </a>
-                </li>
+  <div class="dashboard-close-main">
+    <div class="close-bars"><i class="las la-times"></i></div>
+    <div class="dashboard-bottom">
+      <ul class="dashboard-list list-style-none">
+        <li class="list" routerLinkActive="active">
+          <a routerLink="/adminpanel/dashboard">
+            <i class="las la-briefcase"></i> Dashboard
+          </a>
+        </li>
+        <li class="list">
+          <a routerLink="/adminpanel/inventory">
+            <i class="las la-box"></i> Inventory
+          </a>
+        </li>
+        <li class="list has-children">
+          <a href="javascript:void(0)">
+            <i class="las la-user-circle"></i> Profile
+          </a>
+          <ul class="submenu list-style-none">
+            <li class="list">
+              <a routerLink="/adminpanel/profile" routerLinkActive="active">
+                Profile
+              </a>
+            </li>
+            <li class="list">
+              <a href="dashboard_edit_profile.html" routerLinkActive="active">
+                Edit Profile
+              </a>
+            </li>
+            <li class="list">
+              <a href="dashboard_pass_change.html" routerLinkActive="active">
+                Password Change
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="list has-children open show" routerLinkActive="active">
+          <a href="javascript:void(0)" routerLink="/adminpanel/support">
+            <i class="las la-headset"></i> Support
+          </a>
+          <ul class="submenu list-style-none">
+            <li class="list" routerLinkActive="selected">
+              <a routerLink="/adminpanel/support/open"> Open </a>
+            </li>
+            <li class="list" routerLinkActive="selected">
+              <a routerLink="/adminpanel/support/pending"> Pending </a>
+            </li>
+            <li class="list" routerLinkActive="selected">
+              <a routerLink="/adminpanel/support/closed"> Closed</a>
+            </li>
+          </ul>
+        </li>
+        <li class="list" routerLinkActive="active">
+          <a href="javascript:void(0)" routerLink="/adminpanel/staff/listStaff">
+            <i class="las la-headset"></i> Staff Management
+          </a>
+        </li>
+
+        <li class="list">
+          <div class="has-children">
+            <a href="javascript:void()">
+              <i class="las la-car"></i> Parking Management
+            </a>
+            <ul class="submenu list-style-none">
+              <li class="list" routerLinkActive="active">
+                <a routerLink="/adminpanel/parking"> Parking Spaces </a>
+              </li>
+              <li class="list" routerLinkActive="active">
+                <a routerLink="/adminpanel/parkingres">
+                  Parking Reservations
+                </a>
+              </li>
             </ul>
-        </div>
+          </div>
+        </li>
+
+        <li class="list" routerLinkActive="active">
+          <a href="javascript:void(0)">
+            <i class="las la-headset"></i> Support
+          </a>
+        </li>
+
+        <li class="list">
+          <a href="javascript:void(0)">
+            <i class="las la-sign-out-alt"></i> Log Out
+          </a>
+        </li>
+      </ul>
     </div>
+  </div>
 </div>
+

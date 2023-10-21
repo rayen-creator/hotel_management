@@ -1,0 +1,114 @@
+<div class="dashboard-reservation">
+  <div class="single-reservation bg-white base-padding">
+    <div class="single-reservation-author">
+      <div class="single-reservation-author-flex">
+        <div class="single-reservation-author-contents">
+          <h2 *ngIf="editMode == false">Add Parking Space</h2>
+          <h2 *ngIf="editMode == true">Edit {{ parkingSpace?.spaceNumber }}</h2>
+          <div class="custom--from">
+            <form
+              *ngIf="parkingForm"
+              [formGroup]="parkingForm"
+              (ngSubmit)="onSubmit()"
+            >
+              <!-- Space Number -->
+              <div class="popup-contents-select">
+                <label class="popup-contents-select-label">Space Number:</label>
+                <div class="single-input">
+                  <input
+                    type="text"
+                    name="spaceNumber"
+                    class="form-control"
+                    formControlName="spaceNumber"
+                    placeholder="Enter Space Number..."
+                  />
+                </div>
+              </div>
+              <!-- Type -->
+              <div class="popup-contents-select">
+                <label class="popup-contents-select-label">Type:</label>
+                <div class="nice-select js-select" tabindex="0">
+                  <span class="current">{{
+                    parkingForm.get("type").value
+                  }}</span>
+                  <div class="nice-select-search-box">
+                    <input
+                      type="text"
+                      class="nice-select-search"
+                      formControlName="type"
+                      placeholder="Search..."
+                    />
+                  </div>
+                  <ul class="list">
+                    <li
+                      *ngFor="let type of ['Standard', 'Valet']"
+                      [attr.data-value]="type"
+                      [class.option]="true"
+                      [class.selected]="parkingForm.get('type').value === type"
+                      (click)="parkingForm.get('type').setValue(type)"
+                    >
+                      {{ type }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- Location -->
+              <div class="popup-contents-select">
+                <label class="popup-contents-select-label">Location:</label>
+                <div class="single-input">
+                  <input
+                    type="text"
+                    name="location"
+                    class="form-control"
+                    formControlName="location"
+                    placeholder="Enter Location..."
+                  />
+                </div>
+              </div>
+              <!-- Status -->
+              <div class="popup-contents-select">
+                <label class="popup-contents-select-label">Status:</label>
+                <div class="nice-select js-select" tabindex="0">
+                  <span class="current">{{
+                    parkingForm.get("status").value
+                  }}</span>
+                  <div class="nice-select-search-box">
+                    <input
+                      type="text"
+                      class="nice-select-search"
+                      formControlName="status"
+                      placeholder="Search..."
+                    />
+                  </div>
+                  <ul class="list">
+                    <li
+                      *ngFor="let status of ['Available', 'NotAvailable']"
+                      [attr.data-value]="status"
+                      [class.option]="true"
+                      [class.selected]="
+                        parkingForm.get('status').value === status
+                      "
+                      (click)="parkingForm.get('status').setValue(status)"
+                    >
+                      {{ status }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- Save Button -->
+              <div class="btn-wrapper flex-btn mt-3">
+                <button
+                  type="submit"
+                  [disabled]="parkingForm.invalid"
+                  class="dash-btn btn-bg-1"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
