@@ -23,6 +23,8 @@ const routes: Routes = [
       { path: 'parkingRes', component: MyParkingResComponent },
       { path: 'parkingRes/add', component: AddParkingResComponent },
       { path: 'parkingRes/update/:id', component: AddParkingResComponent },
+      { path: 'services', loadChildren: () => import('./services/services.module').then(m => m.ServicesModule) },
+
     ],
   },
 ];

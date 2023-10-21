@@ -29,6 +29,7 @@ const routes: Routes = [
       { path: 'parking/add', component: ParkingFormComponent },
       { path: 'parking/update/:id', component: ParkingFormComponent },
       { path: 'parkingres', component: ParkingReservationComponent },
+      {path:'auxiliaryServices', loadChildren:() => import('./auxiliary-services/auxiliary-services.module').then(m=>m.AuxiliaryServicesModule)}
     ],
   },
 ];

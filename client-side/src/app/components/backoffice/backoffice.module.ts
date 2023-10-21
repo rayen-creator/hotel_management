@@ -28,7 +28,7 @@ import { ProfileFormComponent } from './profile-form/profile-form.component';
     HeaderComponent,
     FooterComponent,
     ProfileComponent,
-    SidebarComponent,
+    SidebarComponent,,
     ParkingComponent,
     ParkingReservationComponent,
     ParkingFormComponent,
