@@ -138,21 +138,21 @@ services:
       - docker-mysql_3
 
   msparkingmanagement:
-  container_name: ms_parking_management
-  build:
-    context: ./ms_parking_management
-    dockerfile: Dockerfile
-  restart: unless-stopped
-  environment:
-    - spring.data.mongodb.port=27017
-    - spring.data.mongodb.database=hotelManagement
-    - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
-  ports:
-    - "8084:8084"
-  image: parking_management
-  depends_on:
-    - discovery_service
-    - mongodb_database
+    container_name: ms_parking_management
+    build:
+      context: ./ms_parking_management
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - spring.data.mongodb.port=27017
+      - spring.data.mongodb.database=hotelManagement
+      - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
+    ports:
+      - "8084:8084"
+    image: parking_management
+    depends_on:
+      - discovery_service
+      - mongodb_database
 
   ################### GATEWAY SERVER  ###################
   gateway_service:
