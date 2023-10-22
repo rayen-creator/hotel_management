@@ -24,7 +24,7 @@
 
 
  ### 📜 Project Main features
-Our backend is powered by 7 microservices, all of which happen to be written in java using Spring Boot and Bestjs.
+Our backend is powered by 7 microservices, all of which happen to be written in java using Spring Boot and nestjs.
 <br> 
 
  * **Customer Review Service** :allows customers to leave reviews and ratings for the hotel .
@@ -33,7 +33,7 @@ Our backend is powered by 7 microservices, all of which happen to be written in 
  * **inventory Service**: 
  * **Reservation Service**: 
  * **Staff Management Service**:
- * **Authentification  Service**: 
+ * **Authentification  Service**:  authentication service handles user authentication and authorization, securing access to your microservices and client-side application.
 
 
 ### 📐 Project Technical Architecture 
@@ -41,12 +41,12 @@ Our sample microservices-based system consists of the following modules:
 - **client side** : project built using angular 15 .
 - **gateway-service** : a module for running Spring Boot application that acts as a proxy/gateway in our architecture.
 - **eureka_server** : a module thats Spring Cloud Eureka as an embedded discovery server.
-- **ms_customer_Review** :
-- **ms_auxiliary_Services**: 
-- **ms_parking**: 
-- **ms_inventory**: 
-- **ms_reservation**:
-- **ms_staff**: 
+- **ms_customer_Review** : a module allows customers to leave reviews and ratings for the hotel. It handles the storage, retrieval, and management of customer reviews .
+- **ms_auxiliary_Services**: a module is intended for providing auxiliary services to customers. The description for this service is currently missing, but it likely handles functions related to additional hotel services such as room service, concierge, or other amenities.
+- **ms_parking**:  a module is responsible for managing parking services at the hotel. It may include functionalities like parking reservations, tracking available parking spots, and handling payment for parking services.
+- **ms_inventory**: a module likely deals with managing the inventory of the hotel, including rooms, facilities, and other assets. It could be used for checking room availability and managing room bookings.
+- **ms_reservation**: a module manages hotel reservations. It handles the creation, modification, and cancellation of reservations made by customers through the client-side application.
+- **ms_staff**: a module that responsible for staff management within the hotel. It may include functionalities for managing employee schedules, payroll, and other HR-related tasks.
 
 
 The following picture illustrates the architecture described above.
