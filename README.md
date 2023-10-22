@@ -28,16 +28,16 @@
 
 
  ### 📜 Project Main features
-Our backend is powered by 7 microservices, all of which happen to be written in java using Spring Boot and nestjs.
+Our backend is powered by 7 microservices, all of which happen to be written in java using Spring Boot and javascript/typescript using nestjs.
 <br> 
 
- * **Customer Review Service** :allows customers to leave reviews and ratings for the hotel .
- * **Auxiliary Services Service**: 
- * **Parking Service**: 
- * **inventory Service**: 
- * **Reservation Service**: 
- * **Staff Management Service**:
- * **Authentification  Service**:  authentication service handles user authentication and authorization, securing access to your microservices and client-side application.
+ * **Customer Review Service**
+ * **Auxiliary Services Service**:
+ * **Parking Service**
+ * **inventory Service**
+ * **Reservation Service**
+ * **Staff Management Service**
+ * **Authentification  Service**
 
 
 ### 📐 Project Technical Architecture 
