@@ -1,7 +1,11 @@
 # Hotel management system
 <div id="top" align="center">
  
-  
+
+ <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/SarraTounsi/MicroservicesProject">
+<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/SarraTounsi/MicroservicesProject">
+<img alt="GitHub Top language" src="https://img.shields.io/github/languages/top/SarraTounsi/MicroservicesProject">
+
 
 <h3 align="center">Hotel Management System Microservices</h3>
   
@@ -24,35 +28,34 @@
 
 
  ### 📜 Project Main features
-Our backend is powered by 7 microservices, all of which happen to be written in java using Spring Boot and Bestjs.
+Our backend is powered by 7 microservices, all of which happen to be written in java using Spring Boot and javascript/typescript using nestjs.
 <br> 
 
- * **Customer Review Service** :allows customers to leave reviews and ratings for the hotel .
- * **Auxiliary Services Service**: 
- * **Parking Service**: 
- * **inventory Service**: 
- * **Reservation Service**: 
- * **Staff Management Service**:
- * **Authentification  Service**: 
+ * **Customer Review Service**
+ * **Auxiliary Services Service**:
+ * **Parking Service**
+ * **inventory Service**
+ * **Reservation Service**
+ * **Staff Management Service**
+ * **Authentification  Service**
 
 
 ### 📐 Project Technical Architecture 
 Our sample microservices-based system consists of the following modules:
 - **client side** : project built using angular 15 .
 - **gateway-service** : a module for running Spring Boot application that acts as a proxy/gateway in our architecture.
-- **config-service** : a module that uses Spring Cloud Config Server for running configuration server in the `native` mode. The configuration files are placed on the classpath.
 - **eureka_server** : a module thats Spring Cloud Eureka as an embedded discovery server.
-- **ms_customer_Review** :
-- **ms_auxiliary_Services**: 
-- **ms_parking**: 
-- **ms_inventory**: 
-- **ms_reservation**:
-- **ms_staff**: 
+- **ms_customer_Review** : a module allows customers to leave reviews and ratings for the hotel. It handles the storage, retrieval, and management of customer reviews .
+- **ms_auxiliary_Services**: a module is intended for providing auxiliary services to customers. The description for this service is currently missing, but it likely handles functions related to additional hotel services such as room service, concierge, or other amenities.
+- **ms_parking**:  a module is responsible for managing parking services at the hotel. It may include functionalities like parking reservations, tracking available parking spots, and handling payment for parking services.
+- **ms_inventory**: a module likely deals with managing the inventory of the hotel, including rooms, facilities, and other assets. It could be used for checking room availability and managing room bookings.
+- **ms_reservation**: a module manages hotel reservations. It handles the creation, modification, and cancellation of reservations made by customers through the client-side application.
+- **ms_staff**: a module that responsible for staff management within the hotel. It may include functionalities for managing employee schedules, payroll, and other HR-related tasks.
 
 
 The following picture illustrates the architecture described above.
 
-![H2 (1)](https://github.com/SarraTounsi/MicroservicesProject/assets/57809239/2d041eb4-beed-4f03-9724-a8e383a3b318)
+![architecture](https://github.com/SarraTounsi/MicroservicesProject/assets/57809239/ea20c34a-abf5-4237-8af6-7b7e5deccfe0)
 
 
 
