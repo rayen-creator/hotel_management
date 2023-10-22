@@ -55,7 +55,7 @@ Our sample microservices-based system consists of the following modules:
 
 The following picture illustrates the architecture described above.
 
-![H2 (1)](https://github.com/SarraTounsi/MicroservicesProject/assets/57809239/2d041eb4-beed-4f03-9724-a8e383a3b318)
+![architecture](https://github.com/SarraTounsi/MicroservicesProject/assets/57809239/ea20c34a-abf5-4237-8af6-7b7e5deccfe0)
 
 
 
