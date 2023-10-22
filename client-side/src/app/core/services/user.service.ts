@@ -23,8 +23,8 @@ export class UserService {
     return this.http.get(`${this.apiUrl}/getById/${id}`);
   }
 
-  getUserByEmail(email: string) {
-    return this.http.get(`${this.apiUrl}/email/${email}`);
+  getUserByusername(username: string) {
+    return this.http.get(`${this.apiUrl}/username/${username}`);
   }
 
   updateUser(id: string, user: any) {

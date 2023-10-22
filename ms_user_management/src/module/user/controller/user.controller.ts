@@ -24,6 +24,7 @@ export class UserController {
     return await this.userService.create(createUserDto);
   }
 
+
   @Get('/getAllUsers')
   async findAll() {
     return await this.userService.findAll();
@@ -33,10 +34,10 @@ export class UserController {
   async findOne(@Param('id') id: string) {
     return await this.userService.findOne(id);
   }
-
-  @Get('email/:email')
-  findByEmail(@Param('email') email: string) {
-    return this.userService.findByEmail(email);
+ 
+  @Get('username/:username')
+  findByusername(@Param('username') username: string) {
+    return this.userService.findByUsername(username);
   }
 
   @Put('UpdateUser/:id')

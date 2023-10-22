@@ -17,6 +17,7 @@ export class CreateUserDto {
     @IsNotEmpty({ message: 'Please enter password' })
     @IsString({ message: 'Password must be a string' })
     password: string;
+    @ApiProperty({ type: 'string' })
     userType: Role;
 
 
