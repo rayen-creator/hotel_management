@@ -1,28 +1,21 @@
-import { Post, Controller, Body, UseGuards, Get, Req } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
+import { LocalAuthGuard } from '../guard/local-auth.guard';
+import { Public } from '../../../decorator/public.decorator';
 import { AuthService } from '../services/auth.service';
-import { JwtAuthGuard } from '../jwt-auth.guard';
-import { AuthLoginDto } from '../auth-login.dto';
+import { SigninDTO } from '../dto/signin-auth.dto';
 
+@Public()
+@ApiTags("auth")
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  // @Post()
-  // async login(@Body() AuthLoginDto: AuthLoginDto) {
-  //   return this.authService.login(AuthLoginDto);
-  // }
+  @UseGuards(LocalAuthGuard)
+  @Post("/signin")
+  async login(@Body() user:SigninDTO) {
+    return await this.authService.login(user);
+  }
 
-  // @UseGuards(JwtAuthGuard)
-  // @Get('profile')
-  // async getProfile(@Req() req) {
-  //   const user = req.user;
-  //   const userProfile = await this.authService.getProfile(user.id);
-  //   return userProfile;
-  // }
-
-  // @UseGuards(JwtAuthGuard)
-  // @Get()
-  // async test() {
-  //   return 'Success Login';
-  // }
+  
 }

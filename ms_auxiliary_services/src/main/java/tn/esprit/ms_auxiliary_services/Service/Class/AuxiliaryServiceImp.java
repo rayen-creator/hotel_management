@@ -8,6 +8,8 @@ import tn.esprit.ms_auxiliary_services.Persistance.Repository.AuxiliaryServiceRe
 import tn.esprit.ms_auxiliary_services.Service.Interface.IAuxiliaryServiceService;
 
 import java.util.List;
+import java.util.Optional;
+
 @Slf4j
 @Service
 public class AuxiliaryServiceImp implements IAuxiliaryServiceService {
@@ -27,7 +29,7 @@ public class AuxiliaryServiceImp implements IAuxiliaryServiceService {
                     service.setLabel(updatedService.getLabel());
                     service.setPrice(updatedService.getPrice());
                     service.setDescription(updatedService.getDescription());
-                    service.set_available(updatedService.is_available());
+                    service.setAvailable(updatedService.isAvailable());
                     service.setReason(updatedService.getReason());
                     return _AuxServiceRepo.save(service);
                 })
@@ -35,9 +37,7 @@ public class AuxiliaryServiceImp implements IAuxiliaryServiceService {
     }
     @Override
     public List<AuxiliaryService> all_auxiliaryServices() {
-        List<AuxiliaryService> ass= this._AuxServiceRepo.findAll();
-
-        return ass;
+        return this._AuxServiceRepo.findAll();
     }
 //do not need a delete auxiliary service for now
     @Override
@@ -49,5 +49,17 @@ public class AuxiliaryServiceImp implements IAuxiliaryServiceService {
     @Override
     public AuxiliaryService getAuxiliaryService(int id) {
         return this._AuxServiceRepo.findById(id).get();
+    }
+
+
+    public AuxiliaryService toggleAvailability(int id) {
+        Optional<AuxiliaryService> optionalService = _AuxServiceRepo.findById(id);
+        if (optionalService.isPresent()) {
+            AuxiliaryService service = optionalService.get();
+            service.setAvailable(!service.isAvailable());
+            return _AuxServiceRepo.save(service);
+        } else {
+            return null; // Handle not found scenario
+        }
     }
 }

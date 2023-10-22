@@ -29,7 +29,7 @@ Our backend is powered by 7 microservices, all of which happen to be written in 
 
  * **Customer Review Service** :allows customers to leave reviews and ratings for the hotel .
  * **Auxiliary Services Service**: 
- * **Housekeeping Service**: 
+ * **Parking Service**: 
  * **inventory Service**: 
  * **Reservation Service**: 
  * **Staff Management Service**:
@@ -44,7 +44,7 @@ Our sample microservices-based system consists of the following modules:
 - **eureka_server** : a module thats Spring Cloud Eureka as an embedded discovery server.
 - **ms_customer_Review** :
 - **ms_auxiliary_Services**: 
-- **ms_housekeeping**: 
+- **ms_parking**: 
 - **ms_inventory**: 
 - **ms_reservation**:
 - **ms_staff**: 

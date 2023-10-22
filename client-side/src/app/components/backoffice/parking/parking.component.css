@@ -1,0 +1,12 @@
+td button + button {
+  margin-left: 10px; /* Adjust the margin to your preference */
+}
+
+.spaced-table {
+  margin: 30px; /* Adds margin around the table */
+}
+
+.spaced-table th,
+.spaced-table td {
+  padding: 10px; /* Adds padding within table cells */
+}

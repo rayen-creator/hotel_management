@@ -7,11 +7,16 @@ import { AuthModule } from './module/auth/auth.module';
 import { UserModule } from './module/user/user.module';
 import { SharedModule } from './module/shared/shared.module';
 import { EurekaconfigModule } from './config/eurekaconfig/eurekaconfig.module';
-import { EurekaModule } from 'nestjs-eureka';
 
 @Module({
-  imports: [DatabaseModule, DotenvModule, AuthModule, UserModule, SharedModule,EurekaconfigModule
-   ],
+  imports: [
+    DatabaseModule,
+    DotenvModule,
+    AuthModule,
+    UserModule,
+    SharedModule,
+    // EurekaconfigModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

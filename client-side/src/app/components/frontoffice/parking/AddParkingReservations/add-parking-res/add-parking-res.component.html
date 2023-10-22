@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="dashboard-reservation">
+    <div class="single-reservation bg-white base-padding">
+      <div class="single-reservation-author">
+        <div class="single-reservation-author-flex">
+          <div class="single-reservation-author-contents">
+            <h2>{{ editMode ? "Edit" : "Add" }} Parking Reservation</h2>
+            <div class="custom--from">
+              <form
+                *ngIf="parkingReservationForm"
+                [formGroup]="parkingReservationForm"
+                (ngSubmit)="onSubmit()"
+              >
+                <!-- Guest Name -->
+                <div class="popup-contents-select">
+                  <label class="popup-contents-select-label">Guest Name:</label>
+                  <div class="single-input">
+                    <input
+                      type="text"
+                      name="guestName"
+                      class="form-control"
+                      formControlName="guestName"
+                      placeholder="Enter your Name..."
+                    />
+                  </div>
+                </div>
+                <!-- Vehicle Immatricule -->
+                <div class="popup-contents-select">
+                  <label class="popup-contents-select-label"
+                    >Vehicle Immatricule:</label
+                  >
+                  <div class="single-input">
+                    <input
+                      type="text"
+                      name="vehicleImmatricule"
+                      class="form-control"
+                      formControlName="vehicleImmatricule"
+                      placeholder="Enter Vehicle Immatricule..."
+                    />
+                  </div>
+                </div>
+                <!-- Arrival Date -->
+                <div class="popup-contents-select">
+                  <label class="popup-contents-select-label"
+                    >Arrival Date:</label
+                  >
+                  <div class="single-input">
+                    <input
+                      type="date"
+                      name="arrivalDate"
+                      class="form-control"
+                      formControlName="arrivalDate"
+                    />
+                  </div>
+                </div>
+                <!-- Departure Date -->
+                <div class="popup-contents-select">
+                  <label class="popup-contents-select-label"
+                    >Departure Date:</label
+                  >
+                  <div class="single-input">
+                    <input
+                      type="date"
+                      name="departureDate"
+                      class="form-control"
+                      formControlName="departureDate"
+                    />
+                  </div>
+                </div>
+                <!-- Parking Space Type -->
+                <div class="popup-contents-select">
+                  <label class="popup-contents-select-label"
+                    >Parking Space Type:</label
+                  >
+                  <div class="nice-select js-select" tabindex="0">
+                    <span class="current">{{
+                      parkingReservationForm.get("parkingSpaceType").value
+                    }}</span>
+                    <div class="nice-select-search-box">
+                      <input
+                        type="text"
+                        class="nice-select-search"
+                        formControlName="parkingSpaceType"
+                        placeholder="Search..."
+                      />
+                    </div>
+                    <ul class="list">
+                      <li
+                        *ngFor="let type of ['Standard', 'Valet']"
+                        [attr.data-value]="type"
+                        [class.option]="true"
+                        [class.selected]="
+                          parkingReservationForm.get('parkingSpaceType')
+                            .value === type
+                        "
+                        (click)="
+                          parkingReservationForm
+                            .get('parkingSpaceType')
+                            .setValue(type)
+                        "
+                      >
+                        {{ type }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- Save Button -->
+                <div class="btn-wrapper flex-btn mt-3">
+                  <button
+                    type="submit"
+                    [disabled]="parkingReservationForm.invalid"
+                    class="dash-btn btn-bg-1"
+                  >
+                    Save Reservation
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

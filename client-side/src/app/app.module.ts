@@ -5,20 +5,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './components/shared/error/error.component';
 import { HttpClientModule } from '@angular/common/http';
-import { OrderByTimePipe } from './core/utils/order-by-time.pipe';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorComponent
-   
+    ErrorComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right', // Position of the toast
+      timeOut: 3000, // Display duration (milliseconds)
+      preventDuplicates: true, // Prevent duplicate toasts
+    }),
+
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

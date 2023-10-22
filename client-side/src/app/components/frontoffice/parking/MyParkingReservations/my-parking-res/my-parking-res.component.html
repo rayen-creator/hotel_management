@@ -1,0 +1,77 @@
+<div class="container">
+  <h2>My Parking Reservations</h2>
+
+  <!-- Search bar -->
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search..."
+      [(ngModel)]="searchTerm"
+    />
+
+    <div class="input-group-append">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="searchReservations()"
+      >
+        Search
+      </button>
+    </div>
+  </div>
+
+  <!-- Filter by Status -->
+  <div class="input-group mb-3">
+    <select
+      [(ngModel)]="selectedStatus"
+      (change)="filterReservations()"
+      class="form-control"
+    >
+      <option value="all">All</option>
+      <option value="accepted">Accepted</option>
+      <option value="declined">Declined</option>
+      <option value="pending">Pending</option>
+    </select>
+  </div>
+
+  <!-- Table -->
+  <table class="table table-striped mt-4">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Guest Name</th>
+        <th scope="col">Status</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reservation of filteredReservations">
+        <th scope="row">{{ reservation.id }}</th>
+        <td>{{ reservation.guestName }}</td>
+        <td>{{ reservation.status }}</td>
+        <td>
+          <button
+            class="btn btn-sm btn-primary"
+            (click)="editReservation(reservation)"
+            [disabled]="reservation.status !== 'pending'"
+          >
+            Edit
+          </button>
+          <button
+            class="btn btn-sm btn-danger"
+            (click)="deleteReservation(reservation)"
+            [disabled]="reservation.status !== 'pending'"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Add button -->
+  <button class="btn btn-primary" (click)="addReservation()">
+    Add Reservation
+  </button>
+</div>

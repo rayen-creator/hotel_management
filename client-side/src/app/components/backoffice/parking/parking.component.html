@@ -1,0 +1,48 @@
+<div class="container">
+  <h2>Parking Space Management</h2>
+
+  <!-- Table -->
+  <table class="table table-striped mt-4 spaced-table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Numero</th>
+        <th scope="col">Type</th>
+        <th scope="col">Location</th>
+        <th scope="col">State</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let space of parkingSpaces">
+        <th scope="row">{{ space.numero }}</th>
+        <td>{{ space.spaceNumber }}</td>
+        <td>{{ space.type }}</td>
+        <td>{{ space.location }}</td>
+        <td>{{ space.status }}</td>
+        <td>
+          <button
+            class="btn btn-sm btn-warning"
+            (click)="editParkingSpace(space)"
+          >
+            Edit
+          </button>
+          <button
+            class="btn btn-sm btn-danger"
+            (click)="deleteParkingSpace(space)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Add button -->
+
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-primary" (click)="addParkingSpace()">
+      Add Parking Space
+    </button>
+  </div>
+</div>

@@ -15,4 +15,6 @@ public interface IServiceReservaionService {
     ServiceReservation updateServiceReservation(int id, ServiceReservation updatedServiceReservation);
 
     void deleteServiceReservation(int id);
+
+    List<ServiceReservation> getServiceReservationsByAuxiliaryServiceId(int auxiliaryServiceId);
 }
