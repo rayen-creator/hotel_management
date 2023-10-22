@@ -17,7 +17,8 @@ export class ListTasksComponent {
   tomorrow = new Date();
   today = new Date();
   ngOnInit(): void {
-    let idStaff = this.currentRoute.snapshot.params['id'];
+    //let idStaff = this.currentRoute.snapshot.params['id'];
+    let idStaff = 1
     this.taskService.getAllTasksOfStaff(idStaff).subscribe((tasks: any) => {
       this.listtasks = tasks;
       console.log("listtasks",this.listtasks)
