@@ -40,7 +40,6 @@ Our backend is powered by 7 microservices, all of which happen to be written in 
 Our sample microservices-based system consists of the following modules:
 - **client side** : project built using angular 15 .
 - **gateway-service** : a module for running Spring Boot application that acts as a proxy/gateway in our architecture.
-- **config-service** : a module that uses Spring Cloud Config Server for running configuration server in the `native` mode. The configuration files are placed on the classpath.
 - **eureka_server** : a module thats Spring Cloud Eureka as an embedded discovery server.
 - **ms_customer_Review** :
 - **ms_auxiliary_Services**: 
