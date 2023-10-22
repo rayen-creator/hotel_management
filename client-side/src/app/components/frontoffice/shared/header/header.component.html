@@ -60,7 +60,15 @@
               <li><a href="blog_details.html"> Blog Details </a></li>
             </ul>
           </li>
-          <li><a href="contact.html"> Contact Us </a></li>
+          <li class="menu-item-has-children">
+            <a href="javascript:void(0)">Service Reservations</a>
+            <ul class="sub-menu">
+              <li><a a routerLink="/services/listReservations"> Reservations </a>
+                <a href="/services/makeReservation"> Add Resrvations </a>
+            </ul>
+          </li>
+
+          <li><a routerLink="/account"> Account </a></li>
         </ul>
       </div>
       <div class="navbar-right-content show-nav-content">
