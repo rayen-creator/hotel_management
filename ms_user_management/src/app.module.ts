@@ -15,7 +15,7 @@ import { EurekaconfigModule } from './config/eurekaconfig/eurekaconfig.module';
     AuthModule,
     UserModule,
     SharedModule,
-    // EurekaconfigModule
+    EurekaconfigModule
   ],
   controllers: [AppController],
   providers: [AppService],
