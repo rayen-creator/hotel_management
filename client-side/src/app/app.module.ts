@@ -24,6 +24,7 @@ import { ToastrModule } from 'ngx-toastr';
       timeOut: 3000, // Display duration (milliseconds)
       preventDuplicates: true, // Prevent duplicate toasts
     }),
+    
 
   ],
   providers: [],

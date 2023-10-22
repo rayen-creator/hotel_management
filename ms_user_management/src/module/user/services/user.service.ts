@@ -24,7 +24,7 @@ export class UserService {
       createdAt: new Date(),
     });
   }
-
+  
   async findAll() {
     return await this.userRepository.find();
   }

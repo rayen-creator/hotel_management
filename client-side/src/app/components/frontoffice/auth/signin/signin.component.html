@@ -8,28 +8,26 @@
                 <div class="login-wrapper-contents login-padding">
                     <h2 class="single-title"> Welcome! </h2>
                     <p class="sigle-para mt-2"> Login to Continue </p>
-                    <form class="login-wrapper-contents-form custom-form" action="#">
+                    <form class="login-wrapper-contents-form custom-form" [formGroup]="form" >
                         <div class="single-input mt-4">
                             <label class="label-title mb-3"> Email Or User Name </label>
-                            <input class="form--control" type="text" placeholder="Email Or User Name">
+                            <input class="form--control" type="text" placeholder="Email Or User Name"
+                                formControlName="username" [ngClass]="Valid('username', form)">
                         </div>
                         <div class="single-input mt-4">
                             <label class="label-title mb-3"> Password </label>
-                            <input class="form--control" type="password" placeholder="Type Password">
+                            <input class="form--control" type="password" placeholder="Type Password" formControlName="password" [ngClass]="Valid('password', form)">
                             <div class="icon toggle-password">
                                 <div class="show-icon"> <i class="las la-eye-slash"></i> </div>
                                 <span class="hide-icon"> <i class="las la-eye"></i> </span>
                             </div>
                         </div>
-                        <button class="submit-btn w-100 mt-4" type="submit"> Sign In Now </button>
+                        <button class="submit-btn w-100 mt-4" type="submit" (click)="login()"> Sign In Now </button>
                         <span class="account color-light mt-3"> Don't have an account? <a class="color-one"
-                                                                                          [routerLink]="['/signup']"> SignUp Now </a> </span>
+                                [routerLink]="['/signup']"> SignUp Now </a> </span>
                     </form>
                     <div class="single-checkbox mt-3">
-                        <div class="checkbox-inline">
-                            <input class="check-input" type="checkbox" id="check15">
-                            <label class="checkbox-label" for="check15"> Remember Me </label>
-                        </div>
+                      
                         <div class="forgot-password">
                             <a href="forgot_password.html" class="forgot-btn color-one"> Forgot Password </a>
                         </div>
