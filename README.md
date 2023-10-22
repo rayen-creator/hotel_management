@@ -1,7 +1,11 @@
 # Hotel management system
 <div id="top" align="center">
  
-  
+
+ <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/SarraTounsi/MicroservicesProject">
+<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/SarraTounsi/MicroservicesProject">
+<img alt="GitHub Top language" src="https://img.shields.io/github/languages/top/SarraTounsi/MicroservicesProject">
+
 
 <h3 align="center">Hotel Management System Microservices</h3>
   
