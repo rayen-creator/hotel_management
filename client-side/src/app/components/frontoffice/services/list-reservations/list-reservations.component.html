@@ -21,40 +21,7 @@
 
 <div class="dashboard-area section-bg-2 dashboard-padding">
   <div class="container">
-    <div class="dashboard-contents-wrapper">
-      <div class="dashboard-icon">
-        <div class="sidebar-icon">
-          <i class="las la-bars"></i>
-        </div>
-      </div>
-      <div class="dashboard-left-content">
-        <div class="dashboard-close-main">
-          <div class="close-bars"><i class="las la-times"></i></div>
-          <div class="dashboard-bottom">
-            <ul class="dashboard-list list-style-none">
-              <li class="list">
-                <a href="dashboard.html">
-                  <i class="las la-briefcase"></i> Dashboard
-                </a>
-              </li>
 
-              <li class="list has-children active">
-                <a href="javascript:void(0)">
-                  <i class="las la-bell"></i> Auxiliary Services
-                </a>
-                <ul class="submenu list-style-none">
-                  <li class="list">
-                    <a a routerLink="/services/listReservations"> Reservations </a>
-                  </li>
-                  <li class="list">
-                    <a href="/services/makeReservation"> Add Resrvations </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
       <div class="dashboard-right-contents mt-4 mt-lg-0">
         <div class="dashboard-promo">
@@ -66,7 +33,9 @@
                     <span class="single-order-contents-subtitle">
                       Accepted Reservation
                     </span>
-                    <h2 class="single-order-contents-title"> {{acceptedReservations}}</h2>
+                    <h2 class="single-order-contents-title">
+                      {{ acceptedReservations }}
+                    </h2>
                   </div>
                   <div class="single-order-icon">
                     <i class="las la-check-circle"></i>
@@ -81,7 +50,9 @@
                     <span class="single-order-contents-subtitle">
                       All Reservations
                     </span>
-                    <h2 class="single-order-contents-title">{{totalReservations}}</h2>
+                    <h2 class="single-order-contents-title">
+                      {{ totalReservations }}
+                    </h2>
                   </div>
                   <div class="single-order-icon">
                     <i class="las la-times-circle"></i>
@@ -96,90 +67,108 @@
                     <span class="single-order-contents-subtitle">
                       Completed Reservation
                     </span>
-                    <h2 class="single-order-contents-title">{{completedReservations}}</h2>
+                    <h2 class="single-order-contents-title">
+                      {{ completedReservations }}
+                    </h2>
                   </div>
                   <div class="single-order-icon">
                     <i class="las la-clipboard-check"></i>
                   </div>
+                </div>
+              </div>
+            </div>
+            <div class="dashboard-reservation">
+              <div
+                class="single-reservation bg-white base-padding"
+                *ngFor="let reservation of serviceReservations"
+              >
+                <div class="single-reservation-expandIcon">
+                  <i class="las la-angle-down"></i>
+                </div>
+                <div class="single-reservation-head">
+                  <div class="single-reservation-flex">
+                    <div class="single-reservation-content">
+                      <h5 class="single-reservation-content-title">
+                        Reservation ID
+                      </h5>
+                      <span class="single-reservation-content-id">
+                        {{ reservation.label }}
+                      </span>
+                    </div>
+                    <div
+                      class="single-reservation-label"
+                      [ngClass]="
+                        getServiceTypeLabelClass(
+                          reservation.auxiliaryService.serviceType
+                        )
+                      "
+                    >
+                      {{ reservation.auxiliaryService.serviceType }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="single-reservation-inner">
+                  <div class="single-reservation-item">
+                    <div class="single-reservation-name">
+                      <h5 class="single-reservation-name-title">
+                        Service Label:
+                      </h5>
+                      <p class="single-reservation-name-para">
+                        {{ reservation.auxiliaryService.label }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="single-reservation-item">
+                    <div class="single-reservation-details">
+                      <div class="single-reservation-details-item">
+                        <span class="single-reservation-details-subtitle">
+                          Booked:
+                        </span>
+                        <h5 class="single-reservation-details-title">
+                          {{ reservation.serviceDate }}
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="single-reservation-item">
+                    <div class="single-reservation-flex">
+                      <div class="single-reservation-content">
+                        <h5 class="single-reservation-content-title">Cost</h5>
+                        <span class="single-reservation-content-price">
+                          {{ reservation.auxiliaryService.price }} DT
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="single-reservation-item">
+                    <div class="single-reservation-flex">
+                      <div class="single-reservation-name">
+                        <h5 class="single-reservation-name-title">
+                          Special Preferences
+                        </h5>
+                        <p class="single-reservation-name-para">
+                          {{ reservation.specialPreferences }}
+                        </p>
+                      </div>
+                      <div class="single-reservation-btn">
+                        <button
+                          (click)="
+                            deleteReservation(reservation.idService_Reservation)
+                          "
+                          class="dash-btn popup-click"
+                        >
+                          <i class="las la-exclamation-circle"></i> Cancel?
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="dashboard-reservation">
-
-          <div class="single-reservation bg-white base-padding" *ngFor="let reservation of serviceReservations">
-
-            <div class="single-reservation-expandIcon">
-              <i class="las la-angle-down"></i>
-            </div>
-            <div class="single-reservation-head">
-              <div class="single-reservation-flex">
-                <div class="single-reservation-content">
-                  <h5 class="single-reservation-content-title">
-                    Reservation ID
-                  </h5>
-                  <span class="single-reservation-content-id">
-                   {{reservation.label}}
-                  </span>
-                </div>
-                <div class="single-reservation-label" [ngClass]="getServiceTypeLabelClass(reservation.auxiliaryService.serviceType)">
-                  {{ reservation.auxiliaryService.serviceType }}
-                </div>
-
-
-              </div>
-            </div>
-
-            <div class="single-reservation-inner">
-              <div class="single-reservation-item">
-                <div class="single-reservation-name">
-                  <h5 class="single-reservation-name-title">Service Label:</h5>
-                  <p class="single-reservation-name-para">
-                  {{reservation.auxiliaryService.label}}
-                  </p>
-                </div>
-              </div>
-              <div class="single-reservation-item">
-                <div class="single-reservation-details">
-
-
-                  <div class="single-reservation-details-item">
-                    <span class="single-reservation-details-subtitle">
-                      Booked:
-                    </span>
-                    <h5 class="single-reservation-details-title"> {{reservation.serviceDate}}</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="single-reservation-item">
-                <div class="single-reservation-flex">
-                  <div class="single-reservation-content">
-                    <h5 class="single-reservation-content-title">Cost</h5>
-                    <span class="single-reservation-content-price"> {{reservation.auxiliaryService.price}} DT </span>
-                  </div>
-
-                </div>
-              </div>
-              <div class="single-reservation-item">
-                <div class="single-reservation-flex">
-                  <div class="single-reservation-name">
-                    <h5 class="single-reservation-name-title">Special Preferences</h5>
-                    <p class="single-reservation-name-para">
-                      {{reservation.specialPreferences}}
-                    </p>
-                  </div>
-                  <div class="single-reservation-btn">
-                    <button (click)="deleteReservation(reservation.idService_Reservation)" class="dash-btn popup-click">
-                      <i class="las la-exclamation-circle"></i> Cancel?
-                    </button>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
-  </div>
+  
 </div>
