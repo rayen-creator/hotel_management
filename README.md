@@ -5,6 +5,7 @@
  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/SarraTounsi/MicroservicesProject">
 <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/SarraTounsi/MicroservicesProject">
 <img alt="GitHub Top language" src="https://img.shields.io/github/languages/top/SarraTounsi/MicroservicesProject">
+<img src="https://img.shields.io/github/issues-pr-closed/SarraTounsi/MicroservicesProject" />
 
 
 <h3 align="center">Hotel Management System Microservices</h3>
@@ -25,6 +26,8 @@
 
 <!-- ABOUT THE PROJECT -->
 ## 📃 About The Project
+A microservice web app for hotel management streamlines hotel operations, including reservations, check-in/out, staff scheduling, inventory management, and billing. Enhances efficiency, guest experiences, and provides real-time insights. Ideal for hotel owners and staff.
+
 
 A microservice web app for hotel management streamlines hotel operations, including reservations, check-in/out, staff scheduling, inventory management, and billing. Enhances efficiency, guest experiences, and provides real-time insights. Ideal for hotel owners and staff.
 
