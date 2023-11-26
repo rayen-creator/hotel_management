@@ -29,8 +29,6 @@
 A microservice web app for hotel management streamlines hotel operations, including reservations, check-in/out, staff scheduling, inventory management, and billing. Enhances efficiency, guest experiences, and provides real-time insights. Ideal for hotel owners and staff.
 
 
-A microservice web app for hotel management streamlines hotel operations, including reservations, check-in/out, staff scheduling, inventory management, and billing. Enhances efficiency, guest experiences, and provides real-time insights. Ideal for hotel owners and staff.
-
  ### 📜 Project Main features
 Our backend is powered by 7 microservices, all of which happen to be written in java using Spring Boot and javascript/typescript using nestjs.
 <br> 
